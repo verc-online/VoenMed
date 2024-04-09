@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HlifY6pq2c8QCshzlenOTakN50+MwpOa5r1HfkJgRGnALyQOg0OQ0r5hObmy/+J1EYPU3DbFeVaLlljGB1/2Dg==",
+  "dgSpecHash": "bT7jc3RvZnB9wAGI14BSnXLXZCO/8rGoSWWySncjVMANQpfuREZgexM6UbScXvgy6GRr+tq2KYd5bHr66jTBaA==",
   "success": true,
-  "projectFilePath": "V:\\Git\\VoenMed\\VoenMedLibrary\\VoenMedLibrary.csproj",
+  "projectFilePath": "/Users/verc/RiderProjects/VoenMedAppSln/VoenMedLibrary/VoenMedLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
