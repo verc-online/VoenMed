@@ -1,0 +1,30 @@
+﻿<Window x:Class="VoenMed.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VoenMed"
+        mc:Ignorable="d"  FontSize="18"
+        Title="Военно-медицинский Помощник" Height="1000" MinHeight="1000" Width="1600" MinWidth="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu IsMainMenu="True" Grid.Row="0" FontSize="18">
+            <MenuItem Header="_Основное (О)">
+                <MenuItem Header="_Контакты для связи (К)" x:Name="aboutMenuItem"></MenuItem>
+                <MenuItem Header="_Выход (В)" x:Name="exitMenuItem"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Форма 100(Ф)">
+                <MenuItem Header="_Новая форма(Н)" x:Name="formMenuItem"></MenuItem>
+                <MenuItem Header="_Журнал (Ж)" x:Name="formListMenuItem"></MenuItem>
+            </MenuItem>
+            <MenuItem  Header="_Настройки (Н)">
+                <MenuItem Header="_Данные по умолчанию (Д)" x:Name="defaultsMenuItem"></MenuItem>
+                <MenuItem Header="_Лекарства (Л)" x:Name="drugsMenuItem"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ContentControl x:Name="content" Grid.Row="1"></ContentControl>
+    </Grid>
+</Window>
