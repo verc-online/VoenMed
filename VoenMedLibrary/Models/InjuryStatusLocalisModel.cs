@@ -11,50 +11,52 @@ namespace VoenMedLibrary.Models
     {
         public int Id { get; set; }
         public int Form100Id { get; set; }
-        public HeadLocalisation Head { get; set; }
-        public NeckLocalisation Neck { get; set; }
-        public UpperLocalisation RightUpper { get; set; }
-        public UpperLocalisation LeftUpper { get; set; }
-        public ThoraxLocalisation Thorax { get; set; }
-        public AbdomenLocalisation Abdomen { get; set; }
-        public LowerLocalisation RightLeg { get; set; }
-        public LowerLocalisation LeftLeg { get; set; }
-        public int Mechanic { get; set; }
-        public int MVR { get; set; }
-        public int Thermo { get; set; }
-        public int Combined { get; set; }
-        public int Explosion { get; set; }
-        public int GunShot { get; set; }
-        public int Stabbed { get; set; }
-        public int Thru { get; set; }
-        public int Blind { get; set; }
-        public int Penetration { get; set; }
-        public int SoftTissue { get; set; }
-        public int Dislocation { get; set; }
-        public int Amputation { get; set; }
-        public int LargeVessels { get; set; }
-        public int Fracture { get; set; }
-        public int PneumoThorax { get; set; }
+
+        #region Локализация повреждения
+        public HeadLocalisationEnum Head { get; private set; }
+        public NeckLocalisationEnum Neck { get; private set; }
+        public UpperLocalisationEnum RightUpper { get; private set; }
+        public UpperLocalisationEnum LeftUpper { get; private set; }
+        public ThoraxLocalisationEnum Thorax { get; private set; }
+        public AbdomenLocalisationEnum Abdomen { get; private set; }
+        public LowerLocalisationEnum RightLeg { get; private set; }
+        public LowerLocalisationEnum LeftLeg { get; private set; }
+        #endregion
+
+        #region Характеристика ранения
+        public InjuryMechanismEnum Mechanism { get; private set; } // Механическая, мвр, сочетанная 
+        public ThermoEnum Thermo { get; private set; } // Ожог и отморожение по 4 степени
+        public InjuryTypeEnum InjuryType { get; private set; } // Взрывное, огнестрельное, колотое
+        public ThroughEnum Through { get; private set; } // Сквозное, слепое
+        public DepthEnum Depth { get; private set; } // Проникающее, мягких тканей
+        
+        // Особенности
+        public int Dislocation { get; private set; }
+        public int Amputation { get; private set; }
+        public int LargeVessels { get; private set; }
+        public int Fracture { get; private set; }
+        public int PneumoThorax { get; private set; }
+        #endregion
 
         #region Head
         // Head Front
 
         public void AddHeadFront()
         {
-            Head |= HeadLocalisation.FrontHead;
+            Head |= HeadLocalisationEnum.FrontHead;
         }
         public void DeleteHeadFront()
         {
-            Head ^= HeadLocalisation.FrontHead;
+            Head ^= HeadLocalisationEnum.FrontHead;
         }
         // Head Back
         public void AddHeadBack()
         {
-            Head |= HeadLocalisation.FrontHead;
+            Head |= HeadLocalisationEnum.FrontHead;
         }
         public void DeleteHeadBack()
         {
-            Head ^= HeadLocalisation.FrontHead;
+            Head ^= HeadLocalisationEnum.FrontHead;
         }
         public void ResetHead()
         {
@@ -67,20 +69,20 @@ namespace VoenMedLibrary.Models
         // Neck Front
         public void AddNeckFront()
         {
-            Neck |= NeckLocalisation.FrontNeck;
+            Neck |= NeckLocalisationEnum.FrontNeck;
         }
         public void DeleteNeckFront()
         {
-            Neck ^= NeckLocalisation.FrontNeck;
+            Neck ^= NeckLocalisationEnum.FrontNeck;
         }
         // Neck Back
         public void AddNeckBack()
         {
-            Neck |= NeckLocalisation.FrontNeck;
+            Neck |= NeckLocalisationEnum.BackNeck;
         }
         public void DeleteNeckBack()
         {
-            Neck ^= NeckLocalisation.FrontNeck;
+            Neck ^= NeckLocalisationEnum.FrontNeck;
         }
 
         public void ResetNeck()
@@ -93,69 +95,69 @@ namespace VoenMedLibrary.Models
         // ADD
         public void AddRightUpperShoulderFront()
         {
-            RightUpper |= UpperLocalisation.ShoulderFront;
+            RightUpper |= UpperLocalisationEnum.ShoulderFront;
         }
         public void AddRightUpperForearmFront()
         {
-            RightUpper |= UpperLocalisation.ForearmFront;
+            RightUpper |= UpperLocalisationEnum.ForearmFront;
         }
         public void AddRightUpperWristFront()
         {
-            RightUpper |= UpperLocalisation.WristFront;
+            RightUpper |= UpperLocalisationEnum.WristFront;
         }
         public void AddRightUpperShoulderTourniquiet()
         {
-            RightUpper |= UpperLocalisation.ShoulderTourniquet;
+            RightUpper |= UpperLocalisationEnum.ShoulderTourniquet;
         }
         public void AddRightUpperForearmTourniquet()
         {
-            RightUpper |= UpperLocalisation.ForearmTourniquet;
+            RightUpper |= UpperLocalisationEnum.ForearmTourniquet;
         }
         public void AddRightUpperShoulderBack()
         {
-            RightUpper |= UpperLocalisation.ShoulderBack;
+            RightUpper |= UpperLocalisationEnum.ShoulderBack;
         }
         public void AddRightUpperForearmBack()
         {
-            RightUpper |= UpperLocalisation.ForearmBack;
+            RightUpper |= UpperLocalisationEnum.ForearmBack;
         }
         public void AddRightUpperWristBack()
         {
-            RightUpper |= UpperLocalisation.WristBack;
+            RightUpper |= UpperLocalisationEnum.WristBack;
         }
         
         // DELETE
         public void DeleteRightUpperShoulderFront()
         {
-            RightUpper ^= UpperLocalisation.ShoulderFront;
+            RightUpper ^= UpperLocalisationEnum.ShoulderFront;
         }
         public void DeleteRightUpperForearmFront()
         {
-            RightUpper ^= UpperLocalisation.ForearmFront;
+            RightUpper ^= UpperLocalisationEnum.ForearmFront;
         }
         public void DeleteRightUpperWristFront()
         {
-            RightUpper ^= UpperLocalisation.WristFront;
+            RightUpper ^= UpperLocalisationEnum.WristFront;
         }
         public void DeleteRightUpperShoulderTourniquiet()
         {
-            RightUpper ^= UpperLocalisation.ShoulderTourniquet;
+            RightUpper ^= UpperLocalisationEnum.ShoulderTourniquet;
         }
         public void DeleteRightUpperForearmTourniquet()
         {
-            RightUpper ^= UpperLocalisation.ForearmTourniquet;
+            RightUpper ^= UpperLocalisationEnum.ForearmTourniquet;
         }
         public void DeleteRightUpperShoulderBack()
         {
-            RightUpper ^= UpperLocalisation.ShoulderBack;
+            RightUpper ^= UpperLocalisationEnum.ShoulderBack;
         }
         public void DeleteRightUpperForearmBack()
         {
-            RightUpper ^= UpperLocalisation.ForearmBack;
+            RightUpper ^= UpperLocalisationEnum.ForearmBack;
         }
         public void DeleteRightUpperWristBack()
         {
-            RightUpper ^= UpperLocalisation.WristBack;
+            RightUpper ^= UpperLocalisationEnum.WristBack;
         }
         #endregion
 
@@ -163,37 +165,37 @@ namespace VoenMedLibrary.Models
         // ADD
         public void AddThoraxFrontRight()
         {
-            Thorax |= ThoraxLocalisation.FrontRight;
+            Thorax |= ThoraxLocalisationEnum.FrontRight;
         }
         public void AddThoraxFrontLeft()
         {
-            Thorax |= ThoraxLocalisation.FrontLeft;
+            Thorax |= ThoraxLocalisationEnum.FrontLeft;
         }
         public void AddThoraxBackRight()
         {
-            Thorax |= ThoraxLocalisation.BackRight;
+            Thorax |= ThoraxLocalisationEnum.BackRight;
         }
         public void AddThoraxBackLeft()
         {
-            Thorax |= ThoraxLocalisation.BackLeft;
+            Thorax |= ThoraxLocalisationEnum.BackLeft;
         }
 
         // DELETE
         public void DeleteThoraxFrontRight()
         {
-            Thorax ^= ThoraxLocalisation.FrontRight;
+            Thorax ^= ThoraxLocalisationEnum.FrontRight;
         }
         public void DeleteThoraxFrontLeft()
         {
-            Thorax ^= ThoraxLocalisation.FrontLeft;
+            Thorax ^= ThoraxLocalisationEnum.FrontLeft;
         }
         public void DeleteThoraxBackRight()
         {
-            Thorax ^= ThoraxLocalisation.BackRight;
+            Thorax ^= ThoraxLocalisationEnum.BackRight;
         }
         public void DeleteThoraxBackLeft()
         {
-            Thorax ^= ThoraxLocalisation.BackLeft;
+            Thorax ^= ThoraxLocalisationEnum.BackLeft;
         }
 
         #endregion
@@ -201,104 +203,104 @@ namespace VoenMedLibrary.Models
         #region LeftUpper
         public void AddLeftUpperShoulderFront()
         {
-            LeftUpper |= UpperLocalisation.ShoulderFront;
+            LeftUpper |= UpperLocalisationEnum.ShoulderFront;
         }
         public void AddLeftUpperForearmFront()
         {
-            LeftUpper |= UpperLocalisation.ForearmFront;
+            LeftUpper |= UpperLocalisationEnum.ForearmFront;
         }
         public void AddLeftUpperWristFront()
         {
-            LeftUpper |= UpperLocalisation.WristFront;
+            LeftUpper |= UpperLocalisationEnum.WristFront;
         }
         public void AddLeftUpperShoulderTourniquiet()
         {
-            LeftUpper |= UpperLocalisation.ShoulderTourniquet;
+            LeftUpper |= UpperLocalisationEnum.ShoulderTourniquet;
         }
         public void AddLeftUpperForearmTourniquet()
         {
-            LeftUpper |= UpperLocalisation.ForearmTourniquet;
+            LeftUpper |= UpperLocalisationEnum.ForearmTourniquet;
         }
         public void AddLeftUpperShoulderBack()
         {
-            LeftUpper |= UpperLocalisation.ShoulderBack;
+            LeftUpper |= UpperLocalisationEnum.ShoulderBack;
         }
         public void AddLeftUpperForearmBack()
         {
-            LeftUpper |= UpperLocalisation.ForearmBack;
+            LeftUpper |= UpperLocalisationEnum.ForearmBack;
         }
         public void AddLeftUpperWristBack()
         {
-            LeftUpper |= UpperLocalisation.WristBack;
+            LeftUpper |= UpperLocalisationEnum.WristBack;
         }
 
         public void DeleteLeftUpperShoulderFront()
         {
-            LeftUpper ^= UpperLocalisation.ShoulderFront;
+            LeftUpper ^= UpperLocalisationEnum.ShoulderFront;
         }
         public void DeleteLeftUpperForearmFront()
         {
-            LeftUpper ^= UpperLocalisation.ForearmFront;
+            LeftUpper ^= UpperLocalisationEnum.ForearmFront;
         }
         public void DeleteLeftUpperWristFront()
         {
-            LeftUpper ^= UpperLocalisation.WristFront;
+            LeftUpper ^= UpperLocalisationEnum.WristFront;
         }
         public void DeleteLeftUpperShoulderTourniquiet()
         {
-            LeftUpper ^= UpperLocalisation.ShoulderTourniquet;
+            LeftUpper ^= UpperLocalisationEnum.ShoulderTourniquet;
         }
         public void DeleteLeftUpperForearmTourniquet()
         {
-            LeftUpper ^= UpperLocalisation.ForearmTourniquet;
+            LeftUpper ^= UpperLocalisationEnum.ForearmTourniquet;
         }
         public void DeleteLeftUpperShoulderBack()
         {
-            LeftUpper ^= UpperLocalisation.ShoulderBack;
+            LeftUpper ^= UpperLocalisationEnum.ShoulderBack;
         }
         public void DeleteLeftUpperForearmBack()
         {
-            LeftUpper ^= UpperLocalisation.ForearmBack;
+            LeftUpper ^= UpperLocalisationEnum.ForearmBack;
         }
         public void DeleteLeftUpperWristBack()
         {
-            LeftUpper ^= UpperLocalisation.WristBack;
+            LeftUpper ^= UpperLocalisationEnum.WristBack;
         }
         #endregion
 
         #region Abdomen 
         public void AddAbdomenFrontRight()
         {
-            Abdomen |= AbdomenLocalisation.FrontRight;
+            Abdomen |= AbdomenLocalisationEnum.FrontRight;
         }
         public void AddAbdomenFrontLeft()
         {
-            Abdomen |= AbdomenLocalisation.FrontLeft;
+            Abdomen |= AbdomenLocalisationEnum.FrontLeft;
         }
         public void AddAbdomenBackRight()
         {
-            Abdomen |= AbdomenLocalisation.BackRight;
+            Abdomen |= AbdomenLocalisationEnum.BackRight;
         }
         public void AddAbdomenBackLeft()
         {
-            Abdomen |= AbdomenLocalisation.BackLeft;
+            Abdomen |= AbdomenLocalisationEnum.BackLeft;
         }
 
         public void DeleteAbdomenFrontRight()
         {
-            Abdomen ^= AbdomenLocalisation.FrontRight;
+            Abdomen ^= AbdomenLocalisationEnum.FrontRight;
         }
         public void DeleteAbdomenFrontLeft()
         {
-            Abdomen ^= AbdomenLocalisation.FrontLeft;
+            Abdomen ^= AbdomenLocalisationEnum.FrontLeft;
         }
         public void DeleteAbdomenBackRight()
         {
-            Abdomen ^= AbdomenLocalisation.BackRight;
+            Abdomen ^= AbdomenLocalisationEnum.BackRight;
         }
         public void DeleteAbdomenBackLeft()
         {
-            Abdomen ^= AbdomenLocalisation.BackLeft;
+            Abdomen ^= AbdomenLocalisationEnum.BackLeft;
         }
         #endregion
 
@@ -307,68 +309,68 @@ namespace VoenMedLibrary.Models
         // ADD
         public void AddRightFrontHip()
         {
-            RightLeg |= LowerLocalisation.HipFront;
+            RightLeg |= LowerLocalisationEnum.HipFront;
         }
         public void AddRightFrontShin()
         {
-            RightLeg |= LowerLocalisation.ShinFront;
+            RightLeg |= LowerLocalisationEnum.ShinFront;
         }
         public void AddRightFrontFoot()
         {
-            RightLeg |= LowerLocalisation.FootFront;
+            RightLeg |= LowerLocalisationEnum.FootFront;
         }
         public void AddRightFrontHipTourniquiet()
         {
-            RightLeg |= LowerLocalisation.HupTourniquiet;
+            RightLeg |= LowerLocalisationEnum.HupTourniquiet;
         }
         public void AddRightFrontShinTourniquiet()
         {
-            RightLeg |= LowerLocalisation.ShinTourniquiet;
+            RightLeg |= LowerLocalisationEnum.ShinTourniquiet;
         }
         public void AddRightBackHip()
         {
-            RightLeg |= LowerLocalisation.HipBack;
+            RightLeg |= LowerLocalisationEnum.HipBack;
         }
         public void AddRightBackShin()
         {
-            RightLeg |= LowerLocalisation.ShinBack;
+            RightLeg |= LowerLocalisationEnum.ShinBack;
         }
         public void AddRightBackFoot()
         {
-            RightLeg |= LowerLocalisation.FootBack;
+            RightLeg |= LowerLocalisationEnum.FootBack;
         }
         // DELETE
         public void DeleteRightFrontHip()
         {
-            RightLeg ^= LowerLocalisation.HipFront;
+            RightLeg ^= LowerLocalisationEnum.HipFront;
         }
         public void DeleteRightFrontShin()
         {
-            RightLeg ^= LowerLocalisation.ShinFront;
+            RightLeg ^= LowerLocalisationEnum.ShinFront;
         }
         public void DeleteRightFrontFoot()
         {
-            RightLeg ^= LowerLocalisation.FootFront;
+            RightLeg ^= LowerLocalisationEnum.FootFront;
         }
         public void DeleteRightFrontHipTourniquiet()
         {
-            RightLeg ^= LowerLocalisation.HupTourniquiet;
+            RightLeg ^= LowerLocalisationEnum.HupTourniquiet;
         }
         public void DeleteRightFrontShinTourniquiet()
         {
-            RightLeg ^= LowerLocalisation.ShinTourniquiet;
+            RightLeg ^= LowerLocalisationEnum.ShinTourniquiet;
         }
         public void DeleteRightBackHip()
         {
-            RightLeg ^= LowerLocalisation.HipBack;
+            RightLeg ^= LowerLocalisationEnum.HipBack;
         }
         public void DeleteRightBackShin()
         {
-            RightLeg ^= LowerLocalisation.ShinBack;
+            RightLeg ^= LowerLocalisationEnum.ShinBack;
         }
         public void DeleteRightBackFoot()
         {
-            RightLeg ^= LowerLocalisation.FootBack;
+            RightLeg ^= LowerLocalisationEnum.FootBack;
         }
         #endregion
 
@@ -377,68 +379,171 @@ namespace VoenMedLibrary.Models
         // ADD
         public void AddLeftFrontHip()
         {
-            LeftLeg |= LowerLocalisation.HipFront;
+            LeftLeg |= LowerLocalisationEnum.HipFront;
         }
         public void AddLeftFrontShin()
         {
-            LeftLeg |= LowerLocalisation.ShinFront;
+            LeftLeg |= LowerLocalisationEnum.ShinFront;
         }
         public void AddLeftFrontFoot()
         {
-            LeftLeg |= LowerLocalisation.FootFront;
+            LeftLeg |= LowerLocalisationEnum.FootFront;
         }
         public void AddLeftFrontHipTourniquiet()
         {
-            LeftLeg |= LowerLocalisation.HupTourniquiet;
+            LeftLeg |= LowerLocalisationEnum.HupTourniquiet;
         }
         public void AddLeftFrontShinTourniquiet()
         {
-            LeftLeg |= LowerLocalisation.ShinTourniquiet;
+            LeftLeg |= LowerLocalisationEnum.ShinTourniquiet;
         }
         public void AddLeftBackHip()
         {
-            LeftLeg |= LowerLocalisation.HipBack;
+            LeftLeg |= LowerLocalisationEnum.HipBack;
         }
         public void AddLeftBackShin()
         {
-            LeftLeg |= LowerLocalisation.ShinBack;
+            LeftLeg |= LowerLocalisationEnum.ShinBack;
         }
         public void AddLeftBackFoot()
         {
-            LeftLeg |= LowerLocalisation.FootBack;
+            LeftLeg |= LowerLocalisationEnum.FootBack;
         }
         // DELETE
         public void DeleteLeftFrontHip()
         {
-            LeftLeg ^= LowerLocalisation.HipFront;
+            LeftLeg ^= LowerLocalisationEnum.HipFront;
         }
         public void DeleteLeftFrontShin()
         {
-            LeftLeg ^= LowerLocalisation.ShinFront;
+            LeftLeg ^= LowerLocalisationEnum.ShinFront;
         }
         public void DeleteLeftFrontFoot()
         {
-            LeftLeg ^= LowerLocalisation.FootFront;
+            LeftLeg ^= LowerLocalisationEnum.FootFront;
         }
         public void DeleteLeftFrontHipTourniquiet()
         {
-            LeftLeg ^= LowerLocalisation.HupTourniquiet;
+            LeftLeg ^= LowerLocalisationEnum.HupTourniquiet;
         }
         public void DeleteLeftFrontShinTourniquiet()
         {
-            LeftLeg ^= LowerLocalisation.ShinTourniquiet;
+            LeftLeg ^= LowerLocalisationEnum.ShinTourniquiet;
         }
         public void DeleteLeftBackHip()
         {
-            LeftLeg ^= LowerLocalisation.HipBack;
+            LeftLeg ^= LowerLocalisationEnum.HipBack;
         }
         public void DeleteLeftBackShin()
         {
-            LeftLeg ^= LowerLocalisation.ShinBack;
+            LeftLeg ^= LowerLocalisationEnum.ShinBack;
         }
         public void DeleteLeftBackFoot()
         {
-            LeftLeg ^= LowerLocalisation.FootBack;
+            LeftLeg ^= LowerLocalisationEnum.FootBack;
+        }
+        #endregion
+
+        #region Mechanism
+        public void MakeMechanismMechanic()
+        {
+            Mechanism = InjuryMechanismEnum.Mechanic;
+        }
+        public void MakeMechanismExplosion()
+        {
+            Mechanism = InjuryMechanismEnum.Explosion;
+        }
+        public void MakeMechanismCombined()
+        {
+            Mechanism = InjuryMechanismEnum.Combined;
+        }
+        #endregion
+
+        #region Thermo
+        public void MakeThermoBurn1()
+        {
+            Thermo ^= (ThermoEnum.Burn2 | ThermoEnum.Burn3 | ThermoEnum.Burn4);
+            Thermo |= ThermoEnum.Burn1;
+        }
+        public void MakeThermoBurn2()
+        {
+            Thermo ^= (ThermoEnum.Burn1 | ThermoEnum.Burn3 | ThermoEnum.Burn4);
+            Thermo |= ThermoEnum.Burn2;
+        }
+        public void MakeThermoBurn3()
+        {
+            Thermo ^= (ThermoEnum.Burn2 | ThermoEnum.Burn1 | ThermoEnum.Burn4);
+            Thermo |= ThermoEnum.Burn3;
+        }
+        public void MakeThermoBurn4()
+        {
+            Thermo ^= (ThermoEnum.Burn2 | ThermoEnum.Burn3 | ThermoEnum.Burn1);
+            Thermo |= ThermoEnum.Burn4;
+        }
+        public void MakeThermoFrostbite1()
+        {
+            Thermo ^= (ThermoEnum.Frostbite2 | ThermoEnum.Frostbite3 | ThermoEnum.Frostbite4);
+            Thermo |= ThermoEnum.Frostbite1;
+        }
+        public void MakeThermoFrostbite2()
+        {
+            Thermo ^= (ThermoEnum.Frostbite1 | ThermoEnum.Frostbite3 | ThermoEnum.Frostbite4);
+            Thermo |= ThermoEnum.Frostbite2;
+        }
+        public void MakeThermoFrostbite3()
+        {
+            Thermo ^= (ThermoEnum.Frostbite2 | ThermoEnum.Frostbite1 | ThermoEnum.Frostbite4);
+            Thermo |= ThermoEnum.Frostbite3;
+        }
+        public void MakeThermoFrostbite4()
+        {
+            Thermo ^= (ThermoEnum.Frostbite2 | ThermoEnum.Frostbite3 | ThermoEnum.Frostbite1);
+            Thermo |= ThermoEnum.Frostbite4;
+        }
+        #endregion
+
+        #region Type
+        public void MakeInjuryTypeExplosion()
+        {
+            InjuryType = InjuryTypeEnum.Explosion;
+        }
+        public void MakeInjuryTypeGunshotBullet()
+        {
+            InjuryType = InjuryTypeEnum.GunshotBullet;
+
+        }
+        public void MakeInjuryTypeGunshotFragile()
+        {
+            InjuryType = InjuryTypeEnum.GunshotFragile;
+
+        }
+        public void MakeInjuryTypeStabbed()
+        {
+            InjuryType = InjuryTypeEnum.Stabbed;
+
+        }
+        #endregion
+
+        #region Through
+        // Сквозное, слепое
+        public void MakeThroughThrough()
+        {
+            Through = ThroughEnum.Through;
+        }
+        public void MakeThroughBlind()
+        {
+            Through = ThroughEnum.Blind;
+        }
+        #endregion
+
+        #region Depth
+        public void MakeDepthPenetration()
+        {
+            Depth = DepthEnum.Penetration;
+        }
+        public void MakeDepthSoftTissue()
+        {
+            Depth = DepthEnum.Penetration;
         }
         #endregion
     }

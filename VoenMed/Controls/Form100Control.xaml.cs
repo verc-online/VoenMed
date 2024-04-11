@@ -26,8 +26,10 @@ namespace VoenMed.Controls
         DefaultsModel model;
         List<RankModel> ranks = new(); // Звания
         List<DrugModel> drugs = new(); // Лекарства
-        List<ProvidedDrugModel> providedDrugs = new(); // Использованные лекарства, которые сохраняются в БД
-        InjuryStatusLocalisModel injuryStatusLocalis = new(); // Локализация повреждений
+
+        // То, что отправляется в базу данных
+        List<ProvidedDrugModel> providedDrugs = new(); // Использованные лекарства
+        InjuryStatusLocalisModel injuryStatusLocalis = new(); // Локализация и описание повреждений
         public Form100Control()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace VoenMed.Controls
             // Диагноз
         }
 
-        #region HeadLocalis
+        #region Localis
         // Когда нажимаешь на чекбокс должен выполнять битовое сложение, потом записывать число в бд
 
         private void frontHeadInjury_Checked(object sender, RoutedEventArgs e)
@@ -65,9 +67,7 @@ namespace VoenMed.Controls
         {
             injuryStatusLocalis.DeleteHeadFront();
         }
-        #endregion
 
-        #region RightHand
         private void frontRightShoulderInjury_Checked(object sender, RoutedEventArgs e)
         {
             injuryStatusLocalis.AddRightUpperShoulderFront();
@@ -96,6 +96,396 @@ namespace VoenMed.Controls
         private void fronRightWristInjury_Unchecked(object sender, RoutedEventArgs e)
         {
             injuryStatusLocalis.DeleteRightUpperWristFront();
+        }
+
+        private void frontLeftShoulderInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftUpperShoulderFront();
+        }
+
+        private void fronLeftForearmInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftUpperForearmFront();
+        }
+
+        private void fronLeftWristInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftUpperWristFront();
+        }
+
+        private void frontLeftShoulderInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperShoulderFront();
+        }
+
+        private void fronLeftForearmInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperForearmFront();
+        }
+
+        private void fronLeftWristInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperWristFront();
+        }
+
+        private void backLeftShoulderInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperShoulderBack();
+        }
+
+        private void backLeftForearmInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperForearmBack();
+        }
+
+        private void backLeftWristInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperWristBack();
+        }
+
+        private void frontRightShoulderTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightUpperShoulderTourniquiet();
+        }
+
+        private void frontRightShoulderTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightUpperShoulderTourniquiet();
+        }
+
+        private void fronRightForearmTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightUpperForearmTourniquet();
+        }
+
+        private void fronRightForearmTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightUpperForearmTourniquet();
+        }
+
+        private void frontLeftShoulderTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftUpperShoulderTourniquiet();
+        }
+
+        private void frontLeftShoulderTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperShoulderTourniquiet();
+        }
+
+        private void fronLeftForearmTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftUpperForearmTourniquet();
+        }
+
+        private void fronLeftForearmTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperForearmTourniquet();
+        }
+
+        private void frontRightHipTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightFrontHipTourniquiet();
+        }
+
+        private void frontRightHipTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightFrontHipTourniquiet();
+        }
+
+        private void frontRightHipInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightFrontHip();
+        }
+
+        private void frontRightHipInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightFrontHip();
+        }
+
+        private void frontRightShinTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightFrontShinTourniquiet();
+        }
+
+        private void frontRightShinTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightFrontShinTourniquiet();
+        }
+
+        private void frontRightShinInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightFrontShin();
+        }
+
+        private void frontRightShinInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightFrontShin();
+        }
+
+        private void frontRightFootInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightFrontFoot();
+        }
+
+        private void frontRightFootInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightFrontFoot();
+        }
+
+        private void frontLeftHipTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftFrontHipTourniquiet();
+        }
+
+        private void frontLeftHipTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftFrontHipTourniquiet();
+        }
+
+        private void frontLeftShinTourniquiet_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftFrontShinTourniquiet();
+        }
+
+        private void frontLeftShinTourniquiet_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftFrontShinTourniquiet();
+        }
+
+        private void frontLeftShinInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftFrontShin();
+        }
+
+        private void frontLeftShinInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftFrontShin();
+        }
+
+        private void frontLeftFootInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftFrontFoot();
+        }
+
+        private void frontLeftFootInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftFrontFoot(); ;
+        }
+
+        private void frontThoracInjuryRight_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddThoraxFrontRight();
+        }
+
+        private void frontThoracInjuryRight_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteThoraxFrontRight();
+        }
+
+        private void frontThoracInjuryLeft_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddThoraxFrontLeft();
+        }
+
+        private void frontThoracInjuryLeft_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteThoraxFrontLeft(); ;
+        }
+
+        private void frontBellyInjuryRight_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddAbdomenFrontRight();
+        }
+
+        private void frontBellyInjuryRight_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteAbdomenFrontRight();
+        }
+
+        private void frontBellyInjuryLeft_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddAbdomenFrontLeft();
+        }
+
+        private void frontBellyInjuryLeft_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteAbdomenFrontLeft();
+        }
+
+        private void backHeadInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddHeadBack();
+        }
+
+        private void backHeadInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteHeadBack();
+        }
+
+        private void backNeckInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddNeckBack();
+        }
+
+        private void backNeckInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteNeckBack();
+        }
+
+        private void backLeftShoulderInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperShoulderBack();
+        }
+
+        private void backThoracInjuryLeft_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddThoraxBackLeft();
+        }
+
+        private void backThoracInjuryLeft_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteThoraxBackLeft();
+        }
+
+        private void backThoracInjuryRight_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddThoraxBackRight();
+        }
+
+        private void backThoracInjuryRight_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteThoraxBackRight();
+        }
+
+        private void backRightShoulderInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightUpperShoulderBack();
+        }
+
+        private void backRightShoulderInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightUpperShoulderBack();
+        }
+
+        private void backLeftForearmInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperForearmBack();
+        }
+
+        private void backBellyInjuryLeft_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddAbdomenBackLeft();
+        }
+
+        private void backBellyInjuryLeft_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteAbdomenBackLeft();
+        }
+
+        private void backBellyInjuryRight_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddAbdomenBackRight();
+        }
+
+        private void backBellyInjuryRight_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteAbdomenBackRight();
+        }
+
+        private void backRightForearmInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightUpperForearmBack();
+        }
+
+        private void backRightForearmInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightUpperForearmBack();
+        }
+
+        private void backLeftWristInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftUpperWristBack();
+        }
+
+        private void backRightHipInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightBackHip();
+        }
+
+        private void backRightHipInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightBackHip();
+        }
+
+        private void backLeftHipInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftBackHip();
+        }
+
+        private void backLeftHipInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftBackHip();
+        }
+
+        private void backRightWristInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightUpperWristBack();
+        }
+
+        private void backRightWristInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightUpperWristBack();
+        }
+
+        private void backLeftShinInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftBackShin();
+        }
+
+        private void backLeftShinInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftBackShin();
+        }
+
+        private void backRightShinInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightBackShin();
+        }
+
+        private void backRightShinInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightBackShin();
+        }
+
+        private void backLeftFootInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftBackFoot();
+        }
+
+        private void backLeftFootInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftBackFoot();
+        }
+
+        private void backRightFootInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddRightBackFoot();
+        }
+
+        private void backRightFootInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteRightBackFoot();
+        }
+
+        private void frontLeftHipInjury_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.AddLeftFrontHip();
+        }
+
+        private void frontLeftHipInjury_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryStatusLocalis.DeleteLeftFrontHip();
         }
         #endregion
 
@@ -308,21 +698,9 @@ namespace VoenMed.Controls
             ranks = SqliteDataAccess.LoadData<RankModel>(sql, new Dictionary<string, object>());
         }
 
+
+
         #endregion
 
-        private void frontLeftShoulderInjury_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void fronLeftForearmInjury_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void fronLeftWristInjury_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
