@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="VoenMed.Controls.DefaultsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoenMed.Controls"
+             mc:Ignorable="d" FontSize="17"
+			 d:DesignHeight="920" d:DesignWidth="1600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    Grid.Column="0" Margin="10">
+            <TextBlock FontWeight="Bold" FontSize="20" Margin="0 0 0 10">Настройки по умолчанию</TextBlock>
+            <!-- Кем выдана справка -->
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock FontWeight="Bold">Название медицинского подразделения</TextBlock>
+                <TextBox x:Name="issuedByTextBox" TextWrapping="Wrap" AcceptsReturn="True" Height="50"></TextBox>
+            </StackPanel>
+            
+            <!-- Дежурный врач -->
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock FontWeight="Bold">Дежурный врач</TextBlock>
+                <TextBox x:Name="docTextBox"  TextWrapping="Wrap" AcceptsReturn="True" Height="25"></TextBox>
+            </StackPanel>
+
+            <!-- Куда направляется -->
+            <StackPanel Margin="0 0 0 10">
+                <TextBlock FontWeight="Bold">Куда эвакурируется пациент</TextBlock>
+                <TextBox x:Name="evacAddressTextBox"  TextWrapping="Wrap" AcceptsReturn="True" Height="50"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Транспорт</TextBlock>
+                <!-- TODO: Переименовать контент-->
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="evacTransportRadioButton_1" GroupName="Transport" Content="Автомобиль" IsChecked="True" Margin="0 0 10 0"/>
+                    <RadioButton x:Name="evacTransportRadioButton_2" GroupName="Transport" Content="Мед транспорт" Margin="0 0 10 0" />
+                    <RadioButton x:Name="evacTransportRadioButton_3" GroupName="Transport" Content="Вертолет" Margin="0 0 10 0" />
+                    <RadioButton x:Name="evacTransportRadioButton_4" GroupName="Transport" Content="Самолет" Margin="0 0 10 0" />
+                    <RadioButton x:Name="evacTransportRadioButton_5" GroupName="Transport" Content="Корабельное" />
+                    
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Куда эвакуировать</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="evacWayRadioButton_1" GroupName="EvacuationWay" Content="Медрота" IsChecked="True" Margin="0 0 10 0"/>
+                    <RadioButton x:Name="evacWayRadioButton_2" GroupName="EvacuationWay" Content="Медбат" Margin="0 0 10 0" />
+                    <RadioButton x:Name="evacWayRadioButton_3" GroupName="EvacuationWay" Content="ЦВМО" />
+                </StackPanel>
+            </StackPanel>
+            
+            <!-- Стандартные кнопки -->
+            <StackPanel>
+                <TextBlock 
+                    TextAlignment="Center" 
+                    FontWeight="Bold">Быстрые кнопки лекарств</TextBlock>
+                <!-- Позиция кнопки и дропбокс -->
+                <StackPanel Orientation="Horizontal">
+                    <!-- #1 -->
+                    <StackPanel Margin="0 0 20 0">
+                        <TextBlock>№1</TextBlock>
+                        <ComboBox x:Name="favDrug1ComboBox" Width="120"></ComboBox>
+                    </StackPanel>
+                    <!-- #2 -->
+                    <StackPanel  Margin="0 0 20 0">
+                        <TextBlock>№2</TextBlock>
+                        <ComboBox x:Name="favDrug2ComboBox" Width="120"></ComboBox>
+                    </StackPanel>
+                    <!-- #3 -->
+                    <StackPanel  Margin="0 0 20 0">
+                        <TextBlock>№3</TextBlock>
+                        <ComboBox x:Name="favDrug3ComboBox" Width="120"></ComboBox>
+                    </StackPanel>
+                    <!-- #4 -->
+                    <StackPanel>
+                        <TextBlock>№4</TextBlock>
+                        <ComboBox x:Name="favDrug4ComboBox" Width="120"></ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <Button x:Name="saveDefaultsButton" Margin="10" Padding="10" Click="saveDefaultsButton_Click">Сохранить</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

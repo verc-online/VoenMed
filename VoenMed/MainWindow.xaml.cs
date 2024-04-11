@@ -22,5 +22,15 @@ namespace VoenMed
             InitializeComponent();
             content.Content = new Form100Control();
         }
+
+        private void defaultsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            content.Content = new DefaultsControl();
+        }
+
+        private void formMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            content.Content = new Form100Control();
+        }
     }
 }

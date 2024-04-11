@@ -5,14 +5,14 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:VoenMed.Controls"
 			 mc:Ignorable="d" FontSize="17"
-			 d:DesignHeight="900" d:DesignWidth="1600">
+			 d:DesignHeight="920" d:DesignWidth="1600">
     <Grid>
         
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
         <!-- Col 0 Личные данные бойца -->
@@ -27,15 +27,11 @@
 FontWeight="Bold"
 	Padding="0 0 0 10"
 >Паспортная часть</TextBlock>
-                        <StackPanel Margin="0 0 0 10" 
-	Orientation="Horizontal">
-                            <TextBlock Margin="0 0 10 0">Выдана</TextBlock>
-                            <TextBox Width="250"></TextBox>
-                        </StackPanel>
+                        
                         <StackPanel Margin="0 0 0 10" 
 Orientation="Horizontal">
-                            <TextBlock Margin="0 0 10 0">Когда</TextBlock>
-                            <TextBox Width="250"></TextBox>
+                            <TextBlock Margin="0 0 10 0">Время</TextBlock>
+                            <TextBox Width="250" x:Name="issuedWhenTextBox"></TextBox>
                         </StackPanel>
 
                         <!-- ФИО бойца -->
@@ -45,36 +41,48 @@ Orientation="Horizontal">
                             <!-- Фамилия -->
                             <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                                 <TextBlock>Фамилия</TextBlock>
-                                <TextBox Width="100"></TextBox>
+                                <TextBox Width="100" x:Name="personLastNameTextbox"></TextBox>
                             </StackPanel>
 
                             <!-- Имя -->
                             <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                                 <TextBlock>Имя</TextBlock>
-                                <TextBox Width="100"></TextBox>
+                                <TextBox Width="100"  x:Name="personFirstNameTextbox"></TextBox>
                             </StackPanel>
 
                             <!-- Отчество -->
                             <StackPanel Orientation="Vertical" >
                                 <TextBlock>Отчество</TextBlock>
-                                <TextBox Width="100"></TextBox>
+                                <TextBox Width="100"  x:Name="personSecondNameTextbox"></TextBox>
                             </StackPanel>
                         </StackPanel>
 
                         <!-- Дата рождения-->
-                        <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
-                            <TextBlock Margin="0 0 10 0">Дата рождения</TextBlock>
-                            <DatePicker Name="dp1" IsDropDownOpen="False" SelectedDateFormat="Short" >
-                            </DatePicker>
-                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
 
+                            <StackPanel Margin="0 0 20 10" Orientation="Vertical">
+                                <TextBlock Margin="0 0 10 0">Дата рождения</TextBlock>
+                                <DatePicker Name="dp1" IsDropDownOpen="False" SelectedDateFormat="Short" >
+                                </DatePicker>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Личный номер</TextBlock>
+                                <TextBox Width="150" Padding="2"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="0 0 0 10" 
+Orientation="Horizontal">
+                            <TextBlock Margin="0 0 10 0">Войсковая часть</TextBlock>
+                            <TextBox Width="200"></TextBox>
+                        </StackPanel>
                         <!-- Звание и должность бойца -->
                         <StackPanel Margin="0 0 0 10" 
 	Orientation="Horizontal">
+                            
                             <!-- Звание -->
                             <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                                 <TextBlock Margin="0 0 10 0">Звание</TextBlock>
-                                <ComboBox Width="150" />
+                                <ComboBox Width="150" x:Name="ranksDropdown"/>
                             </StackPanel>
 
                             <!-- Должность -->
@@ -91,16 +99,28 @@ Orientation="Horizontal">
                 <!-- Амбулаторное обращение или санитарные потери -->
                 <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Категория обращения</TextBlock>
-                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                        <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Причина обращения</TextBlock>
+                        <StackPanel Orientation="Vertical" Margin="0 0 0 10">
                             <!-- TODO: Rename GroupName-->
-                            <RadioButton GroupName="Languages" Content="Санитарные потери" IsChecked="True" Margin="0 0 10 0"/>
-                            <RadioButton GroupName="Languages" Content="Амбулаторное" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton GroupName="Reason" Content="Огн." IsChecked="True" Margin="0 0 2 0"/>
+                                <RadioButton GroupName="Reason" Content="Др. пор."  Margin="0 0 10 0"/>
+                                <RadioButton GroupName="Reason" Content="Обморож."  Margin="0 0 10 0"/>
+                                <RadioButton GroupName="Reason" Content="Ядер."  Margin="0 0 10 0"/>
+                                
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton GroupName="Reason" Content="Хим."  Margin="0 0 10 0"/>
+                                <RadioButton GroupName="Reason" Content="Бакт." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" Content="Инф." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" Content="Б."  Margin="0 0 10 0"/>
+                                <CheckBox> Без п.п.</CheckBox>
+                            </StackPanel>
                         </StackPanel>
                         <!-- Время ранения -->
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                             <TextBlock Margin="0 0 10 0">Время ранения/травмы</TextBlock>
-                            <TextBox Width="150"></TextBox>
+                            <TextBox Width="150" x:Name="diseaseTimeTextbox"></TextBox>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -112,9 +132,9 @@ Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Куда эвакуировать</TextBlock>
                             <StackPanel Orientation="Vertical">
-                                <RadioButton GroupName="EvacuationWay" Content="Медрота" IsChecked="True" Margin="0 0 10 0"/>
-                                <RadioButton GroupName="EvacuationWay" Content="Медбат" Margin="0 0 10 0" />
-                                <RadioButton GroupName="EvacuationWay" Content="ЦВМО" />
+                                <RadioButton x:Name="evacWayRadioButton_1" GroupName="EvacuationWay" Content="Медрота" IsChecked="True" Margin="0 0 10 0"/>
+                                <RadioButton x:Name="evacWayRadioButton_2" GroupName="EvacuationWay" Content="Медбат" Margin="0 0 10 0" />
+                                <RadioButton x:Name="evacWayRadioButton_3" GroupName="EvacuationWay" Content="ЦВМО" />
                             </StackPanel>
                         </StackPanel>
                         <!-- Очередность-->
@@ -137,11 +157,11 @@ Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Транспорт</TextBlock>
                             <!-- TODO: Переименовать контент-->
-                            <RadioButton GroupName="Transport" Content="Автомобиль" IsChecked="True" Margin="0 0 10 0"/>
-                            <RadioButton GroupName="Transport" Content="Мед транспорт" Margin="0 0 10 0" />
-                            <RadioButton GroupName="Transport" Content="Вертолет" Margin="0 0 10 0" />
-                            <RadioButton GroupName="Transport" Content="Самолет" Margin="0 0 10 0" />
-                            <RadioButton GroupName="Transport" Content="Корабельное" />
+                            <RadioButton x:Name="evacTransportRadioButton_1" GroupName="Transport" Content="Автомобиль" IsChecked="True" Margin="0 0 10 0"/>
+                            <RadioButton x:Name="evacTransportRadioButton_2" GroupName="Transport" Content="Мед транспорт" Margin="0 0 10 0" />
+                            <RadioButton x:Name="evacTransportRadioButton_3" GroupName="Transport" Content="Вертолет" Margin="0 0 10 0" />
+                            <RadioButton x:Name="evacTransportRadioButton_4" GroupName="Transport" Content="Самолет" Margin="0 0 10 0" />
+                            <RadioButton x:Name="evacTransportRadioButton_5" GroupName="Transport" Content="Корабельное" />
                         </StackPanel>
 
                     <!-- Положение -->
@@ -166,18 +186,7 @@ Orientation="Horizontal">
                 </Border>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <!--Медицинская помощь оказана-->
-                    <StackPanel Margin="0 0 20 10" Orientation="Vertical" HorizontalAlignment="Center">
-                        <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Помощь оказана</TextBlock>
-                        <TextBox Width="100"></TextBox>
-                    </StackPanel>
-
-
-                    <!-- Летальный исход -->
-                    <StackPanel Margin="0 0 0 10" Orientation="Vertical">
-                        <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Летальный исход</TextBlock>
-                        <TextBox Width="100"></TextBox>
-                    </StackPanel>
+                    
                 </StackPanel>
 
 
@@ -185,18 +194,20 @@ Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" Margin="0 0 20 0">
                         <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" >Куда направлен</TextBlock>
-                        <TextBox></TextBox>
+                        <TextBox x:Name="evacAddressTextBox"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" >Когда</TextBlock>
-                        <TextBox Width="150"></TextBox>
+                        <TextBlock FontWeight="Bold" 
+                                   TextAlignment="Center" 
+                                   TextWrapping="Wrap">Когда</TextBlock>
+                        <TextBox Width="150" x:Name="evacTimeTextbox"></TextBox>
                     </StackPanel>
                 </StackPanel>
 
                 <!-- Врач -->
                 <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                     <TextBlock Margin="0 0 10 0" FontWeight="Bold">Врач</TextBlock>
-                    <TextBox Width="250"></TextBox>
+                    <TextBox Width="250" x:Name="docTextBox"></TextBox>
                 </StackPanel>
 
 
@@ -239,15 +250,23 @@ Orientation="Horizontal">
                             <!-- Голова -->
                             <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                    <CheckBox x:Name="frontHeadInjury" Background="Transparent" 
-										  VerticalAlignment="Center" 
-										  HorizontalAlignment="Center">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="3" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+                                <CheckBox x:Name="frontHeadInjury" Background="Transparent" 
+				  VerticalAlignment="Center" 
+				  HorizontalAlignment="Center" Checked="frontHeadInjury_Checked" Unchecked="frontHeadInjury_Unchecked">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
-                                    <StackPanel.Background>
+                                </CheckBox>
+                                <CheckBox x:Name="frontNeckInjury" Background="Transparent" 
+				  VerticalAlignment="Center" 
+				  HorizontalAlignment="Center">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+
+                                </CheckBox>
+                                <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\1.jpg"
 										Stretch="UniformToFill" />
                                     </StackPanel.Background>
@@ -258,16 +277,28 @@ Orientation="Horizontal">
                             <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <!-- Правое плечо -->
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                    <CheckBox x:Name="frontRightShoulderInjury" Background="Transparent"
+                                <CheckBox x:Name="frontRightShoulderTourniquiet" Background="Transparent"
+										VerticalAlignment="Center" 
+										HorizontalAlignment="Center" BorderBrush="Red"
+										 Checked="frontRightShoulderTourniquiet_Checked" Unchecked="frontRightShoulderTourniquiet_Unchecked">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+
+                                </CheckBox>
+                                <CheckBox x:Name="frontRightShoulderInjury" Background="Transparent"
 										VerticalAlignment="Center" 
 										HorizontalAlignment="Center"
-										IsThreeState="True">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="3" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+										 
+                                              Checked="frontRightShoulderInjury_Checked" 
+                                              Unchecked="frontRightShoulderInjury_Unchecked">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
-                                    <StackPanel.Background>
+                                </CheckBox>
+
+                                <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\3.jpg" 
 Stretch="UniformToFill" />
                                     </StackPanel.Background>
@@ -283,8 +314,8 @@ Stretch="UniformToFill" />
                                         </CheckBox.LayoutTransform>
                                     </CheckBox>
                                     <CheckBox x:Name="frontThoracInjuryLeft" Background="Transparent"
-    VerticalAlignment="Center" 
-    HorizontalAlignment="Center">
+                                                        VerticalAlignment="Center" 
+                                                        HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -297,16 +328,27 @@ Stretch="UniformToFill" />
                                 </StackPanel>
                                 <!-- Левое плечо -->
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                    <CheckBox x:Name="frontLeftShoulderInjury" Background="Transparent"
+                                <CheckBox x:Name="frontLeftShoulderTourniquiet" Background="Transparent"
 			                                     VerticalAlignment="Center" 
-			                                     HorizontalAlignment="Center"
-			                                     IsThreeState="True">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="3" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+			                                     HorizontalAlignment="Center" 
+                                              Checked="frontLeftShoulderInjury_Checked"
+			                                     Unchecked="frontLeftShoulderInjury_Unchecked" BorderBrush="Red">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
-                                    <StackPanel.Background>
+                                </CheckBox>
+                                <CheckBox x:Name="frontLeftShoulderInjury" Background="Transparent"
+			                                     VerticalAlignment="Center" 
+			                                     HorizontalAlignment="Center" 
+                                              Checked="frontLeftShoulderInjury_Checked"
+			                                     Unchecked="frontLeftShoulderInjury_Unchecked">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+
+                                </CheckBox>
+                                <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\5.jpg" Stretch="UniformToFill" />
                                     </StackPanel.Background>
                                 </StackPanel>
@@ -316,16 +358,27 @@ Stretch="UniformToFill" />
                             <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <!-- Правое препдлечье -->
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                    <CheckBox x:Name="fronRightForearmInjury" Background="Transparent" 
+                                <CheckBox x:Name="fronRightForearmTourniquiet" Background="Transparent" 
 								                VerticalAlignment="Center" 
 								                HorizontalAlignment="Center"
-								                IsThreeState="True">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="3" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+								                 Checked="fronRightForearmInjury_Checked"
+                                              Unchecked="fronRightForearmInjury_Unchecked" BorderBrush="Red">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
-                                    <StackPanel.Background>
+                                </CheckBox>
+                                <CheckBox x:Name="fronRightForearmInjury" Background="Transparent" 
+								                VerticalAlignment="Center" 
+								                HorizontalAlignment="Center"
+								                 Checked="fronRightForearmInjury_Checked"
+                                              Unchecked="fronRightForearmInjury_Unchecked">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+
+                                </CheckBox>
+                                <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\6.jpg" Stretch="UniformToFill" />
                                     </StackPanel.Background>
                                 </StackPanel>
@@ -355,18 +408,29 @@ HorizontalAlignment="Center"
                                         <ImageBrush ImageSource="..\Images\FrontImages\7.jpg"  Stretch="UniformToFill" />
                                     </StackPanel.Background>
                                 </StackPanel>
-                                <!-- Левое плечо -->
+                                <!-- Левое предплечье -->
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                    <CheckBox x:Name="fronLeftForearmInjury" Background="Transparent" 
-	                                             VerticalAlignment="Center" 
-	                                             HorizontalAlignment="Center"
-	                                             IsThreeState="True">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="3" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+                                <CheckBox x:Name="fronLeftForearmTourniquiet" Background="Transparent" 
+                                                VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5" BorderBrush="Red" 
+                                               >
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
-                                    <StackPanel.Background>
+                                </CheckBox>
+                                <CheckBox x:Name="fronLeftForearmInjury" Background="Transparent" 
+                                                VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5" 
+                                              Checked="fronLeftForearmInjury_Checked"
+	                                          Unchecked="fronLeftForearmInjury_Unchecked" 
+                                              >
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+
+                                </CheckBox>
+                                <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\8.jpg" Stretch="UniformToFill" />
                                     </StackPanel.Background>
                                 </StackPanel>
@@ -378,8 +442,8 @@ HorizontalAlignment="Center"
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="fronRightWristInjury" Background="Transparent"
 								                VerticalAlignment="Center" 
-								                HorizontalAlignment="Center"
-								                IsThreeState="True">
+								                HorizontalAlignment="Center" Checked="fronRightWristInjury_Checked"
+                                              Unchecked="fronRightWristInjury_Unchecked">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -391,23 +455,44 @@ HorizontalAlignment="Center"
                                 </StackPanel>
                                 <!-- Левое и правое бедро -->
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <CheckBox x:Name="frontRightHipInjury" Background="Transparent" 
-	                                     VerticalAlignment="Center" 
-	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+                                       <!-- Правое бедро -->
+                                    <StackPanel Orientation="Vertical">
+                                    <CheckBox x:Name="frontRightHipTourniquiet" Background="Transparent" 
+                                                    VerticalAlignment="Center" 
+                                                    HorizontalAlignment="Center" BorderBrush="Red">
                                         <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <CheckBox x:Name="frontRightHipInjury" Background="Transparent" 
+                                                    VerticalAlignment="Center" 
+                                                    HorizontalAlignment="Center">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                </StackPanel>
+                                <!-- Левре бедро -->
+
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox x:Name="frontLeftHipTourniquiet" Background="Transparent" 
+                                                    VerticalAlignment="Center" 
+                                                    HorizontalAlignment="Center" BorderBrush="Red">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                         </CheckBox.LayoutTransform>
                                     </CheckBox>
                                     <CheckBox x:Name="frontLeftHipInjury" Background="Transparent" 
-	                                     VerticalAlignment="Center" 
-	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+	                                         VerticalAlignment="Center" 
+	                                         HorizontalAlignment="Center"
+	                                         >
+                                            <CheckBox.LayoutTransform>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                            </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
+                                        </CheckBox>
+                                </StackPanel>
+
                                     <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\10.jpg" Stretch="UniformToFill" />
                                     </StackPanel.Background>
@@ -415,9 +500,10 @@ HorizontalAlignment="Center"
                                 <!-- Левая кисть -->
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="fronLeftWristInjury"  Background="Transparent"
-	                                             VerticalAlignment="Center" 
-	                                             HorizontalAlignment="Center"
-	                                             IsThreeState="True">
+                                              VerticalAlignment="Center"  
+                                              HorizontalAlignment="Center" 
+                                              Checked="fronLeftWristInjury_Checked"
+                                              Unchecked="fronLeftWristInjury_Unchecked">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -432,23 +518,42 @@ HorizontalAlignment="Center"
                             <!-- Левая и правая голень -->
                             <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <CheckBox x:Name="frontRightShinInjury" Background="Transparent" 
-	                                     VerticalAlignment="Center" 
-	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+                                    <StackPanel Orientation="Vertical">
+                                    <CheckBox x:Name="frontRightShinTourniquiet" Background="Transparent" 
+                                                    VerticalAlignment="Center" 
+                                                    HorizontalAlignment="Center" BorderBrush="Red">
                                         <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <CheckBox x:Name="frontRightShinInjury" Background="Transparent" 
+	                                         VerticalAlignment="Center" 
+	                                         HorizontalAlignment="Center"
+	                                         >
+                                            <CheckBox.LayoutTransform>
+                                                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                            </CheckBox.LayoutTransform>
+                                        </CheckBox>
+                                    </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox x:Name="frontLeftShinTourniquiet" Background="Transparent" 
+                                                    VerticalAlignment="Center" 
+                                                    HorizontalAlignment="Center" BorderBrush="Red">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                         </CheckBox.LayoutTransform>
                                     </CheckBox>
                                     <CheckBox x:Name="frontLeftShinInjury" Background="Transparent" 
-	                                     VerticalAlignment="Center" 
-	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"
+                                                     >
                                         <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                         </CheckBox.LayoutTransform>
 
                                     </CheckBox>
+                                </StackPanel>
+                                    
                                     <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\FrontImages\13.jpg" 
                 Stretch="UniformToFill" />
@@ -461,8 +566,7 @@ HorizontalAlignment="Center"
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
                                     <CheckBox x:Name="frontRightFootInjury" Background="Transparent" 
                                              VerticalAlignment="Center" 
-                                             HorizontalAlignment="Center"
-                                             IsThreeState="True">
+                                             HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -470,7 +574,7 @@ HorizontalAlignment="Center"
                                     <CheckBox x:Name="frontLeftFootInjury" Background="Transparent" 
                                                      VerticalAlignment="Center" 
                                                      HorizontalAlignment="Center"
-                                                     IsThreeState="True">
+                                                     >
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -487,15 +591,23 @@ HorizontalAlignment="Center"
                             <!-- Голова -->
                             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                    <CheckBox x:Name="backHeadInjury" Background="Transparent"
-										  VerticalAlignment="Center" 
-										  HorizontalAlignment="Center">
-                                        <CheckBox.LayoutTransform>
-                                            <ScaleTransform ScaleX="3" ScaleY="3" />
-                                        </CheckBox.LayoutTransform>
+                                <CheckBox x:Name="backHeadInjury" Background="Transparent" 
+VerticalAlignment="Center" 
+HorizontalAlignment="Center">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
 
-                                    </CheckBox>
-                                    <StackPanel.Background>
+                                </CheckBox>
+                                <CheckBox x:Name="backNeckInjury" Background="Transparent" 
+VerticalAlignment="Center" 
+HorizontalAlignment="Center">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+
+                                </CheckBox>
+                                <StackPanel.Background>
                                         <ImageBrush ImageSource="..\Images\backImages\1.jpg"
 										Stretch="UniformToFill" />
                                     </StackPanel.Background>
@@ -508,8 +620,7 @@ HorizontalAlignment="Center"
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="backLeftShoulderInjury" Background="Transparent"
 										VerticalAlignment="Center" 
-										HorizontalAlignment="Center"
-										IsThreeState="True">
+										HorizontalAlignment="Center" Checked="backLeftShoulderInjury_Checked">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -548,8 +659,7 @@ Stretch="UniformToFill" />
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="backRightShoulderInjury" Background="Transparent"
 			 VerticalAlignment="Center" 
-			 HorizontalAlignment="Center"
-			 IsThreeState="True">
+			 HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -568,8 +678,7 @@ Stretch="UniformToFill" />
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="backLeftForearmInjury" Background="Transparent" 
 								VerticalAlignment="Center" 
-								HorizontalAlignment="Center"
-								IsThreeState="True">
+								HorizontalAlignment="Center" Checked="backLeftForearmInjury_Checked">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -611,8 +720,7 @@ Stretch="UniformToFill" />
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                 <CheckBox x:Name="backRightForearmInjury" Background="Transparent" 
 	 VerticalAlignment="Center" 
-	 HorizontalAlignment="Center"
-	 IsThreeState="True">
+	 HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -631,8 +739,7 @@ Stretch="UniformToFill" />
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="backLeftWristInjury" Background="Transparent"
 								VerticalAlignment="Center" 
-								HorizontalAlignment="Center"
-								IsThreeState="True">
+								HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5" Checked="backLeftWristInjury_Checked">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -648,7 +755,7 @@ Stretch="UniformToFill" />
                                     <CheckBox x:Name="backRightHipInjury" Background="Transparent" 
 	                                     VerticalAlignment="Center" 
 	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+	                                     >
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -656,7 +763,7 @@ Stretch="UniformToFill" />
                                     <CheckBox x:Name="backLeftHipInjury" Background="Transparent" 
 	                                     VerticalAlignment="Center" 
 	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+	                                     >
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -671,8 +778,7 @@ Stretch="UniformToFill" />
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                     <CheckBox x:Name="backRightWristInjury"  Background="Transparent"
 	 VerticalAlignment="Center" 
-	 HorizontalAlignment="Center"
-	 IsThreeState="True">
+	 HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="3" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -691,7 +797,7 @@ Stretch="UniformToFill" />
                                     <CheckBox x:Name="backLeftShinInjury" Background="Transparent" 
 	                                     VerticalAlignment="Center" 
 	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+	                                     >
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -699,7 +805,7 @@ Stretch="UniformToFill" />
                                 <CheckBox x:Name="backRightShinInjury" Background="Transparent" 
 	                                     VerticalAlignment="Center" 
 	                                     HorizontalAlignment="Center"
-	                                     IsThreeState="True">
+	                                     >
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -717,16 +823,14 @@ Stretch="UniformToFill" />
                                 <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
                                     <CheckBox x:Name="backLeftFootInjury" Background="Transparent" 
                          VerticalAlignment="Center" 
-                         HorizontalAlignment="Center"
-                         IsThreeState="True">
+                         HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
                                     </CheckBox>
                                     <CheckBox x:Name="backRightFootInjury" Background="Transparent" 
                          VerticalAlignment="Center" 
-                         HorizontalAlignment="Center"
-                         IsThreeState="True">
+                         HorizontalAlignment="Center">
                                         <CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                         </CheckBox.LayoutTransform>
@@ -739,9 +843,9 @@ Stretch="UniformToFill" />
                                 </StackPanel>
                             </StackPanel>
 
-                            <TextBlock Grid.Row="6" Grid.ColumnSpan="2" TextAlignment="Center">✓ - пораженная область, ■ наложен жгут</TextBlock>
-                            
-                            <StackPanel Margin="5 5 0 0" Grid.Row="7" Grid.ColumnSpan="2">
+                        <TextBlock Grid.Row="6" Grid.ColumnSpan="2" TextAlignment="Center" Text="✓ - пораженная область"/>
+
+                        <StackPanel Margin="5 5 0 0" Grid.Row="7" Grid.ColumnSpan="2">
                                 <StackPanel x:Name="сonditionPanel" Orientation="Vertical">
                                     <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Состояние</TextBlock>
                                     <StackPanel Orientation="Horizontal">
@@ -840,7 +944,7 @@ Stretch="UniformToFill" />
                             <!-- Жалобы-->
                             <StackPanel Orientation="Vertical" Grid.Row="8" Grid.ColumnSpan="2">
                                 <TextBlock HorizontalAlignment="Center" FontWeight="Bold">Жалобы</TextBlock>
-                                <TextBox Margin="5" TextWrapping="Wrap" AcceptsReturn="True" Height="40" ></TextBox>
+                                <TextBox Margin="5" TextWrapping="Wrap" AcceptsReturn="True" Height="45" ></TextBox>
                             </StackPanel>
                     </Grid>
                     </StackPanel>
@@ -869,7 +973,7 @@ Stretch="UniformToFill" />
                                         <StackPanel Orientation="Vertical">
                                             <!-- Ожог -->
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock TextAlignment="Center">Ожог</TextBlock>
+                                                <TextBlock TextAlignment="Center" FontWeight="Bold">Ожог</TextBlock>
                                                 <StackPanel Orientation="Horizontal">
                                                     <CheckBox x:Name="injuryTypeThermoPlus_1" Content="I" Margin="5"/>
                                                     <CheckBox x:Name="injuryTypeThermoPlus_2" Content="II"  Margin="5"/>
@@ -880,7 +984,7 @@ Stretch="UniformToFill" />
                                             </StackPanel>
                                             <!-- Отморожение -->
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock TextAlignment="Center">Отморожение</TextBlock>
+                                                    <TextBlock TextAlignment="Center" FontWeight="Bold">Отморожение</TextBlock>
                                                 <StackPanel Orientation="Horizontal">
                                                     <CheckBox x:Name="injuryTypeThermoMinus_1" Content="I" Margin="5" />
                                                     <CheckBox x:Name="injuryTypeThermoMinus_2" Content="II"  Margin="5"/>
@@ -983,12 +1087,12 @@ Stretch="UniformToFill" />
                                     </TextBlock>
                                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                                         <StackPanel Orientation="Vertical">
-                                            <CheckBox Margin="0 0 10 0">Нет необходимости</CheckBox>
-                                            <CheckBox Margin="0 0 10 0">Воздуховод</CheckBox>
+                                            <RadioButton GroupName="Breathing" IsChecked="True" Margin="0 0 10 0">Нет необходимости</RadioButton>
+                                            <RadioButton GroupName="Breathing" Margin="0 0 10 0">Воздуховод</RadioButton>
                                         </StackPanel>
                                         <StackPanel>
-                                            <CheckBox Margin="0 0 10 0">Интубация</CheckBox>
-                                            <CheckBox Margin="0 0 10 0">Коникотомия</CheckBox>
+                                            <RadioButton GroupName="Breathing" Margin="0 0 10 0">Интубация</RadioButton>
+                                            <RadioButton GroupName="Breathing" Margin="0 0 10 0">Коникотомия</RadioButton>
                                         </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
@@ -1100,33 +1204,41 @@ Stretch="UniformToFill" />
                                             <StackPanel Orientation="Horizontal">
                                                 <StackPanel Orientation="Vertical" Margin="10 0 10 0">
                                                     <TextBlock TextAlignment="Center" TextWrapping="Wrap">Препарат</TextBlock>
-                                                    <ComboBox Width="120"></ComboBox>
+                                                    <ComboBox Width="120" x:Name="drugsComboBox" SelectionChanged="drugsComboBox_SelectionChanged"></ComboBox>
+                                                    
                                                 </StackPanel>
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Объем (мл.)</TextBlock>
-                                                    <TextBox></TextBox>
+                                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Введено</TextBlock>
+                                                    <TextBox x:Name="drugDose"></TextBox>
                                                 </StackPanel>
-                                                <Button Margin="35 10">Добавить</Button>
+                                                <StackPanel>
+                                                    <TextBlock x:Name="drugMeasurement"
+                                                               Margin="10 0 0 0" 
+                                                               TextWrapping="Wrap"
+                                                               Width="70">ед. изм.</TextBlock>
+                                                </StackPanel>
+                                                <Button Margin="10" x:Name="provideDrugButton" Click="provideDrugButton_Click">Добавить</Button>
                                             </StackPanel>
-                                            <ListBox x:Name="infusionList" Height="170" Margin="10 10 10 0" Padding="10">
+                                            <ListBox x:Name="drugsProvidedList" Height="170" ItemsSource="{Binding}" Margin="10 10 10 0" Padding="10">
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Margin="5" Orientation="Horizontal">
                                                             <!-- TODO: Препарат, объем, удалить-->
-                                                            <TextBlock FontSize="16" Text="" HorizontalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Text="" HorizontalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Text="" HorizontalAlignment="Center" />
+                                                            <TextBlock x:Name="drugProvidedTitle" Text="{Binding Title}" HorizontalAlignment="Left" Margin="0 0 10 0" />
+                                                            <TextBlock x:Name="drugProvidedDose" Text="{Binding Dose}" HorizontalAlignment="Center"  Margin="0 0 10 0"/>
+                                                            <TextBlock x:Name="drugProvidedMeasurement" Text="{Binding Measurement}" HorizontalAlignment="Right"  Margin="0 0 10 0" />
+                                                            <Button x:Name="deleteDrugProvidedButton" Click="deleteDrugProvidedButton_Click" DataContext="{Binding}">Удалить</Button>
                                                         </StackPanel>
                                                     </DataTemplate>
                                                 </ListBox.ItemTemplate>
                                             </ListBox>
                                         </StackPanel>
                                         <StackPanel>
-                                            <Button Margin="0 0 0 10" Padding="5">Промедол</Button>
-                                            <Button Margin="0 0 0 10" Padding="5">Фентанил</Button>
-                                            <Button Margin="0 0 0 10" Padding="5">Рокуроний</Button>
-                                            <Button Margin="0 0 0 10" Padding="5">Транексам</Button>
-                                            <Button Margin="0 0 0 10" Padding="5">Сброс</Button>
+                                            <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug1Button" Click="favDrug1Button_Click">Промедол</Button>
+                                            <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug2Button" Click="favDrug2Button_Click">Фентанил</Button>
+                                            <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug3Button" Click="favDrug3Button_Click">Рокуроний</Button>
+                                            <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug4Button" Click="favDrug4Button_Click">Транексам</Button>
+                                            <Button Margin="0 0 0 10" Padding="5" x:Name="resetDrugsProvidedButton" Click="resetDrugsProvidedButton_Click">Сброс</Button>
                                         </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
@@ -1143,14 +1255,36 @@ Stretch="UniformToFill" />
                         </StackPanel>
                     </Border>
                     <Border Background="#FFEBED" BorderBrush="AntiqueWhite" BorderThickness="1">
-                        <StackPanel>
-                            <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" >Диагноз</TextBlock>
-                            <TextBox  Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" ></TextBox>
-                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            
                         
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Width="600">
+                                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" >Диагноз</TextBlock>
+                                    <TextBox  Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" ></TextBox>
+                                
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <!--Медицинская помощь оказана-->
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                        <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Помощь оказана</TextBlock>
+                                        <TextBox Width="100"></TextBox>
+                                    </StackPanel>
+
+
+                                    <!-- Летальный исход -->
+                                    <StackPanel Margin="0 0 0 10" Orientation="Vertical">
+                                        <TextBlock FontWeight="Bold" TextAlignment="Center">Летальный исход</TextBlock>
+                                        <TextBox Width="100"></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                               
+                            <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton">Сохранить</Button>
+                            
+                        </StackPanel>
                     </Border>
 
-                    <Button Margin="0 10 0 0" Padding="10">Сохранить</Button>
 
 
                 </StackPanel>
