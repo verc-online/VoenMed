@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VoenMed"
         mc:Ignorable="d"  FontSize="18"
-        Title="Военно-медицинский Помощник" Height="1000" MinHeight="1000" Width="1600" MinWidth="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Военно-медицинский Помощник" Height="1000" MinHeight="1000" Width="1200" MinWidth="1200" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

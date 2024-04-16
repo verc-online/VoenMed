@@ -1,4 +1,4 @@
-﻿using VoenMedLibrary.Models;
+﻿using VoenMedLibrary.Models.InjuryModels;
 
 namespace TestArea
 {

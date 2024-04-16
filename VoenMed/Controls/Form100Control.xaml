@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:VoenMed.Controls"
              mc:Ignorable="d" FontSize="17"
-             d:DesignHeight="920" d:DesignWidth="1600">
+             d:DesignHeight="920" d:DesignWidth="1200">
     <Grid>
 
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- Col 0 Личные данные бойца -->
@@ -115,7 +115,7 @@
                                 <RadioButton GroupName="Reason" Content="Бакт." Margin="0 0 10 0" />
                                 <RadioButton GroupName="Reason" Content="Инф." Margin="0 0 10 0" />
                                 <RadioButton GroupName="Reason" Content="Б." Margin="0 0 10 0" />
-                                <CheckBox> Без п.п.</CheckBox>
+                                <CheckBox>Без п.п.</CheckBox>
                             </StackPanel>
                         </StackPanel>
                         <!-- Время ранения -->
@@ -229,7 +229,7 @@
         </Border>
 
         <!-- Col 1 Описание поражения -->
-        
+
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <Grid Margin="0 10">
                 <Grid.ColumnDefinitions>
@@ -249,58 +249,12 @@
             <!-- Локализация, жалобы -->
             <StackPanel Orientation="Horizontal">
 
-                <StackPanel x:Name="injuryLocalisationPanel" Margin="0 0 0 0">
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <!-- Этиология -->
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontWeight="Bold" TextAlignment="Center">Этиология</TextBlock>
-                                <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <RadioButton GroupName="ethiologyRadioButtonGroup">Ранение</RadioButton>
-                                    <RadioButton GroupName="ethiologyRadioButtonGroup">Травма, в т.ч. взрывная</RadioButton>
-                                </StackPanel>
-                                <!-- Ранение-->    
-                                <StackPanel Margin="0 10 0 0" x:Name="injuryEthiologyPanel" Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
-                                        
-                                        <RadioButton GroupName="injuryEthiologyTypesGroup">Огнестрельное</RadioButton>
-                                        <RadioButton GroupName="injuryEthiologyTypesGroup">Неогнестрельное</RadioButton>
-                                    </StackPanel>
-                                    <!-- Ранение Огнестрельное-->
-                                    <StackPanel Margin="0 10 0 0" x:Name="injuryGunshotTypes" Orientation="Horizontal">
-                                        <RadioButton>Пулевое</RadioButton>
-                                        <RadioButton>Осколочное</RadioButton>
-                                        <RadioButton>Минновзрывное</RadioButton>
-                                    </StackPanel>
-                                    <!-- Ранение Неогнестрельное -->
-                                    <StackPanel Margin="0 10 0 0" x:Name="injuryNonGunshotTypes" Orientation="Horizontal">
-                                        <RadioButton>Колото-резаное</RadioButton>
-                                        <RadioButton>Колотое</RadioButton>
-                                        <RadioButton>Рубленое</RadioButton>
-                                    </StackPanel>
-                            </StackPanel>
-
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0 0 10 0">
-                                <Button Padding="10 5" Margin="0 0 0 10">Голова</Button>
-                                <Button Padding="10 5" Margin="0 0 0 10">Шея</Button>
-                                <Button Padding="10 5" Margin="0 0 0 10">Грудь</Button>
-                                <Button Padding="10 5" Margin="0 0 0 10">Живот</Button>
-                                <Button Padding="10 5" Margin="0 0 0 10">Таз</Button>
-                                <Button Padding="10 5" Margin="0 0 0 10">Позвоночник</Button>
-                            </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <Button Padding="10 5" Margin="0 0 0 10">Позвоночник</Button>
-                            <Button Padding="10 5" Margin="0 0 0 10">Правая рука</Button>
-                            <Button Padding="10 5" Margin="0 0 0 10">Левая рука</Button>
-                            <Button Padding="10 5" Margin="0 0 0 10">Правая нога</Button>
-                            <Button Padding="10 5" Margin="0 0 0 10">Левая нога</Button>
-                        </StackPanel>
-
+                <StackPanel x:Name="injuryLocalisationPanel" Margin="10 0 0 0">
+                    <StackPanel Orientation="Horizontal">
 
                         <StackPanel Orientation="Vertical">
                             <TextBlock HorizontalAlignment="Center" FontWeight="Bold">
-                                Локализация повреждений
+            Локализация повреждений
                             </TextBlock>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical">
@@ -309,17 +263,17 @@
                                     <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="frontHeadInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center" Checked="frontHeadInjury_Checked"
-                            Unchecked="frontHeadInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center" Checked="frontHeadInjury_Checked"
+        Unchecked="frontHeadInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
 
                                             </CheckBox>
-                                            <CheckBox x:Name="frontNeckInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center">
+                                            <CheckBox x:Name="frontNeckInjury" Background="Transparent" Checked="frontNeckInjury_Checked" Unchecked="frontNeckInjury_Unchecked"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -327,7 +281,7 @@
                                             </CheckBox>
                                             <StackPanel.Background>
                                                 <ImageBrush ImageSource="..\Images\FrontImages\1.jpg"
-                                Stretch="UniformToFill" />
+            Stretch="UniformToFill" />
                                             </StackPanel.Background>
                                         </StackPanel>
                                     </StackPanel>
@@ -337,21 +291,21 @@
                                         <!-- Правое плечо -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="frontRightShoulderTourniquiet" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center" BorderBrush="Red"
-                            Checked="frontRightShoulderTourniquiet_Checked"
-                            Unchecked="frontRightShoulderTourniquiet_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center" BorderBrush="Red"
+        Checked="frontRightShoulderTourniquiet_Checked"
+        Unchecked="frontRightShoulderTourniquiet_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
 
                                             </CheckBox>
                                             <CheckBox x:Name="frontRightShoulderInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
 
-                            Checked="frontRightShoulderInjury_Checked"
-                            Unchecked="frontRightShoulderInjury_Unchecked">
+        Checked="frontRightShoulderInjury_Checked"
+        Unchecked="frontRightShoulderInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -360,26 +314,26 @@
 
                                             <StackPanel.Background>
                                                 <ImageBrush ImageSource="..\Images\FrontImages\3.jpg"
-                                Stretch="UniformToFill" />
+            Stretch="UniformToFill" />
                                             </StackPanel.Background>
                                         </StackPanel>
                                         <!-- Грудная клетка -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <StackPanel Orientation="Horizontal">
                                                 <CheckBox x:Name="frontThoracInjuryRight" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontThoracInjuryRight_Checked"
-                                Unchecked="frontThoracInjuryRight_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontThoracInjuryRight_Checked"
+            Unchecked="frontThoracInjuryRight_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                                     </CheckBox.LayoutTransform>
                                                 </CheckBox>
                                                 <CheckBox x:Name="frontThoracInjuryLeft" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontThoracInjuryLeft_Checked"
-                                Unchecked="frontThoracInjuryLeft_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontThoracInjuryLeft_Checked"
+            Unchecked="frontThoracInjuryLeft_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                                     </CheckBox.LayoutTransform>
@@ -393,20 +347,20 @@
                                         <!-- Левое плечо -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="frontLeftShoulderTourniquiet" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="frontLeftShoulderTourniquiet_Checked"
-                            Unchecked="frontLeftShoulderTourniquiet_Unchecked" BorderBrush="Red">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="frontLeftShoulderTourniquiet_Checked"
+        Unchecked="frontLeftShoulderTourniquiet_Unchecked" BorderBrush="Red">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
 
                                             </CheckBox>
                                             <CheckBox x:Name="frontLeftShoulderInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="frontLeftShoulderInjury_Checked"
-                            Unchecked="frontLeftShoulderInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="frontLeftShoulderInjury_Checked"
+        Unchecked="frontLeftShoulderInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -423,20 +377,20 @@
                                         <!-- Правое препдлечье -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="fronRightForearmTourniquiet" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="fronRightForearmTourniquiet_Checked"
-                            Unchecked="fronRightForearmTourniquiet_Unchecked" BorderBrush="Red">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="fronRightForearmTourniquiet_Checked"
+        Unchecked="fronRightForearmTourniquiet_Unchecked" BorderBrush="Red">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
 
                                             </CheckBox>
                                             <CheckBox x:Name="fronRightForearmInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="fronRightForearmInjury_Checked"
-                            Unchecked="fronRightForearmInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="fronRightForearmInjury_Checked"
+        Unchecked="fronRightForearmInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -450,24 +404,32 @@
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <StackPanel Orientation="Horizontal">
                                                 <CheckBox x:Name="frontBellyInjuryRight" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontBellyInjuryRight_Checked"
-                                Unchecked="frontBellyInjuryRight_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontBellyInjuryRight_Checked"
+            Unchecked="frontBellyInjuryRight_Unchecked">
                                                     <CheckBox.LayoutTransform>
-                                                        <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                        <ScaleTransform ScaleX="1.5" ScaleY="2" />
                                                     </CheckBox.LayoutTransform>
 
                                                 </CheckBox>
                                                 <CheckBox x:Name="frontBellyInjuryLeft" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontBellyInjuryLeft_Checked"
-                                Unchecked="frontBellyInjuryLeft_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontBellyInjuryLeft_Checked"
+            Unchecked="frontBellyInjuryLeft_Unchecked">
                                                     <CheckBox.LayoutTransform>
-                                                        <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                        <ScaleTransform ScaleX="1.5" ScaleY="2" />
                                                     </CheckBox.LayoutTransform>
 
+                                                </CheckBox>
+                                            </StackPanel>
+                                            <!-- Таз -->
+                                            <StackPanel Margin="0 2">
+                                                <CheckBox x:Name="pelvisFrontCheckBox" Checked="pelvisFrontCheckBox_Checked" Unchecked="pelvisFrontCheckBox_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="1" />
+                                                    </CheckBox.LayoutTransform>
                                                 </CheckBox>
                                             </StackPanel>
                                             <StackPanel.Background>
@@ -477,21 +439,21 @@
                                         <!-- Левое предплечье -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="fronLeftForearmTourniquiet" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
-                            BorderBrush="Red"
-                            Checked="fronLeftForearmTourniquiet_Checked"
-                            Unchecked="fronLeftForearmTourniquiet_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
+        BorderBrush="Red"
+        Checked="fronLeftForearmTourniquiet_Checked"
+        Unchecked="fronLeftForearmTourniquiet_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
 
                                             </CheckBox>
                                             <CheckBox x:Name="fronLeftForearmInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
-                            Checked="fronLeftForearmInjury_Checked"
-                            Unchecked="fronLeftForearmInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
+        Checked="fronLeftForearmInjury_Checked"
+        Unchecked="fronLeftForearmInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -508,9 +470,9 @@
                                         <!-- Правая кисть -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="fronRightWristInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center" Checked="fronRightWristInjury_Checked"
-                            Unchecked="fronRightWristInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center" Checked="fronRightWristInjury_Checked"
+        Unchecked="fronRightWristInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
@@ -525,20 +487,20 @@
                                             <!-- Правое бедро -->
                                             <StackPanel Orientation="Vertical">
                                                 <CheckBox x:Name="frontRightHipTourniquiet" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" 
-                                BorderBrush="Red"
-                                Checked="frontRightHipTourniquiet_Checked"
-                                Unchecked="frontRightHipTourniquiet_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" 
+            BorderBrush="Red"
+            Checked="frontRightHipTourniquiet_Checked"
+            Unchecked="frontRightHipTourniquiet_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
                                                 </CheckBox>
                                                 <CheckBox x:Name="frontRightHipInjury" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontRightHipInjury_Checked"
-                                Unchecked="frontRightHipInjury_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontRightHipInjury_Checked"
+            Unchecked="frontRightHipInjury_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
@@ -548,20 +510,20 @@
                                             <!-- Левое бедро -->
                                             <StackPanel Orientation="Vertical">
                                                 <CheckBox x:Name="frontLeftHipTourniquiet" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" 
-                                BorderBrush="Red"
-                                Checked="frontLeftHipTourniquiet_Checked"
-                                Unchecked="frontLeftHipTourniquiet_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" 
+            BorderBrush="Red"
+            Checked="frontLeftHipTourniquiet_Checked"
+            Unchecked="frontLeftHipTourniquiet_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
                                                 </CheckBox>
                                                 <CheckBox x:Name="frontLeftHipInjury" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontLeftHipInjury_Checked"
-                                Unchecked="frontLeftHipInjury_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontLeftHipInjury_Checked"
+            Unchecked="frontLeftHipInjury_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
@@ -576,10 +538,10 @@
                                         <!-- Левая кисть -->
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center">
                                             <CheckBox x:Name="fronLeftWristInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="fronLeftWristInjury_Checked"
-                            Unchecked="fronLeftWristInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="fronLeftWristInjury_Checked"
+        Unchecked="fronLeftWristInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
@@ -596,20 +558,20 @@
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
                                             <StackPanel Orientation="Vertical">
                                                 <CheckBox x:Name="frontRightShinTourniquiet" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" 
-                                BorderBrush="Red"
-                                Checked="frontRightShinTourniquiet_Checked"
-                                Unchecked="frontRightShinTourniquiet_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" 
+            BorderBrush="Red"
+            Checked="frontRightShinTourniquiet_Checked"
+            Unchecked="frontRightShinTourniquiet_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
                                                 </CheckBox>
                                                 <CheckBox x:Name="frontRightShinInjury" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontRightShinInjury_Checked"
-                                Unchecked="frontRightShinInjury_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontRightShinInjury_Checked"
+            Unchecked="frontRightShinInjury_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
@@ -617,20 +579,20 @@
                                             </StackPanel>
                                             <StackPanel Orientation="Vertical">
                                                 <CheckBox x:Name="frontLeftShinTourniquiet" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" 
-                                BorderBrush="Red"
-                                Checked="frontLeftShinTourniquiet_Checked"
-                                Unchecked="frontLeftShinTourniquiet_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" 
+            BorderBrush="Red"
+            Checked="frontLeftShinTourniquiet_Checked"
+            Unchecked="frontLeftShinTourniquiet_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
                                                 </CheckBox>
                                                 <CheckBox x:Name="frontLeftShinInjury" Background="Transparent"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Checked="frontLeftShinInjury_Checked"
-                                Unchecked="frontLeftShinInjury_Unchecked">
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Checked="frontLeftShinInjury_Checked"
+            Unchecked="frontLeftShinInjury_Unchecked">
                                                     <CheckBox.LayoutTransform>
                                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                                                     </CheckBox.LayoutTransform>
@@ -640,7 +602,7 @@
 
                                             <StackPanel.Background>
                                                 <ImageBrush ImageSource="..\Images\FrontImages\13.jpg"
-                                Stretch="UniformToFill" />
+            Stretch="UniformToFill" />
                                             </StackPanel.Background>
                                         </StackPanel>
                                     </StackPanel>
@@ -649,19 +611,19 @@
                                     <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
                                         <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
                                             <CheckBox x:Name="frontRightFootInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="frontRightFootInjury_Checked"
-                            Unchecked="frontRightFootInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="frontRightFootInjury_Checked"
+        Unchecked="frontRightFootInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
                                             </CheckBox>
                                             <CheckBox x:Name="frontLeftFootInjury" Background="Transparent"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Checked="frontLeftFootInjury_Checked"
-                            Unchecked="frontLeftFootInjury_Unchecked">
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Checked="frontLeftFootInjury_Checked"
+        Unchecked="frontLeftFootInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="1.5" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
@@ -675,732 +637,899 @@
 
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
-                                <!-- Сзади -->
-                                <!-- TODO: Поменять местами право и лево (он же повернут спиной)-->
-                                <!-- Голова -->
-                                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                    <!-- Сзади -->
+                                    <!-- TODO: Поменять местами право и лево (он же повернут спиной)-->
+                                    <!-- Голова -->
+                                    <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
 
-                                        <CheckBox x:Name="backHeadInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backHeadInjury_Checked"
-                    Unchecked="backHeadInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="1.5" />
-                                            </CheckBox.LayoutTransform>
-                                        </CheckBox>
+                                            <CheckBox x:Name="backHeadInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backHeadInjury_Checked"
+Unchecked="backHeadInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
 
-                                        <CheckBox x:Name="backNeckInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backNeckInjury_Checked"
-                    Unchecked="backNeckInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="1.5" />
-                                            </CheckBox.LayoutTransform>
+                                            <CheckBox x:Name="backNeckInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backNeckInjury_Checked"
+Unchecked="backNeckInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="1.5" />
+                                                </CheckBox.LayoutTransform>
 
-                                        </CheckBox>
+                                            </CheckBox>
 
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\1.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\1.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
 
+                                        </StackPanel>
                                     </StackPanel>
-                                </StackPanel>
 
-                                <!-- Грудная клетка -->
-                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <!-- Правое плечо -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <CheckBox x:Name="backLeftShoulderInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    Checked="backLeftShoulderInjury_Checked"
-                    Unchecked="backLeftShoulderInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\3.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
                                     <!-- Грудная клетка -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox x:Name="backThoracInjuryLeft" Background="Transparent"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Checked="backThoracInjuryLeft_Checked"
-                        Unchecked="backThoracInjuryLeft_Unchecked">
+                                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <!-- Правое плечо -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <CheckBox x:Name="backLeftShoulderInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center" 
+Checked="backLeftShoulderInjury_Checked"
+Unchecked="backLeftShoulderInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
-                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
+
                                             </CheckBox>
-                                            <CheckBox x:Name="backThoracInjuryRight" Background="Transparent"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Checked="backThoracInjuryRight_Checked"
-                        Unchecked="backThoracInjuryRight_Unchecked">
-                                                <CheckBox.LayoutTransform>
-                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                                </CheckBox.LayoutTransform>
-                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\3.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
                                         </StackPanel>
+                                        <!-- Грудная клетка -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox x:Name="backThoracInjuryLeft" Background="Transparent"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    Checked="backThoracInjuryLeft_Checked"
+    Unchecked="backThoracInjuryLeft_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="1" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                                <!-- Позвоночник -->
+                                                <CheckBox x:Name="spineCheckBox" Checked="spineCheckBox_Checked" Unchecked="spineCheckBox_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="1" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                                <CheckBox x:Name="backThoracInjuryRight" Background="Transparent"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    Checked="backThoracInjuryRight_Checked"
+    Unchecked="backThoracInjuryRight_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="1" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                            </StackPanel>
 
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\4.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                    <!-- Левое плечо -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <CheckBox x:Name="backRightShoulderInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backRightShoulderInjury_Checked"
-                    Unchecked="backRightShoulderInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\5.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- Правое, левое предпл. и живот -->
-                                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <!-- Правое препдлечье -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <CheckBox x:Name="backLeftForearmInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    Checked="backLeftForearmInjury_Checked"
-                    Unchecked="backLeftForearmInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\6.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                    <!-- Живот клетка -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox x:Name="backBellyInjuryLeft" Background="Transparent"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Checked="backBellyInjuryLeft_Checked"
-                        Unchecked="backBellyInjuryLeft_Unchecked">
-                                                <CheckBox.LayoutTransform>
-                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                                </CheckBox.LayoutTransform>
-
-                                            </CheckBox>
-                                            <CheckBox x:Name="backBellyInjuryRight" Background="Transparent"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Checked="backBellyInjuryRight_Checked"
-                        Unchecked="backBellyInjuryRight_Unchecked">
-                                                <CheckBox.LayoutTransform>
-                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                                </CheckBox.LayoutTransform>
-
-                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\4.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
                                         </StackPanel>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\7.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                    <!-- Левое плечо -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <CheckBox x:Name="backRightForearmInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backRightForearmInjury_Checked"
-                    Unchecked="backRightForearmInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
+                                        <!-- Левое плечо -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <CheckBox x:Name="backRightShoulderInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backRightShoulderInjury_Checked"
+Unchecked="backRightShoulderInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
 
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\8.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\5.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
                                     </StackPanel>
+
+                                    <!-- Правое, левое предпл. и живот -->
+                                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <!-- Правое препдлечье -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <CheckBox x:Name="backLeftForearmInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center" 
+Checked="backLeftForearmInjury_Checked"
+Unchecked="backLeftForearmInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\6.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                        <!-- Живот клетка -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox x:Name="backBellyInjuryLeft" Background="Transparent"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    Checked="backBellyInjuryLeft_Checked"
+    Unchecked="backBellyInjuryLeft_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="1.5" ScaleY="2" />
+                                                    </CheckBox.LayoutTransform>
+
+                                                </CheckBox>
+                                                <CheckBox x:Name="backBellyInjuryRight" Background="Transparent"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    Checked="backBellyInjuryRight_Checked"
+    Unchecked="backBellyInjuryRight_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="1.5" ScaleY="2" />
+                                                    </CheckBox.LayoutTransform>
+
+                                                </CheckBox>
+                                                
+                                            </StackPanel>
+                                            <!-- Таз -->
+                                            <StackPanel Margin="0 2">
+                                                <CheckBox x:Name="pelvisBackCheckBox" Checked="pelvisBackCheckBox_Checked" Unchecked="pelvisBackCheckBox_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="1" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                            </StackPanel>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\7.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                        
+                                        <!-- Левое плечо -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <CheckBox x:Name="backRightForearmInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backRightForearmInjury_Checked"
+Unchecked="backRightForearmInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\8.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Кисти. и бедра таз -->
+                                    <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <!-- Правая кисть -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <CheckBox x:Name="backLeftWristInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
+Checked="backLeftWristInjury_Checked"
+Unchecked="backLeftWristInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\9.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                        <!-- Левое и правое бедро -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
+                                            <CheckBox x:Name="backRightHipInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backRightHipInjury_Checked"
+Unchecked="backRightHipInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+                                            <CheckBox x:Name="backLeftHipInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backLeftHipInjury_Checked"
+Unchecked="backLeftHipInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\10.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                        <!-- Левая кисть -->
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                            <CheckBox x:Name="backRightWristInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backRightWristInjury_Checked"
+Unchecked="backRightWristInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\11.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Левая и правая голень -->
+                                    <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
+                                            <CheckBox x:Name="backLeftShinInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backLeftShinInjury_Checked"
+Unchecked="backLeftShinInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+                                            <CheckBox x:Name="backRightShinInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backRightShinInjury_Checked"
+Unchecked="backRightShinInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\13.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Левая и правая стопы -->
+                                    <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
+                                            <CheckBox x:Name="backLeftFootInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backLeftFootInjury_Checked"
+Unchecked="backLeftFootInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+                                            <CheckBox x:Name="backRightFootInjury" Background="Transparent"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Checked="backRightFootInjury_Checked"
+Unchecked="backRightFootInjury_Unchecked">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.5" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+
+                                            </CheckBox>
+                                            <StackPanel.Background>
+                                                <ImageBrush ImageSource="..\Images\backImages\16.jpg"
+    Stretch="UniformToFill" />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                    </StackPanel>
+
                                 </StackPanel>
-
-                                <!-- Кисти. и бедра таз -->
-                                <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <!-- Правая кисть -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <CheckBox x:Name="backLeftWristInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
-                    Checked="backLeftWristInjury_Checked"
-                    Unchecked="backLeftWristInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\9.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                    <!-- Левое и правое бедро -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
-                                        <CheckBox x:Name="backRightHipInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backRightHipInjury_Checked"
-                    Unchecked="backRightHipInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-                                        </CheckBox>
-                                        <CheckBox x:Name="backLeftHipInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backLeftHipInjury_Checked"
-                    Unchecked="backLeftHipInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\10.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                    <!-- Левая кисть -->
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center">
-                                        <CheckBox x:Name="backRightWristInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backRightWristInjury_Checked"
-                    Unchecked="backRightWristInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="3" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\11.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- Левая и правая голень -->
-                                <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
-                                        <CheckBox x:Name="backLeftShinInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backLeftShinInjury_Checked"
-                    Unchecked="backLeftShinInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-                                        </CheckBox>
-                                        <CheckBox x:Name="backRightShinInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backRightShinInjury_Checked"
-                    Unchecked="backRightShinInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\13.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <!-- Левая и правая стопы -->
-                                <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <StackPanel Width="50" Height="50" VerticalAlignment="Center" Orientation="Horizontal">
-                                        <CheckBox x:Name="backLeftFootInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backLeftFootInjury_Checked"
-                    Unchecked="backLeftFootInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-                                        </CheckBox>
-                                        <CheckBox x:Name="backRightFootInjury" Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Checked="backRightFootInjury_Checked"
-                    Unchecked="backRightFootInjury_Unchecked">
-                                            <CheckBox.LayoutTransform>
-                                                <ScaleTransform ScaleX="1.5" ScaleY="3" />
-                                            </CheckBox.LayoutTransform>
-
-                                        </CheckBox>
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="..\Images\backImages\16.jpg"
-                        Stretch="UniformToFill" />
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                </StackPanel>
-
-                            </StackPanel>
                             </StackPanel>
                             <TextBlock TextAlignment="Center">✓ - пораженная область, красные ячейки - жгут</TextBlock>
 
+                        </StackPanel>
+
+                        <!-- Этиология -->
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontWeight="Bold">Этиология</TextBlock>
+                            <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
+                                <RadioButton GroupName="ethiologyRadioButtonGroup" x:Name="injuryEthiologyRadioButton" Checked="injuryEthiologyRadioButton_Checked">Ранение</RadioButton>
+                                <RadioButton GroupName="ethiologyRadioButtonGroup"  x:Name="traumaEthiologyRadioButton" Checked="traumaEthiologyRadioButton_Checked">Травма, в т.ч. взрывная</RadioButton>
                             </StackPanel>
+                            <!-- Ранение-->
+                            <StackPanel Margin="0 10 0 0" x:Name="injuryEthiologyPanel" Orientation="Vertical" Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <RadioButton GroupName="injuryEthiologyTypesGroup" x:Name="injuryGunshotTypeRadioButton" Click="injuryGunshotTypeRadioButton_Click">Огнестрельное</RadioButton>
+                                    <RadioButton GroupName="injuryEthiologyTypesGroup" x:Name="injuryNonGunshotTypeRadioButton" Click="injuryNonGunshotTypeRadioButton_Click">Неогнестрельное</RadioButton>
+                                </StackPanel>
+                                <!-- Ранение Огнестрельное-->
+                                <StackPanel Margin="0 10 0 0" x:Name="injuryGunshotTypesStackPanel" Visibility="Collapsed" Orientation="Horizontal">
+                                    <RadioButton GroupName="injuryEthiologySubTypeGroup" x:Name="GunshotRadioButton" Click="GunshotRadioButton_Click">Пулевое</RadioButton>
+                                    <RadioButton GroupName="injuryEthiologySubTypeGroup" x:Name="FragileRadioButton" Click="FragileRadioButton_Click">Осколочное</RadioButton>
+                                    <RadioButton GroupName="injuryEthiologySubTypeGroup" x:Name="ExplosionRadioButton" Click="ExplosionRadioButton_Click">Минновзрывное</RadioButton>
+                                </StackPanel>
+                                <!-- Ранение Неогнестрельное -->
+                                <StackPanel Margin="0 10 0 0" x:Name="injuryNonGunshotTypesStackPanel" Visibility="Collapsed" Orientation="Horizontal">
+                                    <RadioButton GroupName="injuryEthiologySubTypeGroup" x:Name="StabbedCutRadioButton" Click="StabbedCutRadioButton_Click">Колото-резаное</RadioButton>
+                                    <RadioButton GroupName="injuryEthiologySubTypeGroup" x:Name="StabbedRadioButton" Click="StabbedRadioButton_Click">Колотое</RadioButton>
+                                    <RadioButton GroupName="injuryEthiologySubTypeGroup" x:Name="ChoppedRadioButton" Click="ChoppedRadioButton_Click">Рубленое</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <!-- Сообщение с требованием заполнить этиологию -->
+                    <StackPanel Margin="10" Background="#FFFB9393" x:Name="messageStackPanel">
+                        <TextBlock TextAlignment="Center" FontWeight="Bold">Выберите этиологию и локализацию повреждений</TextBlock>
+                    </StackPanel>
+
+                    <!-- Детальное описание поражений -->
+                    <StackPanel Orientation="Vertical" x:Name="damagedAreaDetailStackPanel" Visibility="Collapsed">
+                        <TextBlock FontWeight="Bold">Пораженные участки</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="headInjuryDetailButton" Visibility="Collapsed" Padding="10 5" Margin="0 0 10 0" Click="headInjuryDetailButton_Click">Голова</Button>
+                            <Button x:Name="neckInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="neckInjuryDetailButton_Click">Шея</Button>
+                            <Button x:Name="thoraxInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="thoraxInjuryDetailButton_Click">Грудь</Button>
+                            <Button x:Name="abdomenInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="abdomenInjuryDetailButton_Click">Живот</Button>
+                            <Button x:Name="pelvisInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="pelvisInjuryDetailButton_Click">Таз</Button>
+                            <Button x:Name="spineInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="spineInjuryDetailButton_Click">Позвоночник</Button>
+                            <Button x:Name="rightUpperInjuryDetailButton"  Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="rightUpperInjuryDetailButton_Click">Правая рука</Button>
+                            <Button x:Name="leftUpperInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="leftUpperInjuryDetailButton_Click">Левая рука</Button>
+                            <Button x:Name="rightLowerInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="rightLowerInjuryDetailButton_Click">Правая нога</Button>
+                            <Button x:Name="leftLowerInjuryDetailButton" Visibility="Collapsed"  Padding="10 5" Margin="0 0 10 0" Click="leftLowerInjuryDetailButton_Click">Левая нога</Button>
+                        </StackPanel>
+
+
+                        <!-- TODO: Голова -->
+                        <StackPanel x:Name="headInjuryDetailPanel" Visibility="Collapsed" Orientation="Vertical" Margin="5">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Голова</TextBlock>
+                            <StackPanel Orientation="Vertical" x:Name="headInjuryStackPanel"  Visibility="Collapsed">
+                                <StackPanel x:Name="headWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="headWoundCanal" x:Name="headInjuryBlindRadioButton" Click="headInjuryBlindRadioButton_Click">Слепой</RadioButton>
+                                        <RadioButton GroupName="headWoundCanal" x:Name="headInjuryThroughRadioButton" Click="headInjuryThroughRadioButton_Click">Сквозной</RadioButton>
+                                        <RadioButton GroupName="headWoundCanal" x:Name="headInjuryTangentRadioButton" Click="headInjuryTangentRadioButton_Click">Касательный</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="headInjuryCavityPanel">
+                                    <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="headPenetration" x:Name="headInjuryPenetratedRadioButton" Click="headInjuryPenetratedRadioButton_Click">Проникающее</RadioButton>
+                                        <RadioButton GroupName="headPenetration"  x:Name="headInjuryNotPenetratedRadioButton" Click="headInjuryNotPenetratedRadioButton_Click">Не проникающее</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel x:Name="headTraumaStackPanel"  Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="headTrauma" x:Name="headTraumaOpenRadioButton" Click="headTraumaOpenRadioButton_Click">Открытая</RadioButton>
+                                    <RadioButton GroupName="headTrauma" x:Name="headTraumaClosedRadioButton" Click="headTraumaClosedRadioButton_Click">Закрытая</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock   FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0"  x:Name="headBrainDamageCheckbox" Checked="headBrainDamageCheckbox_Checked" Unchecked="headBrainDamageCheckbox_Unchecked">Головного мозга</CheckBox>
+                                <CheckBox Margin="0 0 20 0" x:Name="headEyeDamageCheckbox" Checked="headEyeDamageCheckbox_Checked" Unchecked="headEyeDamageCheckbox_Unchecked">Глаз</CheckBox>
+                                <CheckBox Margin="0 0 20 0" x:Name="headEarDamageCheckbox" Checked="headEarDamageCheckbox_Checked" Unchecked="headEarDamageCheckbox_Unchecked">Ушей</CheckBox>
+                                <CheckBox Margin="0 0 20 0" x:Name="headFacialDamageCheckbox" Checked="headFacialDamageCheckbox_Checked" Unchecked="headFacialDamageCheckbox_Unchecked">Челюстно-лицевой области</CheckBox>
+                            </StackPanel>
+                            <TextBlock   FontWeight="Bold">Переломы</TextBlock>
+                            <StackPanel Orientation="Horizontal" >
+                                <CheckBox Margin="0 0 20 0" x:Name="headSkullBonesFractureCheckbox" Checked="headSkullBonesFractureCheckbox_Checked" Unchecked="headSkullBonesFractureCheckbox_Unchecked">Костей черепа</CheckBox>
+                                <CheckBox Margin="0 0 20 0" x:Name="headFaceFractureCheckbox" Checked="headFaceFractureCheckbox_Checked" Unchecked="headFaceFractureCheckbox_Unchecked">Челюстно-лицевой области</CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headThermoBurn1RadioButton" Click="headThermoBurn1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headThermoBurn2RadioButton" Click="headThermoBurn2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headThermoBurn3RadioButton" Click="headThermoBurn3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headThermoBurn4RadioButton" Click="headThermoBurn4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headFrostbite1RadioButton" Click="headFrostbite1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headFrostbite2RadioButton" Click="headFrostbite2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headFrostbite3RadioButton" Click="headFrostbite3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermoHeadRadioButtonGroup" x:Name="headFrostbite4RadioButton" Click="headFrostbite4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="700" x:Name="headStatusLocalisTextBox"></TextBox>
+                        </StackPanel>
                         
-                    </StackPanel>
+                        <!-- TODO: Шея -->
+                        <StackPanel x:Name="neckInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Шея</TextBlock>
+                            <StackPanel Orientation="Vertical" x:Name="neckInjuryStackPanel"  Visibility="Collapsed">
+                                <StackPanel x:Name="neckWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="neckWoundCanal" x:Name="neckInjuryBlindRadioButton" Click="neckInjuryBlindRadioButton_Click">Слепой</RadioButton>
+                                        <RadioButton GroupName="neckWoundCanal" x:Name="neckInjuryThroughRadioButton" Click="neckInjuryThroughRadioButton_Click">Сквозной</RadioButton>
+                                        <RadioButton GroupName="neckWoundCanal" x:Name="neckInjuryTangentRadioButton" Click="neckInjuryTangentRadioButton_Click">Касательный</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="neckInjuryCavityPanel">
+                                    <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="neckPenetration" x:Name="neckInjuryPenetratedRadioButton" Click="neckInjuryPenetratedRadioButton_Click">Проникающее</RadioButton>
+                                        <RadioButton GroupName="neckPenetration"  x:Name="neckInjuryNotPenetratedRadioButton" Click="neckInjuryNotPenetratedRadioButton_Click">Не проникающее</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
 
-                    <!-- TODO: Голова -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Голова</TextBlock>
-                        <StackPanel x:Name="headWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
+                            <StackPanel x:Name="neckTraumaStackPanel"  Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="neckTrauma" x:Name="neckTraumaOpenRadioButton" Click="neckTraumaOpenRadioButton_Click">Открытая</RadioButton>
+                                    <RadioButton GroupName="neckTrauma" x:Name="neckTraumaClosedRadioButton" Click="neckTraumaClosedRadioButton_Click">Закрытая</RadioButton>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="headInjuryCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox x:Name="ThroatCheckbox" Checked="ThroatCheckbox_Checked" Unchecked="ThroatCheckbox_Unchecked" Margin="0 0 20 0">Глотки</CheckBox>
+                                <CheckBox x:Name="LarynxCheckbox" Checked="LarynxCheckbox_Checked" Unchecked="LarynxCheckbox_Unchecked" Margin="0 0 20 0">Гортани</CheckBox>
+                                <CheckBox x:Name="TracheaCheckbox" Checked="TracheaCheckbox_Checked" Unchecked="TracheaCheckbox_Unchecked" Margin="0 0 20 0">Трахеи</CheckBox>
+                                <CheckBox x:Name="EsophagusCheckbox" Checked="EsophagusCheckbox_Checked" Unchecked="EsophagusCheckbox_Unchecked" Margin="0 0 20 0">Пищевода</CheckBox>
+                                <CheckBox x:Name="neckVesselsCheckbox" Checked="neckVesselsCheckbox_Checked" Unchecked="neckVesselsCheckbox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
                             </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckThermoBurn1RadioButton" Click="neckThermoBurn1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckThermoBurn2RadioButton" Click="neckThermoBurn2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckThermoBurn3RadioButton" Click="neckThermoBurn3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckThermoBurn4RadioButton" Click="neckThermoBurn4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckFrostbite1RadioButton" Click="neckFrostbite1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckFrostbite2RadioButton" Click="neckFrostbite2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckFrostbite3RadioButton" Click="neckFrostbite3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermoNeckRadioButtonGroup" x:Name="neckFrostbite4RadioButton" Click="neckFrostbite4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"  Width="700" x:Name="neckStatusLocalisTextBox"></TextBox>
+
                         </StackPanel>
-                        <StackPanel>
-                            <TextBlock  FontWeight="Bold">Травма</TextBlock>
+                        <!-- TODO: Грудь -->
+                        <StackPanel x:Name="thoraxInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Грудь</TextBlock>
+                            <StackPanel Orientation="Vertical" x:Name="thoraxInjuryStackPanel"  Visibility="Collapsed">
+                                <StackPanel x:Name="thoraxWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="thoraxWoundCanal" x:Name="thoraxInjuryBlindRadioButton" Click="thoraxInjuryBlindRadioButton_Click">Слепой</RadioButton>
+                                        <RadioButton GroupName="thoraxWoundCanal" x:Name="thoraxInjuryThroughRadioButton" Click="thoraxInjuryThroughRadioButton_Click">Сквозной</RadioButton>
+                                        <RadioButton GroupName="thoraxWoundCanal" x:Name="thoraxInjuryTangentRadioButton" Click="thoraxInjuryTangentRadioButton_Click">Касательный</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="thoraxInjuryCavityPanel">
+                                    <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="thoraxPenetration" x:Name="thoraxInjuryPenetratedRadioButton" Click="thoraxInjuryPenetratedRadioButton_Click">Проникающее</RadioButton>
+                                        <RadioButton GroupName="thoraxPenetration"  x:Name="thoraxInjuryNotPenetratedRadioButton" Click="thoraxInjuryNotPenetratedRadioButton_Click">Не проникающее</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel x:Name="thoraxTraumaStackPanel"  Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thoraxTrauma" x:Name="thoraxTraumaOpenRadioButton" Click="thoraxTraumaOpenRadioButton_Click">Открытая</RadioButton>
+                                    <RadioButton GroupName="thoraxTrauma" x:Name="thoraxTraumaClosedRadioButton" Click="thoraxTraumaClosedRadioButton_Click">Закрытая</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox x:Name="LungCheckBox" Checked="LungCheckBox_Checked" Unchecked="LungCheckBox_Unchecked" Margin="0 0 20 0">Легких</CheckBox>
+                                <CheckBox x:Name="HeartCheckBox" Checked="HeartCheckBox_Checked" Unchecked="HeartCheckBox_Unchecked" Margin="0 0 20 0">Сердца</CheckBox>
+                                <CheckBox x:Name="EsophagusCheckBox" Checked="thoraxEsophagusCheckbox_Checked" Unchecked="thoraxEsophagusCheckbox_Unchecked" Margin="0 0 20 0">Пищевода</CheckBox>
+                                <CheckBox x:Name="thoraxVesselsCheckBox" Checked="thoraxVesselsCheckBox_Checked" Unchecked="thoraxVesselsCheckBox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
+                            <StackPanel Orientation="Horizontal" >
+                                <CheckBox x:Name="RibCheckBox" Checked="RibCheckBox_Checked" Unchecked="RibCheckBox_Unchecked" Margin="0 0 20 0">Ребер</CheckBox>
+                                <CheckBox x:Name="SternumCheckBox" Checked="SternumCheckBox_Checked" Unchecked="SternumCheckBox_Unchecked" Margin="0 0 20 0">Грудины</CheckBox>
+                                <CheckBox x:Name="CollarboneCheckBox" Checked="CollarboneCheckBox_Checked" Unchecked="CollarboneCheckBox_Unchecked" Margin="0 0 20 0">Ключицы</CheckBox>
+                                <CheckBox x:Name="BladeCheckBox" Checked="BladeCheckBox_Checked" Unchecked="BladeCheckBox_Unchecked" Margin="0 0 20 0">Лопатки</CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxThermoBurn1RadioButton" Click="thoraxThermoBurn1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxThermoBurn2RadioButton" Click="thoraxThermoBurn2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxThermoBurn3RadioButton" Click="thoraxThermoBurn3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxThermoBurn4RadioButton" Click="thoraxThermoBurn4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxFrostbite1RadioButton" Click="thoraxFrostbite1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxFrostbite2RadioButton" Click="thoraxFrostbite2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxFrostbite3RadioButton" Click="thoraxFrostbite3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermothoraxRadioButtonGroup" x:Name="thoraxFrostbite4RadioButton" Click="thoraxFrostbite4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"  Width="700" x:Name="thoraxStatusLocalisTextBox"></TextBox>
+
+                        </StackPanel>
+
+                        <!-- TODO: Живот -->
+                        <StackPanel x:Name="abdomenInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Живот</TextBlock>
+                            <StackPanel Orientation="Vertical" x:Name="abdomenInjuryStackPanel"  Visibility="Collapsed">
+                                <StackPanel x:Name="abdomenWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="abdomenWoundCanal" x:Name="abdomenInjuryBlindRadioButton" Click="abdomenInjuryBlindRadioButton_Click">Слепой</RadioButton>
+                                        <RadioButton GroupName="abdomenWoundCanal" x:Name="abdomenInjuryThroughRadioButton" Click="abdomenInjuryThroughRadioButton_Click">Сквозной</RadioButton>
+                                        <RadioButton GroupName="abdomenWoundCanal" x:Name="abdomenInjuryTangentRadioButton" Click="abdomenInjuryTangentRadioButton_Click">Касательный</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="abdomenInjuryCavityPanel">
+                                    <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="abdomenPenetration" x:Name="abdomenInjuryPenetratedRadioButton" Click="abdomenInjuryPenetratedRadioButton_Click">Проникающее</RadioButton>
+                                        <RadioButton GroupName="abdomenPenetration"  x:Name="abdomenInjuryNotPenetratedRadioButton" Click="abdomenInjuryNotPenetratedRadioButton_Click">Не проникающее</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel x:Name="abdomenTraumaStackPanel"  Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="abdomenTrauma" x:Name="abdomenTraumaOpenRadioButton" Click="abdomenTraumaOpenRadioButton_Click">Открытая</RadioButton>
+                                    <RadioButton GroupName="abdomenTrauma" x:Name="abdomenTraumaClosedRadioButton" Click="abdomenTraumaClosedRadioButton_Click">Закрытая</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox x:Name="ParenchymalCheckBox" Checked="ParenchymalCheckBox_Checked" Unchecked="ParenchymalCheckBox_Unchecked" Margin="0 0 20 0">Паренхиматозных органов</CheckBox>
+                                <CheckBox x:Name="HollowCheckBox" Checked="HollowCheckBox_Checked" Unchecked="HollowCheckBox_Unchecked" Margin="0 0 20 0">Полых органов</CheckBox>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton>Открытая</RadioButton>
-                                <RadioButton>Закрытая</RadioButton>
+                                <CheckBox x:Name="abdomenVesselsCheckBox" Checked="abdomenVesselsCheckBox_Checked" Unchecked="abdomenVesselsCheckBox_Unchecked"  Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox x:Name="nonOrganCheckBox" Checked="nonOrganCheckBox_Checked" Unchecked="nonOrganCheckBox_Unchecked" Margin="0 0 20 0">Неорганных образований</CheckBox>
                             </StackPanel>
-                        </StackPanel>
-                        <TextBlock   FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Головного мозга</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Глаз</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Ушей</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Челюстно-лицевой области</CheckBox>
-                        </StackPanel>
-                        <TextBlock   FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Костей черепа</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Челюстно-лицевой области</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenThermoBurn1RadioButton" Click="abdomenThermoBurn1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenThermoBurn2RadioButton" Click="abdomenThermoBurn2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenThermoBurn3RadioButton" Click="abdomenThermoBurn3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenThermoBurn4RadioButton" Click="abdomenThermoBurn4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenFrostbite1RadioButton" Click="abdomenFrostbite1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenFrostbite2RadioButton" Click="abdomenFrostbite2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenFrostbite3RadioButton" Click="abdomenFrostbite3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermoabdomenRadioButtonGroup" x:Name="abdomenFrostbite4RadioButton" Click="abdomenFrostbite4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"  Width="700" x:Name="abdomenStatusLocalisTextBox"></TextBox>
 
-                    </StackPanel>
-                    <!-- TODO: Шея -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Шея</TextBlock>
-                        <StackPanel x:Name="neckWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
-                            </StackPanel>
                         </StackPanel>
-                        <StackPanel x:Name="neckInjuryCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
+                        <!-- TODO: Таз -->
+                        <StackPanel x:Name="pelvisInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Грудь</TextBlock>
+                            <StackPanel Orientation="Vertical" x:Name="pelvisInjuryStackPanel"  Visibility="Collapsed">
+                                <StackPanel x:Name="pelvisWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="pelvisWoundCanal" x:Name="pelvisInjuryBlindRadioButton" Click="pelvisInjuryBlindRadioButton_Click">Слепой</RadioButton>
+                                        <RadioButton GroupName="pelvisWoundCanal" x:Name="pelvisInjuryThroughRadioButton" Click="pelvisInjuryThroughRadioButton_Click">Сквозной</RadioButton>
+                                        <RadioButton GroupName="pelvisWoundCanal" x:Name="pelvisInjuryTangentRadioButton" Click="pelvisInjuryTangentRadioButton_Click">Касательный</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="pelvisInjuryCavityPanel">
+                                    <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <RadioButton GroupName="pelvisPenetration" x:Name="pelvisInjuryPenetratedRadioButton" Click="pelvisInjuryPenetratedRadioButton_Click">Проникающее</RadioButton>
+                                        <RadioButton GroupName="pelvisPenetration"  x:Name="pelvisInjuryNotPenetratedRadioButton" Click="pelvisInjuryNotPenetratedRadioButton_Click">Не проникающее</RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock  FontWeight="Bold">Травма</TextBlock>
+
+                            <StackPanel x:Name="pelvisTraumaStackPanel"  Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="pelvisTrauma" x:Name="pelvisTraumaOpenRadioButton" Click="pelvisTraumaOpenRadioButton_Click">Открытая</RadioButton>
+                                    <RadioButton GroupName="pelvisTrauma" x:Name="pelvisTraumaClosedRadioButton" Click="pelvisTraumaClosedRadioButton_Click">Закрытая</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox x:Name="bladderCheckbox" Checked="bladderCheckbox_Checked" Unchecked="    " Margin="0 0 20 0">Мочевого пузыря</CheckBox>
+                                <CheckBox x:Name="urethraCheckbox" Checked="urethraCheckbox_Checked" Unchecked="urethraCheckbox_Unchecked" Margin="0 0 20 0">Уретры</CheckBox>
+                                <CheckBox x:Name="rectumCheckbox" Checked="rectumCheckbox_Checked" Unchecked="rectumCheckbox_Unchecked" Margin="0 0 20 0">Прямой кишки</CheckBox>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton>Открытая</RadioButton>
-                                <RadioButton>Закрытая</RadioButton>
+                                <CheckBox x:Name="pevlisVesselsCheckbox" Checked="pevlisVesselsCheckbox_Checked" Unchecked="pevlisVesselsCheckbox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox x:Name="hollowPevlisCheckbox" Checked="hollowPevlisCheckbox_Checked" Unchecked="hollowPevlisCheckbox_Unchecked" Margin="0 0 20 0">Полых органов</CheckBox>
                             </StackPanel>
-                        </StackPanel>
-                        <TextBlock   FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Глотки</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Гортани</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Трахеи</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Пищевода</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-
-                    </StackPanel>
-                    <!-- TODO: Грудь -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Грудь</TextBlock>
-                        <StackPanel x:Name="thoraxWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
+                                <CheckBox x:Name="pelvicBonesCheckbox" Checked="pelvicBonesCheckbox_Checked" Unchecked="pelvicBonesCheckbox_Unchecked" Margin="0 0 20 0">Тазовых костей</CheckBox>
+                                <CheckBox x:Name="sacrumCheckbox" Checked="sacrumCheckbox_Checked" Unchecked="sacrumCheckbox_Unchecked" Margin="0 0 20 0">Крестца</CheckBox>
+                                <CheckBox x:Name="coccyxCheckbox" Checked="coccyxCheckbox_Checked" Unchecked="  " Margin="0 0 20 0">Копчика</CheckBox>
                             </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisThermoBurn1RadioButton" Click="pelvisThermoBurn1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisThermoBurn2RadioButton" Click="pelvisThermoBurn2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisThermoBurn3RadioButton" Click="pelvisThermoBurn3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisThermoBurn4RadioButton" Click="pelvisThermoBurn4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisFrostbite1RadioButton" Click="pelvisFrostbite1RadioButton_Click">I</RadioButton>
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisFrostbite2RadioButton" Click="pelvisFrostbite2RadioButton_Click">II</RadioButton>
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisFrostbite3RadioButton" Click="pelvisFrostbite3RadioButton_Click">III</RadioButton>
+                                    <RadioButton GroupName="thermopelvisRadioButtonGroup" x:Name="pelvisFrostbite4RadioButton" Click="pelvisFrostbite4RadioButton_Click">IV</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"  Width="700" x:Name="pelvisStatusLocalisTextBox"></TextBox>
+
                         </StackPanel>
-                        <StackPanel x:Name="thoraxInjuryCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+
+
+                        <!-- TODO: Позвоночник -->
+
+                        <StackPanel x:Name="spineInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Позвоночник</TextBlock>
+                            <StackPanel x:Name="spinesWoundCanalPanel">
+                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Слепой</RadioButton>
+                                    <RadioButton>Сквозной</RadioButton>
+                                    <RadioButton>Касательный</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="spineInjuryCavityPanel">
+                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Проникающее</RadioButton>
+                                    <RadioButton>Не проникающее</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock  FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton>Открытая</RadioButton>
+                                    <RadioButton>Закрытая</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Спинного мозга</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Его корешков</CheckBox>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
+                                <CheckBox Margin="0 0 20 0">Тел</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Дужек</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Отростков</CheckBox>
                             </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
                         </StackPanel>
-                        <StackPanel>
-                            <TextBlock  FontWeight="Bold">Травма</TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton>Открытая</RadioButton>
-                                <RadioButton>Закрытая</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Легких</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Сердца</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Пищевода</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Ребер</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Грудины</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Ключицы</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Лопатки</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
 
-                    </StackPanel>
-                    <!-- TODO: Живот -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Живот</TextBlock>
-                        <StackPanel x:Name="abdomenWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                        <!-- TODO: Конечности: левая, правая верхние и нижние -->
+                        <!-- TODO: Верхняя правая -->
+                        <StackPanel x:Name="rightUpperInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Верхняя правая конечность</TextBlock>
+                            <StackPanel x:Name="rightUpperWoundCanalPanel">
+                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Слепой</RadioButton>
+                                    <RadioButton>Сквозной</RadioButton>
+                                    <RadioButton>Касательный</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="rightUpperCavityPanel">
+                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Проникающее</RadioButton>
+                                    <RadioButton>Не проникающее</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Повреждения -->
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                            </StackPanel>
+
+                            <!-- Переломы -->
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
+                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
+
+                            <!-- Разрушения -->
+                            <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
                         </StackPanel>
-                        <StackPanel x:Name="abdomenInjuryCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                        <!-- TODO: Верхняя левая -->
+                        <StackPanel x:Name="leftUpperInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Верхняя левая конечность</TextBlock>
+                            <StackPanel x:Name="leftUpperWoundCanalPanel">
+                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Слепой</RadioButton>
+                                    <RadioButton>Сквозной</RadioButton>
+                                    <RadioButton>Касательный</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="leftUpperCavityPanel">
+                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Проникающее</RadioButton>
+                                    <RadioButton>Не проникающее</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Повреждения -->
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                            </StackPanel>
+
+                            <!-- Переломы -->
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
+                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock  FontWeight="Bold">Травма</TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton>Открытая</RadioButton>
-                                <RadioButton>Закрытая</RadioButton>
+
+                            <!-- Разрушения -->
+                            <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
                             </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
                         </StackPanel>
-                        <TextBlock   FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Паренхиматозных органов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Полых органов</CheckBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Неорганных образований</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                        <!-- TODO: Нижняя правая -->
+                        <StackPanel x:Name="rightLowerInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Нижняя правая конечность</TextBlock>
+                            <StackPanel x:Name="rightLowerWoundCanalPanel">
+                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Слепой</RadioButton>
+                                    <RadioButton>Сквозной</RadioButton>
+                                    <RadioButton>Касательный</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="rightLowerCavityPanel">
+                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Проникающее</RadioButton>
+                                    <RadioButton>Не проникающее</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
 
-                    </StackPanel>
+                            <!-- Повреждения -->
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                            </StackPanel>
 
-                    <!-- TODO: Таз -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Таз</TextBlock>
-                        <StackPanel x:Name="pelvisWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                            <!-- Переломы -->
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
+                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
+
+                            <!-- Разрушения -->
+                            <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
+                            </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
                         </StackPanel>
-                        <StackPanel x:Name="pelvisInjuryCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                        <!-- TODO: Нижняя левая -->
+                        <StackPanel x:Name="leftLowerInjuryDetailPanel" Orientation="Vertical" Margin="5" Visibility="Collapsed">
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Нижняя левая конечность</TextBlock>
+                            <StackPanel x:Name="leftLowerWoundCanalPanel">
+                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Слепой</RadioButton>
+                                    <RadioButton>Сквозной</RadioButton>
+                                    <RadioButton>Касательный</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="leftLowerCavityPanel">
+                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                <StackPanel Orientation="Horizontal" >
+                                    <RadioButton>Проникающее</RadioButton>
+                                    <RadioButton>Не проникающее</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Повреждения -->
+                            <TextBlock FontWeight="Bold">Повреждения</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                            </StackPanel>
+
+                            <!-- Переломы -->
+                            <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
+                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock  FontWeight="Bold">Травма</TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton>Открытая</RadioButton>
-                                <RadioButton>Закрытая</RadioButton>
+
+                            <!-- Разрушения -->
+                            <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
+                            <StackPanel Orientation="Horizontal"  >
+                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
                             </StackPanel>
+                            <TextBlock FontWeight="Bold">Status localis</TextBlock>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
                         </StackPanel>
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Мочевого пузыря</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Уретры</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Прямой кишки</CheckBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Полых органов</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Тазовых костей</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Крестца</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Копчика</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-
-                    </StackPanel>
-
-                    <!-- TODO: Позвоночник -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Позвоночник</TextBlock>
-                        <StackPanel x:Name="spinesWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="spineInjuryCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock  FontWeight="Bold">Травма</TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <RadioButton>Открытая</RadioButton>
-                                <RadioButton>Закрытая</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Спинного мозга</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Его корешков</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Тел</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Дужек</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Отростков</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-                    </StackPanel>
-
-                    <!-- TODO: Конечности: левая, правая верхние и нижние -->
-                    <!-- TODO: Верхняя правая -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Верхняя правая конечность</TextBlock>
-                        <StackPanel x:Name="rightUpperWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="rightUpperCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-
-                        <!-- Повреждения -->
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Переломы -->
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Костей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Разрушения -->
-                        <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-                    </StackPanel>
-                    <!-- TODO: Верхняя левая -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Верхняя левая конечность</TextBlock>
-                        <StackPanel x:Name="leftUpperWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="leftUpperCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-
-                        <!-- Повреждения -->
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Переломы -->
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Костей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Разрушения -->
-                        <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-                    </StackPanel>
-                    <!-- TODO: Нижняя правая -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Нижняя правая конечность</TextBlock>
-                        <StackPanel x:Name="rightLowerWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="rightLowerCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-
-                        <!-- Повреждения -->
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Переломы -->
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Костей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Разрушения -->
-                        <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-                    </StackPanel>
-                    <!-- TODO: Нижняя левая -->
-                    <StackPanel Orientation="Vertical" Margin="5" Visibility="Collapsed">
-                        <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Нижняя левая конечность</TextBlock>
-                        <StackPanel x:Name="leftLowerWoundCanalPanel">
-                            <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Слепой</RadioButton>
-                                <RadioButton>Сквозной</RadioButton>
-                                <RadioButton>Касательный</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="leftLowerCavityPanel">
-                            <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" >
-                                <RadioButton>Проникающее</RadioButton>
-                                <RadioButton>Не проникающее</RadioButton>
-                            </StackPanel>
-                        </StackPanel>
-
-                        <!-- Повреждения -->
-                        <TextBlock FontWeight="Bold">Повреждения</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Переломы -->
-                        <TextBlock FontWeight="Bold">Переломы</TextBlock>
-                        <StackPanel Orientation="Horizontal" >
-                            <CheckBox Margin="0 0 20 0">Костей</CheckBox>
-                        </StackPanel>
-
-                        <!-- Разрушения -->
-                        <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
-                        <StackPanel Orientation="Horizontal"  >
-                            <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                            <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
-                        </StackPanel>
-                        <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                        <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
                     </StackPanel>
 
                 </StackPanel>
-                
-                
+
+
             </StackPanel>
+
             <!-- TODO: COLLAPSED-->
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
