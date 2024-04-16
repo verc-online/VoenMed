@@ -177,33 +177,37 @@ namespace VoenMedLibrary.Models
         #endregion
 
         #region Limbs
-        
+
         [Flags]
         public enum LowerLocalisationEnum
         {
-            None = 0b_0000_0000,  // 0
-            HipFront = 0b_0000_0001,  // 1
-            ShinFront = 0b_0000_0010,  // 2
-            FootFront = 0b_0000_0100,  // 4
-            HupTourniquiet = 0b_0000_1000,  // 8
-            ShinTourniquiet = 0b_0001_0000,  // 16
-            HipBack = 0b_0010_0000,  // 32
-            ShinBack = 0b_0100_0000,  // 64
-            FootBack = 0b_1000_0000,  // 128
+            [Description("Бедра спереди")] HipFront = 0b_0000_0001, // 1
+            [Description("Бедра сзади")] HipBack = 0b_0000_0010, // 2
+            [Description("Голени спереди")] ShinFront = 0b_0000_0100, // 4
+            [Description("Голени сзади")] ShinBack = 0b_0000_1000, // 8
+            [Description("Стопы спереди")] FootFront = 0b_0001_0000, // 16
+            [Description("Стопы сзади")] FootBack = 0b_0010_0000, // 32
+            [Description("Наложен жгут на бедро")] ShinTourniquiet = 0b_0100_0000, // 64
 
+            [Description("Наложен жгут на голень")]
+            HipTourniquiet = 0b_1000_0000, // 128
         }
-        
+
         [Flags]
         public enum UpperLocalisationEnum
         {
-            [Description("Спереди")] ShoulderFront = 0b_0000_0001, // 1
-            [Description("Спереди")] ForearmFront = 0b_0000_0010, // 2
-            [Description("Спереди")] WristFront = 0b_0000_0100, // 4
-            [Description("Спереди")] ShoulderTourniquet = 0b_0000_1000, // 8
-            [Description("Спереди")] ForearmTourniquet = 0b_0001_0000, // 16
-            [Description("Спереди")] ShoulderBack = 0b_0010_0000, // 32
-            [Description("Спереди")] ForearmBack = 0b_0100_0000, // 64
-            [Description("Спереди")] WristBack = 0b_1000_0000, // 128
+            [Description("Плеча спереди")] ShoulderFront = 0b_0000_0001, // 1
+            [Description("Плеча сзади")] ShoulderBack = 0b_0000_0010, // 2
+            [Description("Предплечья спереди")] ForearmFront = 0b_0000_0100, // 4
+            [Description("Предплечья сзади")] ForearmBack = 0b_0000_1000, // 8
+            [Description("Кисти спереди")] WristFront = 0b_0001_0000, // 16
+            [Description("Кисти сзади")] WristBack = 0b_0010_0000, // 32
+
+            [Description("Наложение жгута на плечо")]
+            ShoulderTourniquet = 0b_0100_0000, // 128
+
+            [Description("Наложение жгута на предплечье")]
+            ForearmTourniquet = 0b_1000_0000, // 64
         }
 
 
@@ -268,7 +272,6 @@ namespace VoenMedLibrary.Models
             // Травма
             [Description("Открытая травма")] TraumaOpened = 0b_0100_0000, // 64 Травма открытая
             [Description("Закрытая травма")] TraumaClosed = 0b_1000_0000, // 128 Травма закрытая
-
         }
 
         [Flags]
@@ -294,7 +297,5 @@ namespace VoenMedLibrary.Models
         }
 
         #endregion
-
     }
 }
-

@@ -32,7 +32,7 @@ namespace VoenMedLibrary.Models.InjuryModels
         }
         public void AddRightFrontHipTourniquiet()
         {
-            Localisation |= LowerLocalisationEnum.HupTourniquiet;
+            Localisation |= LowerLocalisationEnum.HipTourniquiet;
         }
         public void AddRightFrontShinTourniquiet()
         {
@@ -65,7 +65,7 @@ namespace VoenMedLibrary.Models.InjuryModels
         }
         public void DeleteRightFrontHipTourniquiet()
         {
-            Localisation ^= LowerLocalisationEnum.HupTourniquiet;
+            Localisation ^= LowerLocalisationEnum.HipTourniquiet;
         }
         public void DeleteRightFrontShinTourniquiet()
         {
