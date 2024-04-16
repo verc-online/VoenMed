@@ -1269,7 +1269,8 @@ Unchecked="backRightFootInjury_Unchecked">
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal"  >
-                                <CheckBox x:Name="bladderCheckbox" Checked="bladderCheckbox_Checked" Unchecked="    " Margin="0 0 20 0">Мочевого пузыря</CheckBox>
+                                <!-- TODO: Unchecked is missing -->
+                                <CheckBox x:Name="bladderCheckbox" Checked="bladderCheckbox_Checked" Margin="0 0 20 0">Мочевого пузыря</CheckBox>
                                 <CheckBox x:Name="urethraCheckbox" Checked="urethraCheckbox_Checked" Unchecked="urethraCheckbox_Unchecked" Margin="0 0 20 0">Уретры</CheckBox>
                                 <CheckBox x:Name="rectumCheckbox" Checked="rectumCheckbox_Checked" Unchecked="rectumCheckbox_Unchecked" Margin="0 0 20 0">Прямой кишки</CheckBox>
                             </StackPanel>
@@ -1281,7 +1282,8 @@ Unchecked="backRightFootInjury_Unchecked">
                             <StackPanel Orientation="Horizontal" >
                                 <CheckBox x:Name="pelvicBonesCheckbox" Checked="pelvicBonesCheckbox_Checked" Unchecked="pelvicBonesCheckbox_Unchecked" Margin="0 0 20 0">Тазовых костей</CheckBox>
                                 <CheckBox x:Name="sacrumCheckbox" Checked="sacrumCheckbox_Checked" Unchecked="sacrumCheckbox_Unchecked" Margin="0 0 20 0">Крестца</CheckBox>
-                                <CheckBox x:Name="coccyxCheckbox" Checked="coccyxCheckbox_Checked" Unchecked="  " Margin="0 0 20 0">Копчика</CheckBox>
+                                <!-- TODO: Unchecked is missing -->
+                                <CheckBox x:Name="coccyxCheckbox" Checked="coccyxCheckbox_Checked" Margin="0 0 20 0">Копчика</CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock FontWeight="Bold">Ожог</TextBlock>

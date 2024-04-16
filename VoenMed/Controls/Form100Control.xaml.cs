@@ -1873,7 +1873,81 @@ namespace VoenMed.Controls
             injuryModel.Pelvis.DeleteVesselsDamage();
             UpdatePelvisStatusLocalis();
         }
+        
+        private void bladderCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddBladderDamage();
+        }
+        // UNCHECKED
+        private void urethraCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddUrethraDamage();
+        }
+
+        private void urethraCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.DeleteUrethraDamage();
+        }
+
+        private void rectumCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddRectumDamage();
+        }
+
+        private void rectumCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.DeleteRectumDamage();
+        }
+
+        private void pevlisVesselsCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddVesselsDamage();
+        }
+
+        private void pevlisVesselsCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.DeleteVesselsDamage();
+        }
+
+
+        private void hollowPevlisCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddHollowDamage();
+        }
+
+        private void hollowPevlisCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.DeleteHollowDamage();
+        }
+
+        private void pelvicBonesCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddPelvicBonesFracture();
+        }
+
+        private void pelvicBonesCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.DeletePelvicBonesFracture();
+        }
+
+        private void sacrumCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddSacrumFracture();
+        }
+
+        private void sacrumCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.DeleteSacrumFracture();
+        }
+
+        private void coccyxCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            injuryModel.Pelvis.AddCoccyxFracture();
+        }
+
         #endregion
+
+        #region Spine
 
         private void spineCheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -1884,85 +1958,8 @@ namespace VoenMed.Controls
         {
 
         }
+        
 
-        private void bladderCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void urethraCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void urethraCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void rectumCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void rectumCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pevlisVesselsCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pevlisVesselsCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void hollowCheckbox_Checked_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void hollowCheckbox_Unchecked_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void hollowPevlisCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void hollowPevlisCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pelvicBonesCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pelvicBonesCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void sacrumCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void sacrumCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void coccyxCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

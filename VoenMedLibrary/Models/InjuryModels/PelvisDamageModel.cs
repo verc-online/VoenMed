@@ -13,7 +13,6 @@ namespace VoenMedLibrary.Models.InjuryModels
         public PelvisLocalisationEnum Localisation { get; private set; }
         public PelvisDamageEnum Damage { get; private set; }
         public PelvisFractureEnum Fracture { get; private set; }
-
         public string StatusLocalis { get; set; } = "";
 
         #region Localisation
@@ -38,33 +37,32 @@ namespace VoenMedLibrary.Models.InjuryModels
         }
         #endregion
 
-
         #region Damage
         // Повреждения
-        public void AddEsophagusDamage()
+        public void AddBladderDamage()
         {
-            Damage |= PelvisDamageEnum.Esophagus;
+            Damage |= PelvisDamageEnum.Bladder;
         }
-        public void DeleteEsophagusDamage()
+        public void DeleteBladderDamage()
         {
-            Damage ^= PelvisDamageEnum.Esophagus;
+            Damage ^= PelvisDamageEnum.Bladder;
         }
-        public void AddHeartDamage()
+        public void AddUrethraDamage()
         {
-            Damage |= PelvisDamageEnum.Heart;
+            Damage |= PelvisDamageEnum.Urethra;
         }
-        public void DeleteHeartDamage()
+        public void DeleteUrethraDamage()
         {
-            Damage ^= PelvisDamageEnum.Heart;
+            Damage ^= PelvisDamageEnum.Urethra;
         }
 
-        public void AddLungDamage()
+        public void AddRectumDamage()
         {
-            Damage |= PelvisDamageEnum.Lung;
+            Damage |= PelvisDamageEnum.Rectum;
         }
-        public void DeleteLungDamage()
+        public void DeleteRectumDamage()
         {
-            Damage ^= PelvisDamageEnum.Lung;
+            Damage ^= PelvisDamageEnum.Rectum;
         }
 
         public void AddVesselsDamage()
@@ -75,39 +73,40 @@ namespace VoenMedLibrary.Models.InjuryModels
         {
             Damage ^= PelvisDamageEnum.Vessels;
         }
+        
+        public void AddHollowDamage()
+        {
+            Damage |= PelvisDamageEnum.Hollow;
+        }
+        public void DeleteHollowDamage()
+        {
+            Damage ^= PelvisDamageEnum.Hollow;
+        }
 
         // Переломы
-        public void AddRibFracture()
+        public void AddPelvicBonesFracture()
         {
-            Fracture |= PelvisFractureEnum.Rib;
+            Fracture |= PelvisFractureEnum.PelvicBones;
         }
-        public void DeleteRibFracture()
+        public void DeletePelvicBonesFracture()
         {
-            Fracture ^= PelvisFractureEnum.Rib;
+            Fracture ^= PelvisFractureEnum.PelvicBones;
         }
-        public void AddSternumFracture()
+        public void AddSacrumFracture()
         {
-            Fracture |= PelvisFractureEnum.Sternum;
+            Fracture |= PelvisFractureEnum.Sacrum;
         }
-        public void DeleteSternumFracture()
+        public void DeleteSacrumFracture()
         {
-            Fracture ^= PelvisFractureEnum.Sternum;
+            Fracture ^= PelvisFractureEnum.Sacrum;
         }
-        public void AddCollarboneFracture()
+        public void AddCoccyxFracture()
         {
-            Fracture |= PelvisFractureEnum.Collarbone;
+            Fracture |= PelvisFractureEnum.Coccyx;
         }
-        public void DeleteCollarboneFracture()
+        public void DeleteCoccyxFracture()
         {
-            Fracture ^= PelvisFractureEnum.Collarbone;
-        }
-        public void AddBladeFracture()
-        {
-            Fracture |= PelvisFractureEnum.Blade;
-        }
-        public void DeleteBladeFracture()
-        {
-            Fracture ^= PelvisFractureEnum.Blade;
+            Fracture ^= PelvisFractureEnum.Coccyx;
         }
         #endregion
 
@@ -125,7 +124,7 @@ namespace VoenMedLibrary.Models.InjuryModels
                 output += Character.GetDescriptionsAsText() + " ранение ";
             else if (((int)Character) == 64 || ((int)Character) == 128)
                 output += Character.GetDescriptionsAsText();
-            output += " грудной клетки ";
+            output += " таза ";
 
             output += Localisation.GetDescriptionsAsText().ToLower() + " ";
 
