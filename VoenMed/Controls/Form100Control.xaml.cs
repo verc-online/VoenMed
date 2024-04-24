@@ -35,8 +35,6 @@ namespace VoenMed.Controls
         ConditionModel conditionModel = new();
         HelpProvidedModel helpProvided = new(); //
         Form100Model form100Model = new();
-
-
         public Form100Control()
         {
             InitializeComponent();
@@ -57,6 +55,16 @@ namespace VoenMed.Controls
             // Характер повреждений
             // Диагноз
         }
+        #region SummaryStackPanel
+        private void refreshFullInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            form100Model.InjuryStatusLocalis = injuryModel;
+            form100Model.Condition = conditionModel;
+            form100Model.HelpProvided = helpProvided;
+
+            fullPersonalInfoTextBox.Text = form100Model.GetFullPersonalInfo();
+        }
+        #endregion
         
         #region NewForm
         private void LoadDefaultsFromDatabase()
@@ -125,6 +133,8 @@ namespace VoenMed.Controls
             form100Model.EvacAddress = defaultsModel?.EvacAddress ?? "";
             form100Model.Doc = defaultsModel?.Doc ?? "";
 
+            form100Model.InjuryStatusLocalis = injuryModel;
+
             SummaryGlazgowScale();
             SummaryCondition();
         }
@@ -137,6 +147,7 @@ namespace VoenMed.Controls
         {
             damageStackPanel.Visibility = Visibility.Visible;
             helpProvidedStackPanel.Visibility = Visibility.Collapsed;
+            fullInfoStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Collapsed;
         }
 
@@ -145,6 +156,7 @@ namespace VoenMed.Controls
 
             damageStackPanel.Visibility = Visibility.Collapsed;
             helpProvidedStackPanel.Visibility = Visibility.Collapsed;
+            fullInfoStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Visible;
         }
 
@@ -153,9 +165,19 @@ namespace VoenMed.Controls
 
             damageStackPanel.Visibility = Visibility.Collapsed;
             helpProvidedStackPanel.Visibility = Visibility.Visible;
+            fullInfoStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Collapsed;
         }
 
+
+        private void printInfoPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            damageStackPanel.Visibility = Visibility.Collapsed;
+            helpProvidedStackPanel.Visibility = Visibility.Collapsed;
+            conditionStackPanel.Visibility = Visibility.Collapsed;
+            fullInfoStackPanel.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Summary
@@ -4284,6 +4306,8 @@ namespace VoenMed.Controls
         private void ranksDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             form100Model.Rank = ((RankModel)ranksDropdown.SelectedItem).Id;
+            form100Model.RankTitle = ((RankModel)ranksDropdown.SelectedItem).RankTitle;
+
         }
 
         private void dutyTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -4506,5 +4530,6 @@ namespace VoenMed.Controls
 
         }
         #endregion
+
     }
 }

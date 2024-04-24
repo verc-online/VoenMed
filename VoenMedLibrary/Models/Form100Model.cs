@@ -17,12 +17,13 @@ namespace VoenMedLibrary.Models
         public string FirstName { get; set; } = string.Empty;
         public string SecondName { get; set; } = string.Empty;
 
-        public DateOnly BirthDate { get; set; }
-        public string MilitaryId { get; set; }
-        public string MilitaryUnit { get; set; }
-        public string Duty { get; set; }
+        public DateOnly? BirthDate { get; set; } = null;
+        public string MilitaryId { get; set; } = "Личный номер неизвестен";
+        public string MilitaryUnit { get; set; } = "Войсковая часть неизвестна";
+        public string Duty { get; set; } = "Должность неизвестна";
 
-        public int Rank { get; set; } // TODO: Enum
+        public int Rank { get; set; }
+        public string RankTitle { get; set; } = "Звание неизвестно";
 
         public ReasonEnum Reason { get; set; } = ReasonEnum.Gunshot;
         public int WithoutFirstAid { get; set; } = 0;
@@ -37,9 +38,34 @@ namespace VoenMedLibrary.Models
         public DateTime EvacTime { get; set; }
         public string Doc { get; set; }
 
-        public InjuryStatusLocalisModel InjuryStatusLocalis { get; set; }
-        public ConditionModel Condition { get; set; }
-        public HelpProvidedModel HelpProvided { get; set; }
+        public InjuryStatusLocalisModel InjuryStatusLocalis { get; set; } = new();
+        public ConditionModel Condition { get; set; } = new();
+        public HelpProvidedModel HelpProvided { get; set; } = new();
 
+        public string GetFullName()
+        {
+            string output = LastName ?? "Неизвестный " + FirstName ?? "" + " " + SecondName ?? "";
+            return output;
+        }
+
+        public string GetFullPersonalInfo()
+        {
+            string output = "";
+
+            output += "Звание: " + RankTitle + " "; 
+
+            output += "ФИО: " + GetFullName() + ". ";
+
+            output += "Год рождения: " + BirthDate ?? "Неизвестен. ";
+
+            output += "Личный номер: " + MilitaryId + ". ";
+
+            output += "Войсковая часть: " + MilitaryUnit + ". ";
+
+            output += "Должность: " + Duty + ". ";
+
+
+            return output;
+        }
     }
 }

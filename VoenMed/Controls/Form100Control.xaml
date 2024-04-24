@@ -238,14 +238,17 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
 
                 </Grid.ColumnDefinitions>
                 <Button x:Name="damageStackPanelButton" Grid.Column="1" Padding="5" Click="damageStackPanelButton_Click">Повреждения</Button>
                 <Button x:Name="conditionStackPanelButton" Grid.Column="3" Padding="5" Click="conditionStackPanelButton_Click">Состояние</Button>
                 <Button x:Name="helpProvidedPanelButton" Grid.Column="5" Padding="5" Click="helpProvidedPanelButton_Click">Оказанная помощь</Button>
+                <Button x:Name="printInfoPanelButton" Grid.Column="7" Padding="5" Click="printInfoPanelButton_Click">Предварительный просмотр</Button>
             </Grid>
             <!-- Локализация, жалобы -->
-            <StackPanel x:Name="damageStackPanel" Orientation="Horizontal" Visibility="Visible">
+            <StackPanel x:Name="damageStackPanel" Orientation="Horizontal" Visibility="Collapsed">
 
                 <StackPanel x:Name="injuryLocalisationPanel" Margin="10 0 0 0">
                     <StackPanel Orientation="Horizontal">
@@ -2385,7 +2388,7 @@
 
             </StackPanel>
 
-            <!-- TODO: Оказанная помощь-->
+            <!-- Оказанная помощь-->
             <StackPanel x:Name="helpProvidedStackPanel" Orientation="Vertical" Visibility="Collapsed">
                 <!-- Оказанная помощь -->
                 <StackPanel Orientation="Vertical">
@@ -2612,7 +2615,7 @@
                 <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton">Сохранить</Button>
             </StackPanel>
 
-            <!-- TODO: Состояние -->
+            <!-- Состояние -->
             <StackPanel Margin="5 5 0 0" Grid.Row="7" Grid.ColumnSpan="2" x:Name="conditionStackPanel"
                         Visibility="Collapsed">
                 <!-- CONDITION 
@@ -2946,7 +2949,14 @@
                 </StackPanel>
             </StackPanel>
 
+            <!-- Вся информация -->
+            <StackPanel x:Name="fullInfoStackPanel" Visibility="Collapsed">
+                <TextBlock>Личные данные</TextBlock>
+                <TextBlock x:Name="fullPersonalInfoTextBox" Height="100" TextWrapping="Wrap" Margin="10"></TextBlock>
 
+                <Button x:Name="refreshFullInfoButton" Click="refreshFullInfoButton_Click" Margin="10" Padding="5">Обновить</Button>
+                <Button x:Name="printButton" Click="refreshFullInfoButton_Click" Margin="10" Padding="5">Печать</Button>
+            </StackPanel>
         </StackPanel>
 
 
