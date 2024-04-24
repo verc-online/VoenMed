@@ -1,4 +1,4 @@
-﻿using VoenMedLibrary.Models.InjuryModels;
+﻿using VoenMedLibrary.Models;
 
 namespace TestArea
 {
@@ -9,10 +9,6 @@ namespace TestArea
             Console.WriteLine("Hello, World!");
 
             InjuryStatusLocalisModel model = new InjuryStatusLocalisModel();
-
-            model.AddHeadFront();
-
-            model.DeleteHeadFront();
 
         }
     }

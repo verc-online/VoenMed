@@ -17,28 +17,19 @@ namespace VoenMedLibrary.Models.InjuryModels
 
         #region Localisation
         // ADD
-        public void AddSpineFront()
+        public void AddSpine()
         {
             Localisation |= SpineLocalisationEnum.FrontSpine;
         }
-        public void AddSpineBack()
-        {
-            Localisation |= SpineLocalisationEnum.BackSpine;
-        }
-
         // DELETE
-        public void DeleteSpineFront()
-        {
-            Localisation ^= SpineLocalisationEnum.FrontSpine;
-        }
-        public void DeleteSpineBack()
+        public void DeleteSpine()
         {
             Localisation ^= SpineLocalisationEnum.FrontSpine;
         }
         #endregion
 
         #region Damage
-        // Повреждения
+        // Повреждения 
         public void AddCordDamage()
         {
             Damage |= SpineDamageEnum.Cord;
@@ -54,6 +45,14 @@ namespace VoenMedLibrary.Models.InjuryModels
         public void DeleteRootDamage()
         {
             Damage ^= SpineDamageEnum.Root;
+        }
+        public void AddVesselsDamage()
+        {
+            Damage |= SpineDamageEnum.Vessels;
+        }
+        public void DeleteVesselsDamage()
+        {
+            Damage ^= SpineDamageEnum.Vessels;
         }
 
         // Переломы

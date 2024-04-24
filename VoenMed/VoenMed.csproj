@@ -165,7 +165,7 @@
 
   <ItemGroup>
     <None Update="VoenMedDb.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

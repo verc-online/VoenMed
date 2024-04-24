@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VoenMedLibrary.Models.InjuryModels;
 using static VoenMedLibrary.Models.EnumModel;
 
-namespace VoenMedLibrary.Models.InjuryModels
+namespace VoenMedLibrary.Models
 {
     public class InjuryStatusLocalisModel
     {
@@ -22,13 +23,14 @@ namespace VoenMedLibrary.Models.InjuryModels
         public AbdomenDamageModel Abdomen { get; private set; } = new();
         public PelvisDamageModel Pelvis { get; private set; } = new();
         public SpineDamageModel Spine { get; private set; } = new();
-        
+
         public UpperDamageModel RightUpper { get; private set; } = new();
         public UpperDamageModel LeftUpper { get; private set; } = new();
-        public LowerDamageModel RightLeg { get; private set; } = new();
-        public LowerDamageModel LeftLeg { get; private set; } = new();
-        #endregion
+        public LowerDamageModel RightLower { get; private set; } = new();
+        public LowerDamageModel LeftLower { get; private set; } = new();
 
+        public string Diagnosis { get; set; }
+        #endregion
         #region Ethiology change
         public void MakeEthiologyGunshot()
         {
@@ -60,6 +62,23 @@ namespace VoenMedLibrary.Models.InjuryModels
         }
         #endregion
 
+        public void GetAllStatusLocalises()
+        {
+            string output = "Этиология ранения - ";
+            output += Ethiology > 0 ? Ethiology.GetDescriptionsAsText(): "";
+            output += Head.Localisation > 0 ? Head.StatusLocalis : "";
+            output += Neck.Localisation > 0 ? Neck.StatusLocalis : "";
+            output += Thorax.Localisation > 0 ? Thorax.StatusLocalis : "";
+            output += Abdomen.Localisation > 0 ? Abdomen.StatusLocalis : "";
+            output += Pelvis.Localisation > 0 ? Pelvis.StatusLocalis : "";
+            output += Spine.Localisation > 0 ? Spine.StatusLocalis : "";
+            output += RightUpper.Localisation > 0 ? RightUpper.StatusLocalis : "";
+            output += LeftUpper.Localisation > 0 ? LeftUpper.StatusLocalis : "";
+            output += RightLower.Localisation > 0 ? RightLower.StatusLocalis : "";
+            output += LeftLower.Localisation > 0 ? LeftLower.StatusLocalis : "";
+
+            Diagnosis = output;
+        }
 
     }
 }

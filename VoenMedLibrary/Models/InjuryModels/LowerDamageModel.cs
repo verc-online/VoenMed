@@ -18,68 +18,68 @@ namespace VoenMedLibrary.Models.InjuryModels
 
         #region Localisation
         // ADD
-        public void AddRightFrontHip()
+        public void AddFrontHip()
         {
             Localisation |= LowerLocalisationEnum.HipFront;
         }
-        public void AddRightFrontShin()
+        public void AddFrontShin()
         {
             Localisation |= LowerLocalisationEnum.ShinFront;
         }
-        public void AddRightFrontFoot()
+        public void AddFrontFoot()
         {
             Localisation |= LowerLocalisationEnum.FootFront;
         }
-        public void AddRightFrontHipTourniquiet()
+        public void AddFrontHipTourniquiet()
         {
             Localisation |= LowerLocalisationEnum.HipTourniquiet;
         }
-        public void AddRightFrontShinTourniquiet()
+        public void AddFrontShinTourniquiet()
         {
             Localisation |= LowerLocalisationEnum.ShinTourniquiet;
         }
-        public void AddRightBackHip()
+        public void AddBackHip()
         {
             Localisation |= LowerLocalisationEnum.HipBack;
         }
-        public void AddRightBackShin()
+        public void AddBackShin()
         {
             Localisation |= LowerLocalisationEnum.ShinBack;
         }
-        public void AddRightBackFoot()
+        public void AddBackFoot()
         {
             Localisation |= LowerLocalisationEnum.FootBack;
         }
         // DELETE
-        public void DeleteRightFrontHip()
+        public void DeleteFrontHip()
         {
             Localisation ^= LowerLocalisationEnum.HipFront;
         }
-        public void DeleteRightFrontShin()
+        public void DeleteFrontShin()
         {
             Localisation ^= LowerLocalisationEnum.ShinFront;
         }
-        public void DeleteRightFrontFoot()
+        public void DeleteFrontFoot()
         {
             Localisation ^= LowerLocalisationEnum.FootFront;
         }
-        public void DeleteRightFrontHipTourniquiet()
+        public void DeleteFrontHipTourniquiet()
         {
             Localisation ^= LowerLocalisationEnum.HipTourniquiet;
         }
-        public void DeleteRightFrontShinTourniquiet()
+        public void DeleteFrontShinTourniquiet()
         {
             Localisation ^= LowerLocalisationEnum.ShinTourniquiet;
         }
-        public void DeleteRightBackHip()
+        public void DeleteBackHip()
         {
             Localisation ^= LowerLocalisationEnum.HipBack;
         }
-        public void DeleteRightBackShin()
+        public void DeleteBackShin()
         {
             Localisation ^= LowerLocalisationEnum.ShinBack;
         }
-        public void DeleteRightBackFoot()
+        public void DeleteBackFoot()
         {
             Localisation ^= LowerLocalisationEnum.FootBack;
         }
@@ -180,16 +180,15 @@ namespace VoenMedLibrary.Models.InjuryModels
                     output += Character.GetDescriptionsAsText();
                     break;
             }
-            output += " таза ";
 
-            output += Localisation.GetDescriptionsAsText().ToLower() + " ";
+            output += Localisation.GetDescriptionsAsText().ToLower() + ". ";
 
             if (Damage > 0)
-                output += "c повреждениями " + Damage.GetDescriptionsAsText().ToLower() + " ";
+                output += "Повреждения " + Damage.GetDescriptionsAsText().ToLower() + ". ";
             if (Fracture > 0)
-                output += "с переломами " + Fracture.GetDescriptionsAsText().ToLower() + ". ";
+                output += "Переломы " + Fracture.GetDescriptionsAsText().ToLower() + ". ";
             if(Desctruction > 0)
-                output += "с " + Fracture.GetDescriptionsAsText().ToLower() + " отрывом. ";
+                output += "С " + Desctruction.GetDescriptionsAsText() + " отрывом. ";
 
             if (Thermo > 0)
                 output += Thermo.GetDescriptionsAsText() + ". ";

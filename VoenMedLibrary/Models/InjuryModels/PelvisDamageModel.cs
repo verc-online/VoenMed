@@ -33,7 +33,7 @@ namespace VoenMedLibrary.Models.InjuryModels
         }
         public void DeletePelvisBack()
         {
-            Localisation ^= PelvisLocalisationEnum.FrontPelvis;
+            Localisation ^= PelvisLocalisationEnum.BackPelvis;
         }
         #endregion
 

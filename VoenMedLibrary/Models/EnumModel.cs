@@ -9,6 +9,59 @@ namespace VoenMedLibrary.Models
 {
     public class EnumModel
     {
+        #region Form100
+        public enum ReasonEnum
+        {
+            [Description("Огнестрельное")] Gunshot, // 
+            [Description("Другое поражение")] Other, // 
+            [Description("Обморожение")] Nucleo, // 
+            [Description("Ядерное ")] Frostbite, // 
+            [Description("Химическое")] Chemistry, // 
+            [Description("Бактериальное")] Bacterial, // 
+            [Description("Инфенкионное ")] Infection, // 
+            [Description("Небоевая патология ")] Body, // 
+        }
+
+        public enum EvacuationWayEnum
+        {
+            [Description("Медицинская рота")] Company, // 
+            [Description("Медицинский батальон")] Battalion, // 
+            [Description("Военно-медицинский госпиталь")] Hospital, // 
+        }
+        public enum EvacuationOrderEnum
+        {
+            [Description("Первая очередь")] First, // 
+            [Description("Вторая очередь")] Second, // 
+            [Description("Третья очередь")] Third, // 
+        }
+
+        public enum EvacuationTransportEnum
+        {
+            [Description("Автомобиль")] Am, // 
+            [Description("Санитарный транспорт")] MedAm, // 
+            [Description("Вертолет")] Helicopter, // 
+            [Description("Самолет")] Airplane, // 
+            [Description("Корабль")] Ship, // 
+        }
+        public enum EvacuationPositionEnum
+        {
+            [Description("Санитарный транспорт")] Sitting, // 
+            [Description("Вертолет")] LyingDown, // 
+        }
+
+
+        [Flags]
+        public enum SpecialEnum
+        {
+            // None = 0b_0000_0000,  // 0
+            [Description("Угрожающее жизни состояние")] LifeThreateningCondition = 0b_0000_0001, // 1
+            [Description("Глаз")] Isolation = 0b_0000_0010, // 2
+            [Description("Радиационное поражение")] RadiationDamage = 0b_0000_0100, // 4
+            [Description("Санитарная обработка")]
+            SanitaryTreatment = 0b_0000_1000, // 8
+        }
+
+        #endregion
         #region Head
 
         [Flags]
@@ -64,7 +117,6 @@ namespace VoenMedLibrary.Models
         }
 
         #endregion
-
 
         #region Thorax
 
@@ -155,7 +207,7 @@ namespace VoenMedLibrary.Models
         [Flags]
         public enum SpineLocalisationEnum
         {
-            [Description("Спереди")] FrontSpine = 0b_0000_0001, // 1
+            [Description("")] FrontSpine = 0b_0000_0001, // 1
             [Description("Сзади")] BackSpine = 0b_0000_0010, // 2
         }
 
@@ -164,6 +216,8 @@ namespace VoenMedLibrary.Models
         {
             [Description("Спинного мозга")] Cord = 0b_0000_0001, // 1
             [Description("Его корешков")] Root = 0b_0000_0010, // 2
+            [Description("Кровеносных сосудов")] Vessels = 0b_0000_0100, // 4
+
         }
 
         [Flags]
@@ -219,7 +273,7 @@ namespace VoenMedLibrary.Models
             [Description("Нервных стволов")] Trunks = 0b_0000_0100, // 4
             [Description("Мягких тканей")] SoftTissue = 0b_0000_1000, // 8
 
-            [Description("Отслойка мягких тканей")]
+            [Description("Отслойкой мягких тканей")]
             Detachment = 0b_0001_0000, // 16
         }
 
@@ -297,5 +351,136 @@ namespace VoenMedLibrary.Models
         }
 
         #endregion
+
+        #region Condition
+        // Состояние
+        public enum ConditionEnum
+        {
+            [Description("Стабильное")] Stable = 0b_0000_0001, // 1
+            [Description("Нестабильное")] Unstable = 0b_0000_0010, // 2
+            [Description("Клиническая смерть")] ClinicalDeath = 0b_0000_0100, // 4
+        }
+
+
+        // Сознание
+        public enum ConsienceEnum
+        {
+            [Description("Ясное")] Clear, // 
+            [Description("Умеренное оглушение")] ModerateStun, // 
+            [Description("Глубокое оглушение")] DeepStun, // 
+            [Description("Сопор")] Sopor, // 
+            [Description("Умеренная кома")] ModerateComa, // 
+            [Description("Глубокая кома")] DeepComa, // 
+            [Description("Терминальная кома")] TerminalComa, // 
+        }        
+        
+        // Сознание
+        public enum EyeResponseEnum
+        {
+            [Description("Нет контакта")] NoEyeResponse = 1, // 
+            [Description("Открывает на боль")] EyeOpeningResponsePain = 2, // 
+            [Description("Открывает на речь")] EyeOpeningToSpeech = 3, // 
+            [Description("Спонтанное движение глаз")] EyeOpeningSpontaneously = 4, // 
+        }
+        // Сознание
+        public enum VerbalResponseEnum
+        {
+            [Description("Нет ответа")] NoVerbalResponse = 1, // 
+            [Description("Бесссвязные звуки")] IncomprehensibleSounds = 2, // 
+            [Description("Нечеткие ответы")] InappropriateWords = 3, // 
+            [Description("Дезориентированная")] Confused = 4, // 
+            [Description("Ориентированная")] Oriented = 5, // 
+        }
+        // Сознание
+        public enum MotorResponseEnum
+        {
+            [Description("Нет ответа")] NoMotorResponse = 1, // 
+            [Description("Разгибание от боли")] ExtensionToPain = 2, // 
+            [Description("Сгибание от боли")] AbnormalFlexionToPain = 3, // 
+            [Description("Отдергивание от боли")] WithdrawalToPain = 4, // 
+            [Description("Локализует боль")] LocalizesToPain = 5, // 
+            [Description("Выполняет команды")] ObeysMotorCommands = 6, // 
+        }
+
+        #endregion
+
+        #region Breathing
+        public enum indexOxygenationEnum
+        {
+            [Description("Легкая")] Stable, // 200-300
+            [Description("Средняя")] Unstable, // 100-200
+            [Description("Тяжелая")] ClinicalDeath, // <100
+            [Description("Норма")] Normal // <100
+        }
+        public enum BreathingSupportEnum
+        {
+            [Description("Дыхание эффективное самостоятельное")] Effective, // 200-300
+            [Description("Дыхание самостоятельное, инсуфляция кислорода")] Insuflation, // 100-200
+            [Description("Надгортанный воздуховод")] NVU, // <100
+            [Description("Эндотрахеальная трубка")] Endotracheal, // <100
+            [Description("Коникотомия")] Conicotomy // <100
+        }
+        #endregion
+
+        #region Heart
+        public enum CapillaryTimeEnum
+        {
+            [Description("Меньше 2 с.")] Fast, // 
+            [Description("Больше 2 с.")] Slow, // 
+        }
+        #endregion
+
+        #region AdditionalInfo
+        // Ранение и травма
+        [Flags]
+        public enum AdditionalInfoEnum
+        {
+            [Description("Судороги")] Seizures = 0b_0000_0000_0001, // 1 
+            [Description("Психомоторное возбуждение")] Excitement = 0b_0000_0000_0010, // 2 
+            [Description("Галлюцинации")] Hallucinations = 0b_0000_0000_0100, // 4 
+            [Description("Рвота")] Vomiting = 0b_0000_0000_1000, // 8 
+            [Description("Диарея")] Diarrhea = 0b_0000_0001_0000, // 16 
+        }
+        #endregion
+
+        #region HelpProvided
+        public enum WayStopBleedingEnum
+        {
+            [Description("Жгутом")] Tourniquet = 1, // 
+            [Description("Давящей повязкой")] PressureBandage, // 
+            [Description("Прошиванием сосудов")] Other, // 
+        }
+
+
+        [Flags]
+        public enum DecompressionOfThePleuralCavityEnum
+        {
+            [Description("Справа")] Right = 0b_0000_0001, // 1
+            [Description("Слева")] Left = 0b_0000_0010, // 2
+        }
+
+        [Flags]
+        public enum DrainageOfThePleuralCavityEnum
+        {
+            [Description("Справа")] Right = 0b_0000_0001, // 1
+            [Description("Слева")] Left = 0b_0000_0010, // 2
+        }
+
+
+        [Flags]
+        public enum ImmobilizationEnum
+        {
+            [Description("Штатными средствами")] Standart = 0b_0000_0001, // 1
+            [Description("Подручными средствами")] Other = 0b_0000_0010, // 2
+        }
+
+        [Flags]
+        public enum IntensiveCareMeasuresEnum
+        {
+            [Description("Успешно")] Success = 0b_0000_0001, // 1
+            [Description("Летальный исход")] Lethal = 0b_0000_0010, // 2
+        }
+        #endregion
+
     }
 }

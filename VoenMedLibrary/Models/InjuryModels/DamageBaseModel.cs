@@ -28,8 +28,16 @@ namespace VoenMedLibrary.Models.InjuryModels
             }
             if (Character.HasFlag(DamageCharacterEnum.Blind))
             {
-
                 Character ^= DamageCharacterEnum.Blind;
+            }
+            // Если была отмечена до этого травма
+            if (Character.HasFlag(DamageCharacterEnum.TraumaOpened))
+            {
+                Character ^= DamageCharacterEnum.TraumaOpened;
+            }
+            if (Character.HasFlag(DamageCharacterEnum.TraumaClosed))
+            {
+                Character ^= DamageCharacterEnum.TraumaClosed;
             }
         }
         public void MakeWoundCanalBlind()
@@ -43,6 +51,15 @@ namespace VoenMedLibrary.Models.InjuryModels
             {
 
                 Character ^= DamageCharacterEnum.Tangent;
+            }
+            // Если была отмечена до этого травма
+            if (Character.HasFlag(DamageCharacterEnum.TraumaOpened))
+            {
+                Character ^= DamageCharacterEnum.TraumaOpened;
+            }
+            if (Character.HasFlag(DamageCharacterEnum.TraumaClosed))
+            {
+                Character ^= DamageCharacterEnum.TraumaClosed;
             }
 
         }
@@ -58,53 +75,24 @@ namespace VoenMedLibrary.Models.InjuryModels
 
                 Character ^= DamageCharacterEnum.Blind;
             }
+            // Если была отмечена до этого травма
+            if (Character.HasFlag(DamageCharacterEnum.TraumaOpened))
+            {
+                Character ^= DamageCharacterEnum.TraumaOpened;
+            }
+            if (Character.HasFlag(DamageCharacterEnum.TraumaClosed))
+            {
+                Character ^= DamageCharacterEnum.TraumaClosed;
+            }
 
         }
         public void MakeTraumaOpen()
         {
-            Character |= DamageCharacterEnum.TraumaOpened;
-            if (Character.HasFlag(DamageCharacterEnum.Through))
-            {
-                Character ^= DamageCharacterEnum.Through;
-            }
-            if (Character.HasFlag(DamageCharacterEnum.Blind))
-            {
-
-                Character ^= DamageCharacterEnum.Blind;
-            }
-            if (Character.HasFlag(DamageCharacterEnum.Tangent))
-            {
-
-                Character ^= DamageCharacterEnum.Tangent;
-            }
-            if (Character.HasFlag(DamageCharacterEnum.TraumaClosed))
-            {
-
-                Character ^= DamageCharacterEnum.TraumaClosed;
-            }
+            Character = DamageCharacterEnum.TraumaOpened;
         }
         public void MakeTraumaClosed()
         {
-            Character |= DamageCharacterEnum.TraumaClosed;
-            if (Character.HasFlag(DamageCharacterEnum.Through))
-            {
-                Character ^= DamageCharacterEnum.Through;
-            }
-            if (Character.HasFlag(DamageCharacterEnum.Blind))
-            {
-
-                Character ^= DamageCharacterEnum.Blind;
-            }
-            if (Character.HasFlag(DamageCharacterEnum.Tangent))
-            {
-
-                Character ^= DamageCharacterEnum.Tangent;
-            }
-            if (Character.HasFlag(DamageCharacterEnum.TraumaOpened))
-            {
-
-                Character ^= DamageCharacterEnum.TraumaOpened;
-            }
+            Character = DamageCharacterEnum.TraumaClosed;
         }
 
         // Отношение к полости

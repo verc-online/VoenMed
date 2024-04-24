@@ -76,10 +76,16 @@ namespace VoenMedLibrary.Models.InjuryModels
         public string GetStatusLocalis()
         {
             string output = "";
-            if (((int)Character) < 64)
-                output += Character.GetDescriptionsAsText() + " ранение ";
-            else if (((int)Character) == 64 || ((int)Character) == 128)
-                output += Character.GetDescriptionsAsText();
+            switch ((int)Character)
+            {
+                case < 64:
+                    output += Character.GetDescriptionsAsText() + " ранение ";
+                    break;
+                case 64:
+                case 128:
+                    output += Character.GetDescriptionsAsText();
+                    break;
+            }
             output += " шеи ";
 
             if (Damage > 0)

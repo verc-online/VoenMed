@@ -181,16 +181,15 @@ namespace VoenMedLibrary.Models.InjuryModels
                     output += Character.GetDescriptionsAsText();
                     break;
             }
-            output += " таза ";
 
-            output += Localisation.GetDescriptionsAsText().ToLower() + " ";
+            output += Localisation.GetDescriptionsAsText().ToLower() + ". ";
 
             if (Damage > 0)
-                output += "c повреждениями " + Damage.GetDescriptionsAsText().ToLower() + " ";
+                output += "Повреждения " + Damage.GetDescriptionsAsText().ToLower() + ". ";
             if (Fracture > 0)
-                output += "с переломами " + Fracture.GetDescriptionsAsText().ToLower() + ". ";
-            if(Desctruction > 0)
-                output += "с " + Fracture.GetDescriptionsAsText().ToLower() + " отрывом. ";
+                output += "Переломы " + Fracture.GetDescriptionsAsText().ToLower() + ". ";
+            if (Desctruction > 0)
+                output += "С " + Desctruction.GetDescriptionsAsText() + " отрывом. ";
 
             if (Thermo > 0)
                 output += Thermo.GetDescriptionsAsText() + ". ";

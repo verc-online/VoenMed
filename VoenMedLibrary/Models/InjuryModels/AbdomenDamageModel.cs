@@ -106,7 +106,7 @@ namespace VoenMedLibrary.Models.InjuryModels
                 output += Character.GetDescriptionsAsText() + " ранение ";
             else if (((int)Character) == 64 || ((int)Character) == 128)
                 output += Character.GetDescriptionsAsText();
-            output += " живота ";
+            output += " органов брюшной полости ";
 
             output += Localisation.GetDescriptionsAsText().ToLower() + " ";
 

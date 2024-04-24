@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:VoenMed.Controls"
              mc:Ignorable="d" FontSize="17"
-             d:DesignHeight="920" d:DesignWidth="1200">
+             d:DesignHeight="920" d:DesignWidth="1400">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -32,7 +32,7 @@
                         <StackPanel Margin="0 0 0 10"
                                     Orientation="Horizontal">
                             <TextBlock Margin="0 0 10 0">Время</TextBlock>
-                            <TextBox Width="250" x:Name="issuedWhenTextBox"></TextBox>
+                            <TextBox Width="250" x:Name="issuedWhenTextBox" TextChanged="issuedWhenTextBox_TextChanged"></TextBox>
                         </StackPanel>
 
                         <!-- ФИО бойца -->
@@ -42,19 +42,19 @@
                             <!-- Фамилия -->
                             <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                                 <TextBlock>Фамилия</TextBlock>
-                                <TextBox Width="100" x:Name="personLastNameTextbox"></TextBox>
+                                <TextBox Width="100" x:Name="personLastNameTextbox" TextChanged="personLastNameTextbox_TextChanged"></TextBox>
                             </StackPanel>
 
                             <!-- Имя -->
                             <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                                 <TextBlock>Имя</TextBlock>
-                                <TextBox Width="100" x:Name="personFirstNameTextbox"></TextBox>
+                                <TextBox Width="100" x:Name="personFirstNameTextbox" TextChanged="personFirstNameTextbox_TextChanged"></TextBox>
                             </StackPanel>
 
                             <!-- Отчество -->
                             <StackPanel Orientation="Vertical">
                                 <TextBlock>Отчество</TextBlock>
-                                <TextBox Width="100" x:Name="personSecondNameTextbox"></TextBox>
+                                <TextBox Width="100" x:Name="personSecondNameTextbox" TextChanged="personSecondNameTextbox_TextChanged"></TextBox>
                             </StackPanel>
                         </StackPanel>
 
@@ -63,18 +63,18 @@
 
                             <StackPanel Margin="0 0 20 10" Orientation="Vertical">
                                 <TextBlock Margin="0 0 10 0">Дата рождения</TextBlock>
-                                <DatePicker Name="dp1" IsDropDownOpen="False" SelectedDateFormat="Short">
+                                <DatePicker IsDropDownOpen="False" SelectedDateFormat="Short" x:Name="birthDateDatePicker" SelectedDateChanged="birthDateDatePicker_SelectedDateChanged">
                                 </DatePicker>
                             </StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock>Личный номер</TextBlock>
-                                <TextBox Width="150" Padding="2"></TextBox>
+                                <TextBox Width="150" Padding="2" x:Name="militaryIdTextBox" TextChanged="militaryIdTextBox_TextChanged"></TextBox>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Margin="0 0 0 10"
                                     Orientation="Horizontal">
                             <TextBlock Margin="0 0 10 0">Войсковая часть</TextBlock>
-                            <TextBox Width="200"></TextBox>
+                            <TextBox Width="200" x:Name="militaryUnitTextBox" TextChanged="militaryUnitTextBox_TextChanged"></TextBox>
                         </StackPanel>
                         <!-- Звание и должность бойца -->
                         <StackPanel Margin="0 0 0 10"
@@ -83,13 +83,13 @@
                             <!-- Звание -->
                             <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                                 <TextBlock Margin="0 0 10 0">Звание</TextBlock>
-                                <ComboBox Width="150" x:Name="ranksDropdown" />
+                                <ComboBox Width="150" x:Name="ranksDropdown" SelectionChanged="ranksDropdown_SelectionChanged"/>
                             </StackPanel>
 
                             <!-- Должность -->
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Margin="0 0 10 0">Должность</TextBlock>
-                                <TextBox Width="150" Padding="2"></TextBox>
+                                <TextBox Width="150" Padding="2" x:Name="dutyTextBox" TextChanged="dutyTextBox_TextChanged"></TextBox>
                             </StackPanel>
                         </StackPanel>
 
@@ -102,26 +102,25 @@
                     <StackPanel Orientation="Vertical">
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Причина обращения</TextBlock>
                         <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                            <!-- TODO: Rename GroupName-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <RadioButton GroupName="Reason" Content="Огн." IsChecked="True" Margin="0 0 2 0" />
-                                <RadioButton GroupName="Reason" Content="Др. пор." Margin="0 0 10 0" />
-                                <RadioButton GroupName="Reason" Content="Обморож." Margin="0 0 10 0" />
-                                <RadioButton GroupName="Reason" Content="Ядер." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" x:Name="BattleGunshotRadioButton" Click="BattleGunshotRadioButton_Click" Content="Огн." IsChecked="True" Margin="0 0 2 0" />
+                                <RadioButton GroupName="Reason" x:Name="OtherRadioButton" Click="OtherRadioButton_Click"  Content="Др. пор." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" x:Name="FrostbiteRadioButton" Click="FrostbiteRadioButton_Click" Content="Обморож." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" x:Name="NucleoRadioButton" Click="NucleoRadioButton_Click" Content="Ядер." Margin="0 0 10 0" />
 
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <RadioButton GroupName="Reason" Content="Хим." Margin="0 0 10 0" />
-                                <RadioButton GroupName="Reason" Content="Бакт." Margin="0 0 10 0" />
-                                <RadioButton GroupName="Reason" Content="Инф." Margin="0 0 10 0" />
-                                <RadioButton GroupName="Reason" Content="Б." Margin="0 0 10 0" />
-                                <CheckBox>Без п.п.</CheckBox>
+                                <RadioButton GroupName="Reason" x:Name="ChemistryRadioButton" Click="ChemistryRadioButton_Click" Content="Хим." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" x:Name="BacterialRadioButton" Click="BacterialRadioButton_Click" Content="Бакт." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" x:Name="InfectionRadioButton" Click="InfectionRadioButton_Click" Content="Инф." Margin="0 0 10 0" />
+                                <RadioButton GroupName="Reason" x:Name="BodyRadioButton" Click="BodyRadioButton_Click" Content="Б." Margin="0 0 10 0" />
+                                <CheckBox x:Name="WithoutFirstAidCheckbox" Checked="WithoutFirstAidCheckbox_Checked" Unchecked="WithoutFirstAidCheckbox_Unchecked">Без п.п.</CheckBox>
                             </StackPanel>
                         </StackPanel>
                         <!-- Время ранения -->
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                             <TextBlock Margin="0 0 10 0">Время ранения/травмы</TextBlock>
-                            <TextBox Width="150" x:Name="diseaseTimeTextbox"></TextBox>
+                            <TextBox Width="150" x:Name="diseaseTimeTextbox" TextChanged="diseaseTimeTextbox_TextChanged"></TextBox>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -133,20 +132,20 @@
                         <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Куда эвакуировать</TextBlock>
                             <StackPanel Orientation="Vertical">
-                                <RadioButton x:Name="evacWayRadioButton_1" GroupName="EvacuationWay" Content="Медрота"
-                                             IsChecked="True" Margin="0 0 10 0" />
-                                <RadioButton x:Name="evacWayRadioButton_2" GroupName="EvacuationWay" Content="Медбат"
+                                <RadioButton x:Name="evacWayRadioButton_1" Click="evacWayRadioButton_1_Click" GroupName="EvacuationWay" Content="Медрота"
                                              Margin="0 0 10 0" />
-                                <RadioButton x:Name="evacWayRadioButton_3" GroupName="EvacuationWay" Content="ЦВМО" />
+                                <RadioButton x:Name="evacWayRadioButton_2" Click="evacWayRadioButton_2_Click" GroupName="EvacuationWay" Content="Медбат"
+                                             Margin="0 0 10 0" />
+                                <RadioButton x:Name="evacWayRadioButton_3" Click="evacWayRadioButton_3_Click" GroupName="EvacuationWay" Content="ЦВМО" IsChecked="True" />
                             </StackPanel>
                         </StackPanel>
                         <!-- Очередность-->
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Очередность</TextBlock>
                             <StackPanel Orientation="Vertical">
-                                <RadioButton GroupName="Order" Content="I" IsChecked="True" Margin="0 0 10 0" />
-                                <RadioButton GroupName="Order" Content="II" Margin="0 0 10 0" />
-                                <RadioButton GroupName="Order" Content="III" />
+                                <RadioButton GroupName="Order" x:Name="FirstOrderRadioButton" Click="FirstOrderRadioButton_Click" Content="I" IsChecked="True" Margin="0 0 10 0" />
+                                <RadioButton GroupName="Order" x:Name="SecondOrderRadioButton" Click="SecondOrderRadioButton_Click" Content="II" Margin="0 0 10 0" />
+                                <RadioButton GroupName="Order" x:Name="ThirdOrderRadioButton" Click="ThirdOrderRadioButton_Click" Content="III" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -160,16 +159,16 @@
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Транспорт</TextBlock>
                             <!-- TODO: Переименовать контент-->
-                            <RadioButton x:Name="evacTransportRadioButton_1" GroupName="Transport" Content="Автомобиль"
-                                         IsChecked="True" Margin="0 0 10 0" />
-                            <RadioButton x:Name="evacTransportRadioButton_2" GroupName="Transport"
-                                         Content="Мед транспорт" Margin="0 0 10 0" />
-                            <RadioButton x:Name="evacTransportRadioButton_3" GroupName="Transport" Content="Вертолет"
+                            <RadioButton x:Name="evacTransportRadioButton_1" Click="evacTransportRadioButton_1_Click" GroupName="Transport" Content="Автомобиль"
                                          Margin="0 0 10 0" />
-                            <RadioButton x:Name="evacTransportRadioButton_4" GroupName="Transport" Content="Самолет"
+                            <RadioButton x:Name="evacTransportRadioButton_2" Click="evacTransportRadioButton_2_Click" GroupName="Transport"
+                                         Content="Сан. транспорт" Margin="0 0 10 0"  IsChecked="True"/>
+                            <RadioButton x:Name="evacTransportRadioButton_3" Click="evacTransportRadioButton_3_Click" GroupName="Transport" Content="Вертолет"
                                          Margin="0 0 10 0" />
-                            <RadioButton x:Name="evacTransportRadioButton_5" GroupName="Transport"
-                                         Content="Корабельное" />
+                            <RadioButton x:Name="evacTransportRadioButton_4" Click="evacTransportRadioButton_4_Click" GroupName="Transport" Content="Самолет"
+                                         Margin="0 0 10 0" />
+                            <RadioButton x:Name="evacTransportRadioButton_5" Click="evacTransportRadioButton_5_Click" GroupName="Transport"
+                                         Content="Корабль" />
                         </StackPanel>
 
                         <!-- Положение -->
@@ -177,8 +176,8 @@
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Положение</TextBlock>
                             <!-- TODO: Переименовать контент-->
-                            <RadioButton GroupName="Position" Content="Лежа" IsChecked="True" Margin="0 0 10 0" />
-                            <RadioButton GroupName="Position" Content="Сидя" />
+                            <RadioButton GroupName="Position" x:Name="layingPositionRadioButton" Click="layingPositionRadioButton_Click" Content="Лежа" IsChecked="True" Margin="0 0 10 0" />
+                            <RadioButton GroupName="Position" x:Name="sittingPositionRadioButton" Click="sittingPositionRadioButton_Click" Content="Сидя" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -186,13 +185,13 @@
                 <Border BorderBrush="Gainsboro" BorderThickness="1" Padding="5">
                     <StackPanel x:Name="stackPanel" Margin="0 0 0 10">
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Особые отметки</TextBlock>
-                        <CheckBox x:Name="checkBox1" IsThreeState="False" IsChecked="True" Height="20"
+                        <CheckBox x:Name="LifeThreateningConditionCheckBox" Checked="LifeThreateningConditionCheckBox_Checked" Unchecked="LifeThreateningConditionCheckBox_Unchecked" IsThreeState="False" IsChecked="True" Height="20"
                                   Content="Угрожающее жизни состояние" />
-                        <CheckBox x:Name="checkBox2" IsThreeState="False" IsChecked="False" Height="20"
+                        <CheckBox x:Name="IsolationCheckBox" IsThreeState="False" Checked="IsolationCheckBox_Checked" Unchecked="IsolationCheckBox_Unchecked" IsChecked="False" Height="20"
                                   Content="Изоляция" />
-                        <CheckBox x:Name="checkBox3" IsThreeState="False" IsChecked="False" Height="20"
+                        <CheckBox x:Name="RadiationDamageCheckBox" IsThreeState="False" Checked="RadiationDamageCheckBox_Checked" Unchecked="RadiationDamageCheckBox_Unchecked" IsChecked="False" Height="20"
                                   Content="Радиационное поражение" />
-                        <CheckBox x:Name="checkBox4" IsThreeState="False" IsChecked="False" Height="20"
+                        <CheckBox x:Name="SanitaryTreatmentCheckBox" IsThreeState="False" Checked="SanitaryTreatmentCheckBox_Checked" Unchecked="SanitaryTreatmentCheckBox_Unchecked" IsChecked="False" Height="20"
                                   Content="Санитарная обработка" />
                     </StackPanel>
                 </Border>
@@ -206,7 +205,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" Margin="0 0 20 0">
                         <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Куда направлен</TextBlock>
-                        <TextBox x:Name="evacAddressTextBox"></TextBox>
+                        <TextBox x:Name="evacAddressTextBox" TextChanged="evacAddressTextBox_TextChanged"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock FontWeight="Bold"
@@ -214,14 +213,14 @@
                                    TextWrapping="Wrap">
                             Когда
                         </TextBlock>
-                        <TextBox Width="150" x:Name="evacTimeTextbox"></TextBox>
+                        <TextBox Width="150" x:Name="evacTimeTextbox" TextChanged="evacTimeTextbox_TextChanged"></TextBox>
                     </StackPanel>
                 </StackPanel>
 
                 <!-- Врач -->
                 <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                     <TextBlock Margin="0 0 10 0" FontWeight="Bold">Врач</TextBlock>
-                    <TextBox Width="250" x:Name="docTextBox"></TextBox>
+                    <TextBox Width="250" x:Name="docTextBox" TextChanged="docTextBox_TextChanged"></TextBox>
                 </StackPanel>
 
 
@@ -229,9 +228,8 @@
         </Border>
 
         <!-- Col 1 Описание поражения -->
-
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Grid Margin="0 10">
+            <Grid Margin="0 5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
@@ -242,12 +240,12 @@
                     <ColumnDefinition Width="*" />
 
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Padding="5">Повреждения</Button>
-                <Button Grid.Column="3" Padding="5">Состояние</Button>
-                <Button Grid.Column="5" Padding="5">Оказанная помощь</Button>
+                <Button x:Name="damageStackPanelButton" Grid.Column="1" Padding="5" Click="damageStackPanelButton_Click">Повреждения</Button>
+                <Button x:Name="conditionStackPanelButton" Grid.Column="3" Padding="5" Click="conditionStackPanelButton_Click">Состояние</Button>
+                <Button x:Name="helpProvidedPanelButton" Grid.Column="5" Padding="5" Click="helpProvidedPanelButton_Click">Оказанная помощь</Button>
             </Grid>
             <!-- Локализация, жалобы -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel x:Name="damageStackPanel" Orientation="Horizontal" Visibility="Visible">
 
                 <StackPanel x:Name="injuryLocalisationPanel" Margin="10 0 0 0">
                     <StackPanel Orientation="Horizontal">
@@ -257,7 +255,7 @@
                                 Локализация повреждений
                             </TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical" Margin="50 0 50 0">
                                     <!-- Спереди -->
                                     <!-- Голова -->
                                     <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal"
@@ -387,8 +385,8 @@
                                             <CheckBox x:Name="fronRightForearmTourniquiet" Background="Transparent"
                                                       VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"
-                                                      Checked="fronRightForearmTourniquiet_Checked"
-                                                      Unchecked="fronRightForearmTourniquiet_Unchecked"
+                                                      Checked="frontRightForearmTourniquiet_Checked"
+                                                      Unchecked="frontRightForearmTourniquiet_Unchecked"
                                                       BorderBrush="Red">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
@@ -398,8 +396,8 @@
                                             <CheckBox x:Name="fronRightForearmInjury" Background="Transparent"
                                                       VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"
-                                                      Checked="fronRightForearmInjury_Checked"
-                                                      Unchecked="fronRightForearmInjury_Unchecked">
+                                                      Checked="frontRightForearmInjury_Checked"
+                                                      Unchecked="frontRightForearmInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -455,8 +453,8 @@
                                                       VerticalAlignment="Center"
                                                       HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
                                                       BorderBrush="Red"
-                                                      Checked="fronLeftForearmTourniquiet_Checked"
-                                                      Unchecked="fronLeftForearmTourniquiet_Unchecked">
+                                                      Checked="frontLeftForearmTourniquiet_Checked"
+                                                      Unchecked="frontLeftForearmTourniquiet_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
                                                 </CheckBox.LayoutTransform>
@@ -465,7 +463,7 @@
                                             <CheckBox x:Name="fronLeftForearmInjury" Background="Transparent"
                                                       VerticalAlignment="Center"
                                                       HorizontalAlignment="Center" RenderTransformOrigin="1.5,1.5"
-                                                      Checked="fronLeftForearmInjury_Checked"
+                                                      Checked="frontLeftForearmInjury_Checked"
                                                       Unchecked="fronLeftForearmInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="1.5" />
@@ -487,8 +485,8 @@
                                             <CheckBox x:Name="fronRightWristInjury" Background="Transparent"
                                                       VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"
-                                                      Checked="fronRightWristInjury_Checked"
-                                                      Unchecked="fronRightWristInjury_Unchecked">
+                                                      Checked="frontRightWristInjury_Checked"
+                                                      Unchecked="frontRightWristInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
@@ -559,8 +557,8 @@
                                             <CheckBox x:Name="fronLeftWristInjury" Background="Transparent"
                                                       VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"
-                                                      Checked="fronLeftWristInjury_Checked"
-                                                      Unchecked="fronLeftWristInjury_Unchecked">
+                                                      Checked="frontLeftWristInjury_Checked"
+                                                      Unchecked="frontLeftWristInjury_Unchecked">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="3" ScaleY="3" />
                                                 </CheckBox.LayoutTransform>
@@ -793,7 +791,8 @@
                                             </StackPanel.Background>
                                         </StackPanel>
                                         <!-- Живот клетка -->
-                                        <StackPanel Width="50" Height="50" VerticalAlignment="Center">
+                                        <StackPanel Width="50" Height="50" VerticalAlignment="Bottom">
+                                            
                                             <StackPanel Orientation="Horizontal">
                                                 <CheckBox x:Name="backBellyInjuryLeft" Background="Transparent"
                                                           VerticalAlignment="Center"
@@ -987,7 +986,7 @@
                         </StackPanel>
 
                         <!-- Этиология -->
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" Width="400" Margin="50 0">
                             <TextBlock FontWeight="Bold">Этиология</TextBlock>
                             <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
                                 <RadioButton GroupName="ethiologyRadioButtonGroup" x:Name="injuryEthiologyRadioButton"
@@ -1105,7 +1104,7 @@
                         </StackPanel>
 
 
-                        <!-- TODO: Голова -->
+                        <!-- Голова -->
                         <StackPanel x:Name="headInjuryDetailPanel" Visibility="Collapsed" Orientation="Vertical"
                                     Margin="5">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Голова</TextBlock>
@@ -1242,12 +1241,12 @@
                                 </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="700"
-                                     x:Name="headStatusLocalisTextBox">
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="headStatusLocalisTextBox" MaxWidth="1000" TextChanged="headStatusLocalisTextBox_TextChanged">
                             </TextBox>
                         </StackPanel>
 
-                        <!-- TODO: Шея -->
+                        <!-- Шея -->
                         <StackPanel x:Name="neckInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Шея</TextBlock>
@@ -1371,12 +1370,12 @@
                                 </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="700"
-                                     x:Name="neckStatusLocalisTextBox">
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="neckStatusLocalisTextBox" MaxWidth="1000" TextChanged="neckStatusLocalisTextBox_TextChanged">
                             </TextBox>
 
                         </StackPanel>
-                        <!-- TODO: Грудь -->
+                        <!-- Грудь -->
                         <StackPanel x:Name="thoraxInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Грудь</TextBlock>
@@ -1517,13 +1516,13 @@
                                 </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="700"
-                                     x:Name="thoraxStatusLocalisTextBox">
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="thoraxStatusLocalisTextBox" MaxWidth="1000" TextChanged="thoraxStatusLocalisTextBox_TextChanged">
                             </TextBox>
 
                         </StackPanel>
 
-                        <!-- TODO: Живот -->
+                        <!-- Живот -->
                         <StackPanel x:Name="abdomenInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Живот</TextBlock>
@@ -1648,15 +1647,15 @@
                                 </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="700"
-                                     x:Name="abdomenStatusLocalisTextBox">
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="abdomenStatusLocalisTextBox" MaxWidth="1000" TextChanged="abdomenStatusLocalisTextBox_TextChanged">
                             </TextBox>
 
                         </StackPanel>
-                        <!-- TODO: Таз -->
+                        <!-- Таз -->
                         <StackPanel x:Name="pelvisInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
-                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Грудь</TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Таз</TextBlock>
                             <StackPanel Orientation="Vertical" x:Name="pelvisInjuryStackPanel" Visibility="Collapsed">
                                 <StackPanel x:Name="pelvisWoundCanalPanel">
                                     <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
@@ -1709,8 +1708,7 @@
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <!-- TODO: Unchecked is missing -->
-                                <CheckBox x:Name="bladderCheckbox" Checked="bladderCheckbox_Checked" Margin="0 0 20 0">Мочевого пузыря</CheckBox>
+                                <CheckBox x:Name="bladderCheckbox" Checked="bladderCheckbox_Checked" Unchecked="bladderCheckbox_Unchecked" Margin="0 0 20 0">Мочевого пузыря</CheckBox>
                                 <CheckBox x:Name="urethraCheckbox" Checked="urethraCheckbox_Checked"
                                           Unchecked="urethraCheckbox_Unchecked" Margin="0 0 20 0">
                                     Уретры
@@ -1740,8 +1738,7 @@
                                           Unchecked="sacrumCheckbox_Unchecked" Margin="0 0 20 0">
                                     Крестца
                                 </CheckBox>
-                                <!-- TODO: Unchecked is missing -->
-                                <CheckBox x:Name="coccyxCheckbox" Checked="coccyxCheckbox_Checked" Margin="0 0 20 0">Копчика</CheckBox>
+                                <CheckBox x:Name="coccyxCheckbox" Checked="coccyxCheckbox_Checked" Unchecked="coccyxCheckbox_Unchecked" Margin="0 0 20 0">Копчика</CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock FontWeight="Bold">Ожог</TextBlock>
@@ -1792,235 +1789,594 @@
                                 </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="700"
-                                     x:Name="pelvisStatusLocalisTextBox">
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="pelvisStatusLocalisTextBox" MaxWidth="1000" TextChanged="pelvisStatusLocalisTextBox_TextChanged">
                             </TextBox>
-
                         </StackPanel>
 
 
-                        <!-- TODO: Позвоночник -->
-
+                        <!-- Позвоночник -->
                         <StackPanel x:Name="spineInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Позвоночник</TextBlock>
-                            <StackPanel x:Name="spinesWoundCanalPanel">
-                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Слепой</RadioButton>
-                                    <RadioButton>Сквозной</RadioButton>
-                                    <RadioButton>Касательный</RadioButton>
+                            <StackPanel Orientation="Vertical" x:Name="spineInjuryStackPanel" Visibility="Collapsed">
+                                <StackPanel x:Name="spineWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton GroupName="spineWoundCanal" x:Name="spineInjuryBlindRadioButton"
+                                                     Click="spineInjuryBlindRadioButton_Click">
+                                            Слепой
+                                        </RadioButton>
+                                        <RadioButton GroupName="spineWoundCanal"
+                                                     x:Name="spineInjuryThroughRadioButton"
+                                                     Click="spineInjuryThroughRadioButton_Click">
+                                            Сквозной
+                                        </RadioButton>
+                                        <RadioButton GroupName="spineWoundCanal"
+                                                     x:Name="spineInjuryTangentRadioButton"
+                                                     Click="spineInjuryTangentRadioButton_Click">
+                                            Касательный
+                                        </RadioButton>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="spineInjuryCavityPanel">
+                                    <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton GroupName="spinePenetration"
+                                                     x:Name="spineInjuryPenetratedRadioButton"
+                                                     Click="spineInjuryPenetratedRadioButton_Click">
+                                            Проникающее
+                                        </RadioButton>
+                                        <RadioButton GroupName="spinePenetration"
+                                                     x:Name="spineInjuryNotPenetratedRadioButton"
+                                                     Click="spineInjuryNotPenetratedRadioButton_Click">
+                                            Не проникающее
+                                        </RadioButton>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel x:Name="spineInjuryCavityPanel">
-                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Проникающее</RadioButton>
-                                    <RadioButton>Не проникающее</RadioButton>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel>
+
+                            <StackPanel x:Name="spineTraumaStackPanel" Visibility="Collapsed">
                                 <TextBlock FontWeight="Bold">Травма</TextBlock>
                                 <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Открытая</RadioButton>
-                                    <RadioButton>Закрытая</RadioButton>
+                                    <RadioButton GroupName="spineTrauma" x:Name="spineTraumaOpenRadioButton"
+                                                 Click="spineTraumaOpenRadioButton_Click">
+                                        Открытая
+                                    </RadioButton>
+                                    <RadioButton GroupName="spineTrauma" x:Name="spineTraumaClosedRadioButton"
+                                                 Click="spineTraumaClosedRadioButton_Click">
+                                        Закрытая
+                                    </RadioButton>
                                 </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Спинного мозга</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Его корешков</CheckBox>
+                                <CheckBox x:Name="cordCheckbox" Checked="cordCheckbox_Checked" Unchecked="cordCheckbox_Unchecked" Margin="0 0 20 0">Спинного мозга</CheckBox>
+                                <CheckBox x:Name="rootCordCheckbox" Checked="rootCordCheckbox_Checked" Unchecked="rootCordCheckbox_Unchecked" Margin="0 0 20 0">Его корешков</CheckBox>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Тел</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Дужек</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Отростков</CheckBox>
+                                <CheckBox x:Name="bodyCheckbox" Checked="bodyCheckbox_Checked" Unchecked="bodyCheckbox_Unchecked" Margin="0 0 20 0">Тел</CheckBox>
+                                <CheckBox x:Name="archesCordCheckbox" Checked="archesCordCheckbox_Checked" Unchecked="archesCordCheckbox_Unchecked" Margin="0 0 20 0">Дужек</CheckBox>
+                                <CheckBox x:Name="processCordCheckbox" Checked="processCordCheckbox_Checked" Unchecked="processCordCheckbox_Unchecked" Margin="0 0 20 0">Отростков</CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineThermoBurn1RadioButton"
+                                                 Click="spineThermoBurn1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineThermoBurn2RadioButton"
+                                                 Click="spineThermoBurn2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineThermoBurn3RadioButton"
+                                                 Click="spineThermoBurn3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineThermoBurn4RadioButton"
+                                                 Click="spineThermoBurn4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineFrostbite1RadioButton"
+                                                 Click="spineFrostbite1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineFrostbite2RadioButton"
+                                                 Click="spineFrostbite2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineFrostbite3RadioButton"
+                                                 Click="spineFrostbite3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermospineRadioButtonGroup"
+                                                 x:Name="spineFrostbite4RadioButton"
+                                                 Click="spineFrostbite4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="spineStatusLocalisTextBox" MaxWidth="1000" TextChanged="spineStatusLocalisTextBox_TextChanged">
+                            </TextBox>
                         </StackPanel>
 
-                        <!-- TODO: Конечности: левая, правая верхние и нижние -->
-                        <!-- TODO: Верхняя правая -->
+                        <!-- Конечности: левая, правая верхние и нижние -->
+
+                        <!-- Верхняя правая -->
                         <StackPanel x:Name="rightUpperInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Верхняя правая конечность</TextBlock>
-                            <StackPanel x:Name="rightUpperWoundCanalPanel">
-                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Слепой</RadioButton>
-                                    <RadioButton>Сквозной</RadioButton>
-                                    <RadioButton>Касательный</RadioButton>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel x:Name="rightUpperCavityPanel">
-                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Проникающее</RadioButton>
-                                    <RadioButton>Не проникающее</RadioButton>
+                            <StackPanel Orientation="Vertical" x:Name="rightUpperInjuryStackPanel" Visibility="Collapsed">
+                                <StackPanel x:Name="rightUpperWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton GroupName="rightUpperWoundCanal" x:Name="rightUpperInjuryBlindRadioButton"
+                                                     Click="rightUpperInjuryBlindRadioButton_Click">
+                                            Слепой
+                                        </RadioButton>
+                                        <RadioButton GroupName="rightUpperWoundCanal"
+                                                     x:Name="rightUpperInjuryThroughRadioButton"
+                                                     Click="rightUpperInjuryThroughRadioButton_Click">
+                                            Сквозной
+                                        </RadioButton>
+                                        <RadioButton GroupName="rightUpperWoundCanal"
+                                                     x:Name="rightUpperInjuryTangentRadioButton"
+                                                     Click="rightUpperInjuryTangentRadioButton_Click">
+                                            Касательный
+                                        </RadioButton>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
 
+                            <StackPanel x:Name="rightUpperTraumaStackPanel" Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="rightUpperTrauma" x:Name="rightUpperTraumaOpenRadioButton"
+                                                 Click="rightUpperTraumaOpenRadioButton_Click">
+                                        Открытая
+                                    </RadioButton>
+                                    <RadioButton GroupName="rightUpperTrauma" x:Name="rightUpperTraumaClosedRadioButton"
+                                                 Click="rightUpperTraumaClosedRadioButton_Click">
+                                        Закрытая
+                                    </RadioButton>
+                                </StackPanel>
+                            </StackPanel>
                             <!-- Повреждения -->
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                                <CheckBox x:Name="rightUpperjointCheckbox" Checked="rightUpperjointCheckbox_Checked" Unchecked="rightUpperjointCheckbox_Unchecked" Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox x:Name="rightUpperVesselsCheckbox" Checked="rightUpperVesselsCheckBox_Checked" Unchecked="rightUpperVesselsCheckBox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox x:Name="rightUppertrunksCheckBox" Checked="rightUppertrunksCheckBox_Checked" Unchecked="rightUppertrunksCheckBox_Unchecked" Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox x:Name="rightUppersoftTissueCheckBox" Checked="rightUppersoftTissueCheckBox_Checked" Unchecked="rightUppersoftTissueCheckBox_Unchecked" Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox x:Name="rightUpperdetachmentCheckBox" Checked="rightUpperdetachmentCheckBox_Checked" Unchecked="rightUpperdetachmentCheckBox_Unchecked" Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
                             </StackPanel>
 
                             <!-- Переломы -->
                             <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
+                                <CheckBox x:Name="rightUpperboneFractureCheckBox" Checked="rightUpperboneFractureCheckBox_Checked" Unchecked="rightUpperboneFractureCheckBox_Unchecked" Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
 
                             <!-- Разрушения -->
                             <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
+                                <CheckBox x:Name="rightUpperfullDestructionCheckBox" Checked="rightUpperfullDestructionCheckBox_Checked" Unchecked="rightUpperfullDestructionCheckBox_Unchecked" Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox x:Name="rightUpperpartDestructionCheckBox" Checked="rightUpperpartDestructionCheckBox_Checked" Unchecked="rightUpperpartDestructionCheckBox_Unchecked" Margin="0 0 20 0">Неполный</CheckBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperThermoBurn1RadioButton"
+                                                 Click="rightUpperThermoBurn1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperThermoBurn2RadioButton"
+                                                 Click="rightUpperThermoBurn2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperThermoBurn3RadioButton"
+                                                 Click="rightUpperThermoBurn3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperThermoBurn4RadioButton"
+                                                 Click="rightUpperThermoBurn4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperFrostbite1RadioButton"
+                                                 Click="rightUpperFrostbite1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperFrostbite2RadioButton"
+                                                 Click="rightUpperFrostbite2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperFrostbite3RadioButton"
+                                                 Click="rightUpperFrostbite3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightUpperRadioButtonGroup"
+                                                 x:Name="rightUpperFrostbite4RadioButton"
+                                                 Click="rightUpperFrostbite4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="rightUpperStatusLocalisTextBox" MaxWidth="1000" TextChanged="rightUpperStatusLocalisTextBox_TextChanged">
+                            </TextBox>
                         </StackPanel>
-                        <!-- TODO: Верхняя левая -->
+                        <!-- Верхняя левая -->
                         <StackPanel x:Name="leftUpperInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Верхняя левая конечность</TextBlock>
-                            <StackPanel x:Name="leftUpperWoundCanalPanel">
-                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Слепой</RadioButton>
-                                    <RadioButton>Сквозной</RadioButton>
-                                    <RadioButton>Касательный</RadioButton>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel x:Name="leftUpperCavityPanel">
-                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Проникающее</RadioButton>
-                                    <RadioButton>Не проникающее</RadioButton>
+                            <StackPanel Orientation="Vertical" x:Name="leftUpperInjuryStackPanel" Visibility="Collapsed">
+                                <StackPanel x:Name="leftUpperWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton GroupName="leftUpperWoundCanal" x:Name="leftUpperInjuryBlindRadioButton"
+                                                     Click="leftUpperInjuryBlindRadioButton_Click">
+                                            Слепой
+                                        </RadioButton>
+                                        <RadioButton GroupName="leftUpperWoundCanal"
+                                                     x:Name="leftUpperInjuryThroughRadioButton"
+                                                     Click="leftUpperInjuryThroughRadioButton_Click">
+                                            Сквозной
+                                        </RadioButton>
+                                        <RadioButton GroupName="leftUpperWoundCanal"
+                                                     x:Name="leftUpperInjuryTangentRadioButton"
+                                                     Click="leftUpperInjuryTangentRadioButton_Click">
+                                            Касательный
+                                        </RadioButton>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
 
+                            <StackPanel x:Name="leftUpperTraumaStackPanel" Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="leftUpperTrauma" x:Name="leftUpperTraumaOpenRadioButton"
+                                                 Click="leftUpperTraumaOpenRadioButton_Click">
+                                        Открытая
+                                    </RadioButton>
+                                    <RadioButton GroupName="leftUpperTrauma" x:Name="leftUpperTraumaClosedRadioButton"
+                                                 Click="leftUpperTraumaClosedRadioButton_Click">
+                                        Закрытая
+                                    </RadioButton>
+                                </StackPanel>
+                            </StackPanel>
                             <!-- Повреждения -->
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                                <CheckBox x:Name="leftUpperjointCheckbox" Checked="leftUpperjointCheckbox_Checked" Unchecked="leftUpperjointCheckbox_Unchecked" Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox x:Name="leftUpperVesselsCheckbox" Checked="leftUpperVesselsCheckBox_Checked" Unchecked="leftUpperVesselsCheckBox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox x:Name="leftUppertrunksCheckBox" Checked="leftUppertrunksCheckBox_Checked" Unchecked="leftUppertrunksCheckBox_Unchecked" Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox x:Name="leftUppersoftTissueCheckBox" Checked="leftUppersoftTissueCheckBox_Checked" Unchecked="leftUppersoftTissueCheckBox_Unchecked" Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox x:Name="leftUpperdetachmentCheckBox" Checked="leftUpperdetachmentCheckBox_Checked" Unchecked="leftUpperdetachmentCheckBox_Unchecked" Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
                             </StackPanel>
 
                             <!-- Переломы -->
                             <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
+                                <CheckBox x:Name="leftUpperboneFractureCheckBox" Checked="leftUpperboneFractureCheckBox_Checked" Unchecked="leftUpperboneFractureCheckBox_Unchecked" Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
 
                             <!-- Разрушения -->
                             <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
+                                <CheckBox x:Name="leftUpperfullDestructionCheckBox" Checked="leftUpperfullDestructionCheckBox_Checked" Unchecked="leftUpperfullDestructionCheckBox_Unchecked" Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox x:Name="leftUpperpartDestructionCheckBox" Checked="leftUpperpartDestructionCheckBox_Checked" Unchecked="leftUpperpartDestructionCheckBox_Unchecked" Margin="0 0 20 0">Неполный</CheckBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperThermoBurn1RadioButton"
+                                                 Click="leftUpperThermoBurn1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperThermoBurn2RadioButton"
+                                                 Click="leftUpperThermoBurn2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperThermoBurn3RadioButton"
+                                                 Click="leftUpperThermoBurn3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperThermoBurn4RadioButton"
+                                                 Click="leftUpperThermoBurn4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperFrostbite1RadioButton"
+                                                 Click="leftUpperFrostbite1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperFrostbite2RadioButton"
+                                                 Click="leftUpperFrostbite2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperFrostbite3RadioButton"
+                                                 Click="leftUpperFrostbite3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftUpperRadioButtonGroup"
+                                                 x:Name="leftUpperFrostbite4RadioButton"
+                                                 Click="leftUpperFrostbite4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="leftUpperStatusLocalisTextBox" MaxWidth="1000" TextChanged="leftUpperStatusLocalisTextBox_TextChanged">
+                            </TextBox>
                         </StackPanel>
-                        <!-- TODO: Нижняя правая -->
+
+                        <!-- Нижняя правая -->
                         <StackPanel x:Name="rightLowerInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Нижняя правая конечность</TextBlock>
-                            <StackPanel x:Name="rightLowerWoundCanalPanel">
-                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Слепой</RadioButton>
-                                    <RadioButton>Сквозной</RadioButton>
-                                    <RadioButton>Касательный</RadioButton>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel x:Name="rightLowerCavityPanel">
-                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Проникающее</RadioButton>
-                                    <RadioButton>Не проникающее</RadioButton>
+                            <StackPanel Orientation="Vertical" x:Name="rightLowerInjuryStackPanel" Visibility="Collapsed">
+                                <StackPanel x:Name="rightLowerWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton GroupName="rightLowerWoundCanal" x:Name="rightLowerInjuryBlindRadioButton"
+                                                     Click="rightLowerInjuryBlindRadioButton_Click">
+                                            Слепой
+                                        </RadioButton>
+                                        <RadioButton GroupName="rightLowerWoundCanal"
+                                                     x:Name="rightLowerInjuryThroughRadioButton"
+                                                     Click="rightLowerInjuryThroughRadioButton_Click">
+                                            Сквозной
+                                        </RadioButton>
+                                        <RadioButton GroupName="rightLowerWoundCanal"
+                                                     x:Name="rightLowerInjuryTangentRadioButton"
+                                                     Click="rightLowerInjuryTangentRadioButton_Click">
+                                            Касательный
+                                        </RadioButton>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
 
+                            <StackPanel x:Name="rightLowerTraumaStackPanel" Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="rightLowerTrauma" x:Name="rightLowerTraumaOpenRadioButton"
+                                                 Click="rightLowerTraumaOpenRadioButton_Click">
+                                        Открытая
+                                    </RadioButton>
+                                    <RadioButton GroupName="rightLowerTrauma" x:Name="rightLowerTraumaClosedRadioButton"
+                                                 Click="rightLowerTraumaClosedRadioButton_Click">
+                                        Закрытая
+                                    </RadioButton>
+                                </StackPanel>
+                            </StackPanel>
                             <!-- Повреждения -->
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                                <CheckBox x:Name="rightLowerjointCheckbox" Checked="rightLowerjointCheckbox_Checked" Unchecked="rightLowerjointCheckbox_Unchecked" Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox x:Name="rightLowerVesselsCheckbox" Checked="rightLowerVesselsCheckBox_Checked" Unchecked="rightLowerVesselsCheckBox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox x:Name="rightLowertrunksCheckBox" Checked="rightLowertrunksCheckBox_Checked" Unchecked="rightLowertrunksCheckBox_Unchecked" Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox x:Name="rightLowersoftTissueCheckBox" Checked="rightLowersoftTissueCheckBox_Checked" Unchecked="rightLowersoftTissueCheckBox_Unchecked" Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox x:Name="rightLowerdetachmentCheckBox" Checked="rightLowerdetachmentCheckBox_Checked" Unchecked="rightLowerdetachmentCheckBox_Unchecked" Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
                             </StackPanel>
 
                             <!-- Переломы -->
                             <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
+                                <CheckBox x:Name="rightLowerboneFractureCheckBox" Checked="rightLowerboneFractureCheckBox_Checked" Unchecked="rightLowerboneFractureCheckBox_Unchecked" Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
 
                             <!-- Разрушения -->
                             <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
+                                <CheckBox x:Name="rightLowerfullDestructionCheckBox" Checked="rightLowerfullDestructionCheckBox_Checked" Unchecked="rightLowerfullDestructionCheckBox_Unchecked" Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox x:Name="rightLowerpartDestructionCheckBox" Checked="rightLowerpartDestructionCheckBox_Checked" Unchecked="rightLowerpartDestructionCheckBox_Unchecked" Margin="0 0 20 0">Неполный</CheckBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerThermoBurn1RadioButton"
+                                                 Click="rightLowerThermoBurn1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerThermoBurn2RadioButton"
+                                                 Click="rightLowerThermoBurn2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerThermoBurn3RadioButton"
+                                                 Click="rightLowerThermoBurn3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerThermoBurn4RadioButton"
+                                                 Click="rightLowerThermoBurn4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerFrostbite1RadioButton"
+                                                 Click="rightLowerFrostbite1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerFrostbite2RadioButton"
+                                                 Click="rightLowerFrostbite2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerFrostbite3RadioButton"
+                                                 Click="rightLowerFrostbite3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermorightLowerRadioButtonGroup"
+                                                 x:Name="rightLowerFrostbite4RadioButton"
+                                                 Click="rightLowerFrostbite4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="rightLowerStatusLocalisTextBox" MaxWidth="1000" TextChanged="rightLowerStatusLocalisTextBox_TextChanged">
+                            </TextBox>
                         </StackPanel>
-                        <!-- TODO: Нижняя левая -->
+
+                        <!-- Нижняя левая -->
                         <StackPanel x:Name="leftLowerInjuryDetailPanel" Orientation="Vertical" Margin="5"
                                     Visibility="Collapsed">
                             <TextBlock FontSize="20" FontWeight="Bold" Margin="10">Нижняя левая конечность</TextBlock>
-                            <StackPanel x:Name="leftLowerWoundCanalPanel">
-                                <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Слепой</RadioButton>
-                                    <RadioButton>Сквозной</RadioButton>
-                                    <RadioButton>Касательный</RadioButton>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel x:Name="leftLowerCavityPanel">
-                                <TextBlock FontWeight="Bold">Отношение к полости</TextBlock>
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton>Проникающее</RadioButton>
-                                    <RadioButton>Не проникающее</RadioButton>
+                            <StackPanel Orientation="Vertical" x:Name="leftLowerInjuryStackPanel" Visibility="Collapsed">
+                                <StackPanel x:Name="leftLowerWoundCanalPanel">
+                                    <TextBlock FontWeight="Bold">Характер раневого канала</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton GroupName="leftLowerWoundCanal" x:Name="leftLowerInjuryBlindRadioButton"
+                                                     Click="leftLowerInjuryBlindRadioButton_Click">
+                                            Слепой
+                                        </RadioButton>
+                                        <RadioButton GroupName="leftLowerWoundCanal"
+                                                     x:Name="leftLowerInjuryThroughRadioButton"
+                                                     Click="leftLowerInjuryThroughRadioButton_Click">
+                                            Сквозной
+                                        </RadioButton>
+                                        <RadioButton GroupName="leftLowerWoundCanal"
+                                                     x:Name="leftLowerInjuryTangentRadioButton"
+                                                     Click="leftLowerInjuryTangentRadioButton_Click">
+                                            Касательный
+                                        </RadioButton>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
 
+                            <StackPanel x:Name="leftLowerTraumaStackPanel" Visibility="Collapsed">
+                                <TextBlock FontWeight="Bold">Травма</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="leftLowerTrauma" x:Name="leftLowerTraumaOpenRadioButton"
+                                                 Click="leftLowerTraumaOpenRadioButton_Click">
+                                        Открытая
+                                    </RadioButton>
+                                    <RadioButton GroupName="leftLowerTrauma" x:Name="leftLowerTraumaClosedRadioButton"
+                                                 Click="leftLowerTraumaClosedRadioButton_Click">
+                                        Закрытая
+                                    </RadioButton>
+                                </StackPanel>
+                            </StackPanel>
                             <!-- Повреждения -->
                             <TextBlock FontWeight="Bold">Повреждения</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Суставов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Нервных стволов</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Мягких тканей</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
+                                <CheckBox x:Name="leftLowerjointCheckbox" Checked="leftLowerjointCheckbox_Checked" Unchecked="leftLowerjointCheckbox_Unchecked" Margin="0 0 20 0">Суставов</CheckBox>
+                                <CheckBox x:Name="leftLowerVesselsCheckbox" Checked="leftLowerVesselsCheckBox_Checked" Unchecked="leftLowerVesselsCheckBox_Unchecked" Margin="0 0 20 0">Кровеносных сосудов</CheckBox>
+                                <CheckBox x:Name="leftLowertrunksCheckBox" Checked="leftLowertrunksCheckBox_Checked" Unchecked="leftLowertrunksCheckBox_Unchecked" Margin="0 0 20 0">Нервных стволов</CheckBox>
+                                <CheckBox x:Name="leftLowersoftTissueCheckBox" Checked="leftLowersoftTissueCheckBox_Checked" Unchecked="leftLowersoftTissueCheckBox_Unchecked" Margin="0 0 20 0">Мягких тканей</CheckBox>
+                                <CheckBox x:Name="leftLowerdetachmentCheckBox" Checked="leftLowerdetachmentCheckBox_Checked" Unchecked="leftLowerdetachmentCheckBox_Unchecked" Margin="0 0 20 0">Отслойка мягких тканей</CheckBox>
                             </StackPanel>
 
                             <!-- Переломы -->
                             <TextBlock FontWeight="Bold">Переломы</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Костей</CheckBox>
+                                <CheckBox x:Name="leftLowerboneFractureCheckBox" Checked="leftLowerboneFractureCheckBox_Checked" Unchecked="leftLowerboneFractureCheckBox_Unchecked" Margin="0 0 20 0">Костей</CheckBox>
                             </StackPanel>
 
                             <!-- Разрушения -->
                             <TextBlock FontWeight="Bold">Разрушения(Отрыв)</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0 0 20 0">Полный</CheckBox>
-                                <CheckBox Margin="0 0 20 0">Неполный</CheckBox>
+                                <CheckBox x:Name="leftLowerfullDestructionCheckBox" Checked="leftLowerfullDestructionCheckBox_Checked" Unchecked="leftLowerfullDestructionCheckBox_Unchecked" Margin="0 0 20 0">Полный</CheckBox>
+                                <CheckBox x:Name="leftLowerpartDestructionCheckBox" Checked="leftLowerpartDestructionCheckBox_Checked" Unchecked="leftLowerpartDestructionCheckBox_Unchecked" Margin="0 0 20 0">Неполный</CheckBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold">Ожог</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerThermoBurn1RadioButton"
+                                                 Click="leftLowerThermoBurn1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerThermoBurn2RadioButton"
+                                                 Click="leftLowerThermoBurn2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerThermoBurn3RadioButton"
+                                                 Click="leftLowerThermoBurn3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerThermoBurn4RadioButton"
+                                                 Click="leftLowerThermoBurn4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
+                                <TextBlock FontWeight="Bold">Отморожение</TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerFrostbite1RadioButton"
+                                                 Click="leftLowerFrostbite1RadioButton_Click">
+                                        I
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerFrostbite2RadioButton"
+                                                 Click="leftLowerFrostbite2RadioButton_Click">
+                                        II
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerFrostbite3RadioButton"
+                                                 Click="leftLowerFrostbite3RadioButton_Click">
+                                        III
+                                    </RadioButton>
+                                    <RadioButton GroupName="thermoleftLowerRadioButtonGroup"
+                                                 x:Name="leftLowerFrostbite4RadioButton"
+                                                 Click="leftLowerFrostbite4RadioButton_Click">
+                                        IV
+                                    </RadioButton>
+                                </StackPanel>
                             </StackPanel>
                             <TextBlock FontWeight="Bold">Status localis</TextBlock>
-                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
+                            <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                                     x:Name="leftLowerStatusLocalisTextBox" MaxWidth="1000" TextChanged="leftLowerStatusLocalisTextBox_TextChanged">
+                            </TextBox>
                         </StackPanel>
                     </StackPanel>
 
@@ -2029,369 +2385,564 @@
 
             </StackPanel>
 
-            <!-- TODO: COLLAPSED-->
-            <StackPanel Orientation="Vertical"
-                        HorizontalAlignment="Center"
-                        Grid.Column="1"
-                        Visibility="Collapsed">
+            <!-- TODO: Оказанная помощь-->
+            <StackPanel x:Name="helpProvidedStackPanel" Orientation="Vertical" Visibility="Collapsed">
                 <!-- Оказанная помощь -->
-                <Border Background="WhiteSmoke" BorderBrush="Gainsboro" BorderThickness="1">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock FontWeight="Bold" TextAlignment="Center">Оказанная помощь</TextBlock>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <StackPanel Orientation="Vertical" Margin="0 0 20 0">
-                                <!--Восстановление дыхания -->
-                                <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">
-                                    Восстановление дыхания
-                                </TextBlock>
-                                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                    <StackPanel Orientation="Vertical">
-                                        <RadioButton GroupName="Breathing" IsChecked="True" Margin="0 0 10 0">Нет необходимости</RadioButton>
-                                        <RadioButton GroupName="Breathing" Margin="0 0 10 0">Воздуховод</RadioButton>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <RadioButton GroupName="Breathing" Margin="0 0 10 0">Интубация</RadioButton>
-                                        <RadioButton GroupName="Breathing" Margin="0 0 10 0">Коникотомия</RadioButton>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center">Оказанная помощь</TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
-                            <!-- Дренирование и Декомпрессия -->
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Vertical" Margin="0 0 10 10">
-                                    <TextBlock TextAlignment="Center"
+                        <!-- Дренирование и Декомпрессия -->
+                        <StackPanel Orientation="Vertical" Margin="0 0 200 10">
+                            <TextBlock TextAlignment="Center"
                                                TextWrapping="Wrap"
                                                FontWeight="Bold"
                                                HorizontalAlignment="Center">
                                         Декомпрессия плевральной полости
-                                    </TextBlock>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <CheckBox Margin="0 0 10 0">Справа</CheckBox>
-                                        <CheckBox Margin="0 0 10 0">Слева</CheckBox>
-                                    </StackPanel>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Дренирование плевральной полости</TextBlock>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <CheckBox Margin="0 0 10 0">Справа</CheckBox>
-                                        <CheckBox Margin="0 0 10 0">Слева</CheckBox>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <!-- Жгут -->
-                            <StackPanel Margin="5" Orientation="Vertical">
-                                <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Остановка кровотечения</TextBlock>
-                                <StackPanel Orientation="Horizontal" Margin="5">
-                                    <RadioButton GroupName="Tourniquet" Content="Жгут" IsChecked="True"
-                                                 Margin="0 0 10 0" />
-                                    <RadioButton GroupName="Tourniquet" Content="Давящая повязка" Margin="0 0 10 0" />
-                                    <RadioButton GroupName="Tourniquet" Content="Другое" />
-                                </StackPanel>
-                                <!-- Время наложения жгута -->
-                                <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Margin="0 0 10 0">Время наложения жгута</TextBlock>
-                                    <TextBox Width="100"></TextBox>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <!-- Повязка и иммобилизация -->
-                            <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <!-- Повязка -->
-
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontWeight="Bold" Margin="0 0 10 0">Повязка</TextBlock>
-                                    <RadioButton GroupName="Bandage" Content="Да" IsChecked="True"
-                                                 Margin="0 0 10 0" />
-                                    <RadioButton GroupName="Bandage" Content="Нет" />
-                                </StackPanel>
-
-                                <!-- Иммобилизация -->
-                                <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Vertical">
-                                    <TextBlock FontWeight="Bold" Margin="0 0 10 0">Иммобилизация средствами</TextBlock>
-                                    <StackPanel></StackPanel>
-                                    <RadioButton GroupName="Immobilization" Content="Нет" Margin="0 0 10 0" />
-                                    <RadioButton GroupName="Immobilization" Content="Штатными" IsChecked="True"
-                                                 Margin="0 0 10 0" />
-                                    <RadioButton GroupName="Immobilization" Content="Подручными" />
-                                </StackPanel>
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <CheckBox x:Name="decompressionOfThePleuralCavityRightCheckbox" Checked="decompressionOfThePleuralCavityRightCheckbox_Checked" Unchecked="decompressionOfThePleuralCavityRightCheckbox_Unchecked"  Margin="0 0 10 0">Справа</CheckBox>
+                                <CheckBox x:Name="decompressionOfThePleuralCavityLeftCheckbox" Checked="decompressionOfThePleuralCavityLeftCheckbox_Checked" Unchecked="decompressionOfThePleuralCavityLeftCheckbox_Unchecked" Margin="0 0 10 0">Слева</CheckBox>
                             </StackPanel>
                         </StackPanel>
-                        <Border BorderBrush="Gainsboro" BorderThickness="1">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Дренирование плевральной полости</TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <CheckBox x:Name="drainageOfThePleuralCavityRightCheckbox" Checked="drainageOfThePleuralCavityRightCheckbox_Checked" Unchecked="drainageOfThePleuralCavityRightCheckbox_Unchecked" Margin="0 0 10 0">Справа</CheckBox>
+                                <CheckBox x:Name="drainageOfThePleuralCavityLeftCheckbox" Checked="drainageOfThePleuralCavityLeftCheckbox_Checked" Unchecked="drainageOfThePleuralCavityLeftCheckbox_Unchecked" Margin="0 0 10 0">Слева</CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!-- Жгут -->
+                        <StackPanel Margin="0 5 10 0" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Остановка кровотечения</TextBlock>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <RadioButton GroupName="Tourniquet" Content="Не требуется" Margin="0 0 10 0" x:Name="NoNeedTourniquetRadioButton" IsChecked="True" Click="NoNeedTourniquetRadioButton_Click"/>
+                                <RadioButton GroupName="Tourniquet" Content="Жгут" Margin="0 0 10 0" x:Name="TourniquetRadioButton" Click="TourniquetRadioButton_Click"/>
+                                <RadioButton GroupName="Tourniquet" Content="Давящая повязка" Margin="0 0 10 0" x:Name="PressureBandageRadioButton" Click="PressureBandageRadioButton_Click"/>
+                                <RadioButton GroupName="Tourniquet" Content="Прошивание сосудов" x:Name="OtherWayStopBleedingRadioButton" Click="OtherWayStopBleedingRadioButton_Click" />
+                            </StackPanel>
+                            <!-- Время наложения жгута -->
+                            <StackPanel Orientation="Horizontal" x:Name="TimeTourniqAppliedStackPanel" Visibility="Hidden">
+                                <TextBlock FontWeight="Bold" Margin="0 0 10 0">Время наложения жгута</TextBlock>
+                                <TextBox Width="200" x:Name="TimeTourniquetAppliedTextBox" TextChanged="TimeTourniquetAppliedTextBox_TextChanged"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Повязка и иммобилизация -->
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!-- Иммобилизация -->
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold" Margin="0 0 10 0">Иммобилизация средствами</TextBlock>
+                                <RadioButton GroupName="Immobilization" Content="Нет" Margin="0 0 10 0"  IsChecked="True" x:Name="NoImmobilizationRadioButton" Click="NoImmobilizationRadioButton_Click"/>
+                                <RadioButton GroupName="Immobilization" Content="Штатными" Margin="0 0 10 0" x:Name="StandartImmobilizationRadioButton" Click="StandartImmobilizationRadioButton_Click"/>
+                                <RadioButton GroupName="Immobilization" Content="Подручными" x:Name="OtherImmobilizationRadioButton" Click="OtherImmobilizationRadioButton_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="10">
+                        <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <!-- Препараты -->
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Препараты</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+                                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Препарат</TextBlock>
+                                            <ComboBox Width="250" x:Name="drugsComboBox"
+                                                              SelectionChanged="drugsComboBox_SelectionChanged">
+                                            </ComboBox>
 
-                                <Border BorderBrush="Gainsboro" BorderThickness="1" Padding="10">
-                                    <StackPanel Orientation="Vertical">
-                                        <!-- Трансфузии -->
-                                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Инуфзии / Трансфузии</TextBlock>
+                                        </StackPanel>
                                         <StackPanel Orientation="Vertical">
-                                            <!-- NaCl 0.9% -->
-                                            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">NaCl 0.9%</TextBlock>
-                                                <TextBox Width="100" Margin="0 0 10 0"></TextBox>
-                                                <TextBlock>мл.</TextBlock>
-                                            </StackPanel>
-                                            <!-- NaHCO3 9% -->
-                                            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">NaHCO3 9%</TextBlock>
-                                                <TextBox Width="100" Margin="0 0 10 0"></TextBox>
-                                                <TextBlock>мл.</TextBlock>
-                                            </StackPanel>
-                                            <!-- Глюкоза 5% -->
-                                            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">Глюкоза 5%</TextBlock>
-                                                <TextBox Width="100" Margin="0 0 10 0"></TextBox>
-                                                <TextBlock>мл.</TextBlock>
-                                            </StackPanel>
-                                            <!-- Эр взвесь -->
-                                            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">Эр. взвесь</TextBlock>
-                                                <TextBox Width="100" Margin="0 0 10 0"></TextBox>
-                                                <TextBlock>мл.</TextBlock>
-                                            </StackPanel>
-                                            <!-- СЗП -->
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Margin="0 0 10 0">СЗП</TextBlock>
-                                                <TextBox Width="100" Margin="0 0 10 0"></TextBox>
-                                                <TextBlock>мл.</TextBlock>
-                                            </StackPanel>
+                                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Введено</TextBlock>
+                                            <TextBox x:Name="drugDose" Width="100"></TextBox>
                                         </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock x:Name="drugMeasurement"
+                                                               Margin="10 0 0 0"
+                                                               TextWrapping="Wrap"
+                                                               Width="70">
+                                                        ед. изм.
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <Button Margin="10" Padding="10 5" x:Name="provideDrugButton"
+                                                        Click="provideDrugButton_Click">
+                                            Добавить
+                                        </Button>
                                     </StackPanel>
-                                </Border>
+                                    <ListBox x:Name="drugsProvidedList" Height="145" ItemsSource="{Binding}"
+                                                     Margin="10 10 10 0" Padding="10">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Margin="5" Orientation="Horizontal">
+                                                    <!-- TODO: Препарат, объем, удалить-->
+                                                    <TextBlock x:Name="drugProvidedTitle"
+                                                                       Text="{Binding Title}"
+                                                                       HorizontalAlignment="Left" Margin="0 0 10 0" />
+                                                    <TextBlock x:Name="drugProvidedDose" Text="{Binding Dose}"
+                                                                       HorizontalAlignment="Center" Margin="0 0 10 0" />
+                                                    <TextBlock x:Name="drugProvidedMeasurement"
+                                                                       Text="{Binding Measurement}"
+                                                                       HorizontalAlignment="Right" Margin="0 0 10 0" />
+                                                    <Button x:Name="deleteDrugProvidedButton"
+                                                                    Click="deleteDrugProvidedButton_Click"
+                                                                    DataContext="{Binding}">
+                                                        Удалить
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <StackPanel Orientation="Vertical">
-                                        <!-- Препараты -->
-                                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Препараты</TextBlock>
-                                        <StackPanel Orientation="Horizontal">
-                                            <StackPanel Orientation="Vertical" Margin="10 0 10 0">
-                                                <TextBlock TextAlignment="Center" TextWrapping="Wrap">Препарат</TextBlock>
-                                                <ComboBox Width="120" x:Name="drugsComboBox"
-                                                          SelectionChanged="drugsComboBox_SelectionChanged">
-                                                </ComboBox>
-
-                                            </StackPanel>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock TextAlignment="Center" TextWrapping="Wrap">Введено</TextBlock>
-                                                <TextBox x:Name="drugDose"></TextBox>
-                                            </StackPanel>
-                                            <StackPanel>
-                                                <TextBlock x:Name="drugMeasurement"
-                                                           Margin="10 0 0 0"
-                                                           TextWrapping="Wrap"
-                                                           Width="70">
-                                                    ед. изм.
-                                                </TextBlock>
-                                            </StackPanel>
-                                            <Button Margin="10" x:Name="provideDrugButton"
-                                                    Click="provideDrugButton_Click">
-                                                Добавить
-                                            </Button>
-                                        </StackPanel>
-                                        <ListBox x:Name="drugsProvidedList" Height="170" ItemsSource="{Binding}"
-                                                 Margin="10 10 10 0" Padding="10">
-                                            <ListBox.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Margin="5" Orientation="Horizontal">
-                                                        <!-- TODO: Препарат, объем, удалить-->
-                                                        <TextBlock x:Name="drugProvidedTitle"
-                                                                   Text="{Binding Title}"
-                                                                   HorizontalAlignment="Left" Margin="0 0 10 0" />
-                                                        <TextBlock x:Name="drugProvidedDose" Text="{Binding Dose}"
-                                                                   HorizontalAlignment="Center" Margin="0 0 10 0" />
-                                                        <TextBlock x:Name="drugProvidedMeasurement"
-                                                                   Text="{Binding Measurement}"
-                                                                   HorizontalAlignment="Right" Margin="0 0 10 0" />
-                                                        <Button x:Name="deleteDrugProvidedButton"
-                                                                Click="deleteDrugProvidedButton_Click"
-                                                                DataContext="{Binding}">
-                                                            Удалить
-                                                        </Button>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ListBox.ItemTemplate>
-                                        </ListBox>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug1Button"
-                                                Click="favDrug1Button_Click">
+                                    <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug1Button"
+                                                    Click="favDrug1Button_Click">
                                             Промедол
                                         </Button>
-                                        <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug2Button"
-                                                Click="favDrug2Button_Click">
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug2Button"
+                                                    Click="favDrug2Button_Click">
                                             Фентанил
                                         </Button>
-                                        <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug3Button"
-                                                Click="favDrug3Button_Click">
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug3Button"
+                                                    Click="favDrug3Button_Click">
                                             Рокуроний
                                         </Button>
-                                        <Button Margin="0 0 0 10" Padding="5" x:Name="favDrug4Button"
-                                                Click="favDrug4Button_Click">
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug4Button"
+                                                    Click="favDrug4Button_Click">
                                             Транексам
                                         </Button>
-                                        <Button Margin="0 0 0 10" Padding="5" x:Name="resetDrugsProvidedButton"
-                                                Click="resetDrugsProvidedButton_Click">
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="resetDrugsProvidedButton"
+                                                    Click="resetDrugsProvidedButton_Click">
                                             Сброс
                                         </Button>
                                     </StackPanel>
+
                                 </StackPanel>
                             </StackPanel>
-                        </Border>
-                        <!-- Согревание -->
-                        <!-- Промывание желудка -->
-
-                        <!-- Лекарственные препараты -->
-                        <!-- Антидот помощь -->
-                        <!-- Анатоксин помощь -->
-
-                        <!-- Диагноз -->
-
-                    </StackPanel>
-                </Border>
-                <Border Background="#FFEBED" BorderBrush="AntiqueWhite" BorderThickness="1">
-                    <StackPanel Orientation="Vertical">
-
-
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Width="600">
-                                <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Диагноз</TextBlock>
-                                <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="100"></TextBox>
-
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                                <!--Медицинская помощь оказана-->
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Помощь оказана</TextBlock>
-                                    <TextBox Width="100"></TextBox>
+                            <Border BorderBrush="Gainsboro" BorderThickness="1" Padding="10" Margin="10">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Инуфзии / Трансфузии</TextBlock>
+                                    <!-- Трансфузии -->
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel>
+                                            <!-- NaCl 0.9% -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">NaCl 0.9% (мл.)</TextBlock>
+                                                <TextBox x:Name="NaClTextBox" TextChanged="NaClTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                            <!-- NaHCO3 9% -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">NaHCO3 9% (мл.)</TextBlock>
+                                                <TextBox x:Name="NaHCO3TextBox" TextChanged="NaHCO3TextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                            <!-- Глюкоза 5% -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">Глюкоза 5% (мл.)</TextBlock>
+                                                <TextBox  x:Name="GlucoseTextBox" TextChanged="GlucoseTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <!-- Эр взвесь -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">Эр. взвесь (мл.)</TextBlock>
+                                                <TextBox x:Name="ErTextBox" TextChanged="ErTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                            <!-- СЗП -->
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Margin="0 0 10 0">СЗП (мл.)</TextBlock>
+                                                <TextBox x:Name="SzpTextBox" TextChanged="SzpTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
                                 </StackPanel>
+                            </Border>
 
+                        </StackPanel>
+                    </Border>
 
-                                <!-- Летальный исход -->
-                                <StackPanel Margin="0 0 0 10" Orientation="Vertical">
-                                    <TextBlock FontWeight="Bold" TextAlignment="Center">Летальный исход</TextBlock>
-                                    <TextBox Width="100"></TextBox>
+                </StackPanel>
+                <!-- Реанимация -->
+                <Border BorderBrush="PaleVioletRed" BorderThickness="1" Margin="10">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
+                                <TextBlock Margin="0 0 5 0" FontWeight="Bold">Реанимационные мероприятия</TextBlock>
+                                <RadioButton GroupName="IntensiveCareMeasuresGroup" x:Name="IntensiveCareWereRadioButton" Click="IntensiveCareWereRadioButton_Click" Margin="0 0 5 0">Да</RadioButton>
+                                <RadioButton GroupName="IntensiveCareMeasuresGroup" x:Name="IntensiveCareWerentRadioButton" Click="IntensiveCareWerentRadioButton_Click" IsChecked="True">Нет</RadioButton>
+                            </StackPanel>
+
+                            <StackPanel x:Name="IntensiveCareStackPanel" Visibility="Hidden" Orientation="Horizontal">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                                        <TextBlock Margin="0 0 5 0" FontWeight="Bold">Продолжительность</TextBlock>
+                                        <TextBox Width="100" Margin="0 0 5 0" x:Name="IntensiveCareTimeTextBox" TextChanged="IntensiveCareTimeTextBox_TextChanged"></TextBox>
+                                        <TextBlock>мин.</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="LethalTimeStackPanel" Visibility="Visible">
+                                        <TextBlock Margin="0 0 5 0" FontWeight="Bold">Летальный исход</TextBlock>
+                                        <TextBox x:Name="LethalTimeTextBox" Width="200" Margin="0 0 5 0"></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="0 0 5 0" FontWeight="Bold">Успешно?</TextBlock>
+                                    <RadioButton GroupName="IntensiveCareSuccessMeasuresGroup" Margin="0 0 5 0" x:Name="IntensiveCareMeasuressSuccess" Checked="IntensiveCareMeasuressSuccess_Checked">Да</RadioButton>
+                                    <RadioButton GroupName="IntensiveCareSuccessMeasuresGroup" x:Name="IntensiveCareMeasuressLethal" Checked="IntensiveCareMeasuressLethal_Checked">Нет</RadioButton>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
-
-                        <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton">Сохранить</Button>
-
-                    </StackPanel>
-                </Border>
-
-
+                    </Border>
+                <!-- Выполнено-->
+                <StackPanel Width="1000">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Выполнено</TextBlock>
+                    <TextBox Margin="5 0" TextWrapping="Wrap" 
+                             AcceptsReturn="True" Height="100" 
+                             x:Name="helpProvidedSummaryTextBox" 
+                             TextChanged="helpProvidedSummaryTextBox_TextChanged"></TextBox>
+                </StackPanel>
+                <!-- Диагноз-->
+                <StackPanel Width="1000">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Диагноз</TextBlock>
+                    <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="140" x:Name="DiagnosisTextBox"></TextBox>
+                </StackPanel>
+                <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton">Сохранить</Button>
             </StackPanel>
 
-            <!-- TODO: COLLAPSED Состояние -->
-            <StackPanel Margin="5 5 0 0" Grid.Row="7" Grid.ColumnSpan="2" x:Name="сonditionPanel"
+            <!-- TODO: Состояние -->
+            <StackPanel Margin="5 5 0 0" Grid.Row="7" Grid.ColumnSpan="2" x:Name="conditionStackPanel"
                         Visibility="Collapsed">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Состояние</TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton GroupName="Conditions" Content="Стабильное" IsChecked="True"
-                                     Margin="0 0 10 0" />
-                        <RadioButton GroupName="Conditions" Content="Нестабильное" Margin="0 0 10 0" />
-                        <RadioButton GroupName="Conditions" Content="Клиническая смерть" Margin="0 0 10 0" />
+                <!-- CONDITION 
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Состояние</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <RadioButton GroupName="Conditions" x:Name="stableConditionRadioButton" Content="Стабильное" IsChecked="True"
+                                         Margin="0 0 10 0" />
+                            <RadioButton GroupName="Conditions"  x:Name="unstableConditionRadioButton" Content="Нестабильное" Margin="0 0 10 0" />
+                            <RadioButton GroupName="Conditions"  x:Name="clinicalDeathConditionRadioButton" Content="Клиническая смерть" Margin="0 0 10 0" />
 
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-
+                -->
+                
                 <!-- Сознание -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Сознание</TextBlock>
-                    <StackPanel x:Name="consciencePanel" Orientation="Horizontal">
-                        <RadioButton GroupName="Conscience" Content="Ясное" IsChecked="True"
-                                     Margin="0 0 10 0" />
-                        <RadioButton GroupName="Conscience" Content="Угнетено" Margin="0 0 10 0" />
-                        <RadioButton GroupName="Conscience" Content="Отсутствует" Margin="0 0 10 0" />
-                        <RadioButton GroupName="Conscience" Content="Кома" />
-                    </StackPanel>
-                </StackPanel>
+                <Border Margin="10" Padding="5" BorderThickness="1" BorderBrush="AntiqueWhite">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Сознание по Шкале комы Глазго</TextBlock>
+                        <StackPanel x:Name="consciencePanel" Orientation="Horizontal">
+                            <!-- Глаза -->
+                            <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                <TextBlock FontWeight="Bold">Открытие глаз</TextBlock>
+                                <RadioButton x:Name="EyeOpeningSpontaneouslyRadioButton" GroupName="EyeResponseGroup" Click="EyeOpeningSpontaneouslyRadioButtonClick" Content="Спонтанно" IsChecked="True" />
+                                <RadioButton x:Name="EyeOpeningToSpeechRadioButton" GroupName="EyeResponseGroup" Click="EyeOpeningToSpeechRadioButton_Click" Content="На голос" />
+                                <RadioButton x:Name="EyeOpeningResponsePainRadioButton" GroupName="EyeResponseGroup" Click="EyeOpeningResponsePainRadioButton_Click" Content="На боль"/>
+                                <RadioButton x:Name="NoEyeResponseRadioButton" GroupName="EyeResponseGroup" Click="NoEyeResponseRadioButton_Click" Content="Нет ответа" />
+                            </StackPanel>
+                            <!-- Речь -->
+                            <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                <TextBlock FontWeight="Bold">Речевой ответ</TextBlock>
+                                <RadioButton x:Name="OrientedRadioButton" GroupName="VerbalResponseGroup" Click="OrientedRadioButton_Click" Content="Ориентированная речь" IsChecked="True"/>
+                                <RadioButton x:Name="ConfusedRadioButton" GroupName="VerbalResponseGroup" Click="ConfusedRadioButton_Click" Content="Дезориентирован"/>
+                                <RadioButton x:Name="InappropriateWordsRadioButton" GroupName="VerbalResponseGroup" Click="InappropriateWordsRadioButton_Click" Content="Нечеткие ответы" />
+                                <RadioButton x:Name="IncomprehensibleSoundsRadioButton" GroupName="VerbalResponseGroup" Click="IncomprehensibleSoundsRadioButton_Click" Content="Бессвязные звуки" />
+                                <RadioButton x:Name="NoVerbalResponseRadioButton" GroupName="VerbalResponseGroup" Click="NoVerbalResponseRadioButton_Click" Content="Нет ответа" />
+                            </StackPanel>
+                            <!-- Движения -->
+                            <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                <TextBlock FontWeight="Bold">Двигательные реакции</TextBlock>
+                                <RadioButton x:Name="ObeysMotorCommandsRadioButton" GroupName="MotorResponseGroup" Click="ObeysMotorCommandsRadioButton_Click" Content="Адекватно по команде" IsChecked="True"/>
+                                <RadioButton x:Name="LocalizesToPainRadioButton" GroupName="MotorResponseGroup" Click="LocalizesToPainRadioButton_Click" Content="Локализует боль"/>
+                                <RadioButton x:Name="WithdrawalToPainRadioButton" GroupName="MotorResponseGroup" Click="WithdrawalToPainRadioButton_Click" Content="Отдергивает от боли" />
+                                <RadioButton x:Name="AbnormalFlexionToPainRadioButton" GroupName="MotorResponseGroup" Click="AbnormalFlexionToPainRadioButton_Click" Content="Сгибание от боли" />
+                                <RadioButton x:Name="ExtensionToPainRadioButton" GroupName="MotorResponseGroup" Click="ExtensionToPainRadioButton_Click" Content="Разгибание от боли" />
+                                <RadioButton x:Name="NoMotorResponseRadioButton" GroupName="MotorResponseGroup" Click="NoMotorResponseRadioButton_Click" Content="Нет движений" />
+                            </StackPanel>
+                            <!-- Интерпретация -->
+                            <StackPanel Width="150">
+                                <TextBlock FontWeight="Bold">Баллы</TextBlock>
+                                <TextBlock x:Name="conscienceIntTextBlock"></TextBlock>
 
-                <!-- Частота дыхания -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Частота дыхания</TextBlock>
-                    <StackPanel x:Name="respiratoryRatePanel" Orientation="Horizontal">
-                        <RadioButton GroupName="RespiratoryRate" Content="больше 94%" Margin="0 0 10 0"
-                                     IsChecked="True" />
-                        <RadioButton GroupName="RespiratoryRate" Content="меньше 94%" />
-                    </StackPanel>
-                </StackPanel>
+                                <TextBlock FontWeight="Bold">Интерпретация</TextBlock>
+                                <TextBlock x:Name="conscienceTextBlock"></TextBlock>
 
-                <!-- Сатурация -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Сатурация</TextBlock>
-                    <StackPanel x:Name="saturationPanel" Orientation="Horizontal">
-                        <RadioButton GroupName="Saturation" Content="больше 94%" Margin="0 0 10 0"
-                                     IsChecked="True" />
-                        <RadioButton GroupName="Saturation" Content="меньше 94%" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="10 0">
+                                <!-- Дополнительные сведения -->
+                                <TextBlock TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center">
+                                    Дополнительные сведения
+                                </TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                        <CheckBox Margin="0 0 10 0" x:Name="SeizuresCheckbox" Checked="SeizuresCheckbox_Checked" Unchecked="SeizuresCheckbox_Unchecked">Судороги</CheckBox>
+                                        <CheckBox Margin="0 0 10 0" x:Name="ExcitementCheckbox" Checked="ExcitementCheckbox_Checked" Unchecked="ExcitementCheckbox_Unchecked">Ажитация</CheckBox>
+                                        <CheckBox Margin="0 0 10 0" x:Name="HallucinationsCheckbox" Checked="HallucinationsCheckbox_Checked" Unchecked="HallucinationsCheckbox_Unchecked">Галюцинации</CheckBox>
+                                        <CheckBox x:Name="VomitingCheckbox" Checked="VomitingCheckbox_Checked" Unchecked="VomitingCheckbox_Unchecked" Margin="0 0 10 0">Рвота</CheckBox>
+                                        <CheckBox x:Name="DiarrheaCheckbox" Checked="DiarrheaCheckbox_Checked" Unchecked="DiarrheaCheckbox_Unchecked" Margin="0 0 10 0">Диарея</CheckBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
+                </Border>
 
-                <!-- Время капил. напол. ногтевого ложа -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Время наполнения ногтевого ложа</TextBlock>
-                    <StackPanel x:Name="capillaryTimePanel" Orientation="Horizontal">
-                        <RadioButton GroupName="CapillaryTime" Content="Меньше 2 с." Margin="0 0 10 0"
-                                     IsChecked="True" />
-                        <RadioButton GroupName="CapillaryTime" Content="Больше 2 с." />
-                    </StackPanel>
-                </StackPanel>
-
-                <!-- Пульс -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Пульс</TextBlock>
-                    <StackPanel x:Name="pulsePanel" Orientation="Horizontal">
-                        <RadioButton GroupName="Pulse" Content="60-90" IsChecked="True" Margin="0 0 10 0" />
-                        <RadioButton GroupName="Pulse" Content="Меньше 60 / Больше 90" />
-                    </StackPanel>
-                </StackPanel>
-
-                <!-- САД -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Систолическое АД лежа</TextBlock>
-                    <StackPanel x:Name="sAdPanel" Orientation="Horizontal">
-                        <RadioButton GroupName="sAd" Content="100-160" IsChecked="True" Margin="0 0 10 0" />
-                        <RadioButton GroupName="sAd" Content="Меньше 100 / Больше 160" Margin="0 0 10 0" />
-                    </StackPanel>
-                </StackPanel>
-
-                <!-- Температура тела -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 0">Температура</TextBlock>
-                    <StackPanel x:Name="bodyTemperaturePanel" Orientation="Horizontal">
-                        <RadioButton GroupName="Temperature" Content="36,0-38,0" Margin="0 0 10 0"
-                                     IsChecked="True" />
-                        <RadioButton GroupName="Temperature" Content="Меньше 36,0 / Больше 38,0"
-                                     Margin="0 0 10 0" />
-                    </StackPanel>
-
-                    <!-- Жалобы-->
-                    <StackPanel Orientation="Vertical" Grid.ColumnSpan="2">
-                        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">Жалобы</TextBlock>
-                        <TextBox Margin="5" TextWrapping="Wrap" AcceptsReturn="True" Height="45"></TextBox>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel Orientation="Vertical">
-                    <!-- Дополнительные сведения -->
-                    <TextBlock TextWrapping="Wrap" FontWeight="Bold" TextAlignment="Center">
-                        Дополнительные сведения
-                    </TextBlock>
+                <!-- Дыхательная система -->
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                            <CheckBox Margin="0 0 10 0">Судороги</CheckBox>
-                            <CheckBox Margin="0 0 10 0">Психомоторное возбуждение</CheckBox>
-                            <CheckBox Margin="0 0 10 0">Галюцинации</CheckBox>
+                    <Border Margin="10 5" Padding="5" BorderThickness="1" BorderBrush="AntiqueWhite">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontWeight="Bold" TextAlignment="Center" Margin="0 0 0 10">Дыхательная система</TextBlock>
+                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center">Самостоятельное дыхание</TextBlock>
+                                        <Border Margin="10 5" Padding="5" BorderThickness="1" BorderBrush="AntiqueWhite">
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <RadioButton GroupName="BreathingWay" x:Name="EffectiveBreathingSupportRadioButton" Click="EffectiveBreathingSupportRadioButton_Click" IsChecked="True">Эффективное</RadioButton>
+                                                    <RadioButton GroupName="BreathingWay" x:Name="InsuflationBreathingSupportRadioButton" Click="InsuflationBreathingSupportRadioButton_Click">Инсуфляция</RadioButton>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock TextAlignment="Center">Искусственная вентиляция легких</TextBlock>
+                                        <Border Margin="10 5" Padding="5" BorderThickness="1" BorderBrush="AntiqueWhite">
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Margin="0 0 20 0">
+                                                        <RadioButton GroupName="BreathingWay" x:Name="NVUBreathingSupportRadioButton" Click="NVUBreathingSupportRadioButton_Click">Надгортанный воздуховод</RadioButton>
+                                                        <RadioButton GroupName="BreathingWay" x:Name="EndotrachealBreathingSupportRadioButton" Click="EndotrachealBreathingSupportRadioButton_Click">Эндотрахеальная трубка</RadioButton>
+                                                    </StackPanel>
+                                                    <StackPanel>
+                                                        <RadioButton GroupName="BreathingWay" x:Name="ConicotomyBreathingSupportRadioButton" Click="ConicotomyBreathingSupportRadioButton_Click">Коникотомия</RadioButton>
+                                                        <!-- FiO2 -->
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">FiO2</TextBlock>
+                                                            <TextBox Width="100" Margin="0 0 5 0"  x:Name="FiO2TextBox" TextChanged="FiO2TextBox_TextChanged">21</TextBox>
+                                                            <TextBlock>%</TextBlock>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Частота дыхания -->
+                                <StackPanel Orientation="Horizontal" Margin="0 0 25 0">
+                                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Частота дыхания</TextBlock>
+                                    <TextBox Width="100" Margin="0 0 5 0" x:Name="BreathingRateTextBox" TextChanged="BreathingRateTextBox_TextChanged">18</TextBox>
+                                    <TextBlock>раз в минуту</TextBlock>
+                                </StackPanel>
+
+                                <!-- Сатурация -->
+                                <StackPanel Orientation="Horizontal" Margin="0 0 25 0">
+                                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 5 0">Сатурация</TextBlock>
+                                    <TextBox Width="100" Margin="0 0 5 0" x:Name="SaturationTextBox" TextChanged="SaturationTextBox_TextChanged">97</TextBox>
+                                    <TextBlock>%</TextBlock>
+                                </StackPanel>
+
+
+
+                            </StackPanel>
+                            <!-- ORDS 
+                                <StackPanel>
+                                    <TextBlock TextAlignment="Center" FontWeight="Bold" Margin="0 10">Острый респираторный дистресс-синдром</TextBlock>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Vertical" Margin="0 0 50 0">
+                                            <TextBlock>Индекс Оксигенации</TextBlock>
+                                            <TextBlock x:Name="oxygenationIndexTextBlock"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Margin="0 0 50 0">
+                                            <TextBlock>Степень тяжести ОРДС</TextBlock>
+                                            <TextBlock x:Name="oxygenationIndexInterpretationTextBlock"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Margin="0 0 50 0">
+                                            <TextBlock>Летальность</TextBlock>
+                                            <TextBlock x:Name="oxygenationIndexLethalityTextBlock"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            -->
+                        </StackPanel>
+                    </Border>
+                    <!-- Температура тела -->
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Center" FontWeight="Bold">Температура ℃</TextBlock>
+                            <TextBox x:Name="TemperatureTextBox" TextChanged="TemperatureTextBox_TextChanged">36,6</TextBox>
                         </StackPanel>
                         <StackPanel>
-                            <CheckBox Margin="0 0 10 0">Рвота</CheckBox>
-                            <CheckBox Margin="0 0 10 0">Диарея</CheckBox>
-                            <CheckBox Margin="0 0 10 0">Диарея</CheckBox>
+                            <TextBlock FontWeight="Bold">Диурез за первый час (мл.)</TextBlock>
+                            <TextBox x:Name="DiuresPerFirstHourTextBox" TextChanged="DiuresPerFirstHourTextBox_TextChanged"></TextBox>
                         </StackPanel>
                     </StackPanel>
+
+
+                </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Border Margin="10 5" Padding="5" BorderThickness="1" BorderBrush="AntiqueWhite">
+                            <StackPanel Orientation="Vertical">
+
+                            <StackPanel Orientation="Horizontal">
+                                <!-- СС система -->
+                                <StackPanel Orientation="Vertical">
+                                    
+                                    <TextBlock FontWeight="Bold" TextAlignment="Center" Margin="0 0 0 10">Сердечно-сосудистая система</TextBlock>
+                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                                            <!-- Частота -->
+                                            <StackPanel Orientation="Horizontal" Margin="0 0 50 0">
+                                                <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">ЧСС</TextBlock>
+                                                <TextBox Width="100" Margin="0 0 5 0" x:Name="HeartRateTextBox" TextChanged="HeartRateTextBox_TextChanged">60</TextBox>
+                                                <TextBlock>раз в минуту</TextBlock>
+                                            </StackPanel>
+
+                                            <!-- Давление -->
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Систолическое АД</TextBlock>
+                                                <TextBox Width="100" Margin="0 0 5 0" x:Name="SystolicArterialPressureTextBox" TextChanged="SystolicArterialPressureTextBox_TextChanged">120</TextBox>
+                                                <TextBlock>мм. рт. ст.</TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    <!-- Время капил. напол. ногтевого ложа -->
+                                    <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontWeight="Bold" Margin="0 0 10 0">Время наполнения ногтевого ложа</TextBlock>
+                                            <StackPanel x:Name="capillaryTimePanel" Orientation="Horizontal">
+                                                <RadioButton GroupName="CapillaryTime" Content="Меньше 2 с." Margin="0 0 10 0"
+                                                 IsChecked="True" x:Name="CapillaryTimeFastRadioButton" Click="CapillaryTimeFastRadioButton_Click" />
+                                                <RadioButton GroupName="CapillaryTime" Content="Больше 2 с." x:Name="CapillaryTimeSlowRadioButton" Click="CapillaryTimeSlowRadioButton_Click"/>
+                                            </StackPanel>
+                                        </StackPanel>   
+                                </StackPanel>
+                                <Border BorderThickness="1" BorderBrush="AliceBlue" Margin="5 0">
+                                    <StackPanel Orientation="Vertical" Width="350">
+                                        <TextBlock HorizontalAlignment="Center" FontWeight="Bold">Жалобы</TextBlock>
+                                        <TextBox Margin="5" x:Name="ComplaintsTextBox" 
+                                         TextChanged="ComplaintsTextBox_TextChanged" 
+                                         TextWrapping="Wrap" AcceptsReturn="True" 
+                                         Height="60"></TextBox>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontWeight="Bold">Вазопрессорная/Инотропная поддержка</TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton GroupName="HeartSupportRadioButton" x:Name="heartSupportNeedRadioButton" Click="heartSupportNeedRadioButton_Click" Margin="0 0 20 0">Да</RadioButton>
+                                <RadioButton GroupName="HeartSupportRadioButton" x:Name="heartSupportNoNeedRadioButton" Click="heartSupportNoNeedRadioButton_Click"  IsChecked="True">Нет</RadioButton>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <StackPanel x:Name="HeartSupportStackPanel" Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Margin="0 0 20 0">
+                                <TextBlock>Масса тела</TextBlock>
+                                <TextBox x:Name="BodyMassTextBox" TextChanged="BodyMassTextBox_TextChanged"></TextBox>
+                            </StackPanel>
+                                <!-- Норадреналин -->
+                                <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                    <TextBlock FontWeight="Bold" TextAlignment="Center">Норадреналин</TextBlock>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Кол-во (мг.)</TextBlock>
+                                        <TextBox x:Name="mgNoradrenalineDoseTextBox" TextChanged="mgNoradrenalineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Объем р-ра (мл.)</TextBlock>
+                                        <TextBox x:Name="volumeNoradrenalineDoseTextBox" TextChanged="volumeNoradrenalineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Скорость (мл/час)</TextBlock>
+                                        <TextBox x:Name="volumePerHourNoradrenalineDoseTextBox" TextChanged="volumePerHourNoradrenalineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Дозировка (мкг/кг/мин)</TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="NoradrenalineDoseTextBox"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <!-- Допамин -->
+                                <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                    <TextBlock FontWeight="Bold" TextAlignment="Center">Допамин</TextBlock>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Кол-во (мг.)</TextBlock>
+                                        <TextBox x:Name="mgDopamineDoseTextBox" TextChanged="mgDopamineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Объем р-ра (мл.)</TextBlock>
+                                        <TextBox x:Name="volumeDopamineDoseTextBox" TextChanged="volumeDopamineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Скорость (мл/час)</TextBlock>
+                                        <TextBox x:Name="volumePerHourDopamineDoseTextBox" TextChanged="volumePerHourDopamineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Дозировка (мкг/кг/мин)</TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="DopamineDoseTextBox"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <!-- Добутамин -->
+                                <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                    <TextBlock FontWeight="Bold" TextAlignment="Center">Добутамин</TextBlock>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Кол-во (мг.)</TextBlock>
+                                        <TextBox x:Name="mgDobutamineDoseTextBox" TextChanged="mgDobutamineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Объем р-ра (мл.)</TextBlock>
+                                        <TextBox x:Name="volumeDobutamineDoseTextBox" TextChanged="volumeDobutamineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Скорость (мл/час)</TextBlock>
+                                        <TextBox x:Name="volumePerHourDobutamineDoseTextBox" TextChanged="volumePerHourDobutamineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Дозировка (мкг/кг/мин)</TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="DobutamineDoseTextBox"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <!-- Адреналин -->
+                                <StackPanel Orientation="Vertical" Margin="0 0 20 0">
+                                    <TextBlock FontWeight="Bold" TextAlignment="Center">Адреналин</TextBlock>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Кол-во (мг.)</TextBlock>
+                                        <TextBox x:Name="mgAdrenalineDoseTextBox" TextChanged="mgAdrenalineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Объем р-ра (мл.)</TextBlock>
+                                        <TextBox x:Name="volumeAdrenalineDoseTextBox" TextChanged="volumeAdrenalineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Скорость (мл/час)</TextBlock>
+                                        <TextBox x:Name="volumePerHourAdrenalineDoseTextBox" TextChanged="volumePerHourAdrenalineDoseTextBox_TextChanged"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Дозировка (мкг/кг/мин)</TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="AdrenalineDoseTextBox"></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                         </Border>
+                    </StackPanel>
+
+
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" TextAlignment="Center">Состояние</TextBlock>
+                    <TextBox Margin="5"
+                             TextWrapping="Wrap" AcceptsReturn="True" 
+                             Height="80" x:Name="conditionSummaryTextBox" TextChanged="conditionSummaryTextBox_TextChanged">Обновленное состояние будет отражено здесь. Редактируйте текст после того, как заполните все поля.</TextBox>
                 </StackPanel>
             </StackPanel>
 
