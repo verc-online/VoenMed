@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TextFormattingHelper;
+using VoenMed.Utility;
 using VoenMedLibrary.DataAccess;
 using VoenMedLibrary.Models;
 using static VoenMedLibrary.Models.EnumModel;
@@ -55,17 +59,7 @@ namespace VoenMed.Controls
             // Характер повреждений
             // Диагноз
         }
-        #region SummaryStackPanel
-        private void refreshFullInfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            form100Model.InjuryStatusLocalis = injuryModel;
-            form100Model.Condition = conditionModel;
-            form100Model.HelpProvided = helpProvided;
 
-            fullPersonalInfoTextBox.Text = form100Model.GetFullPersonalInfo();
-        }
-        #endregion
-        
         #region NewForm
         private void LoadDefaultsFromDatabase()
         {
@@ -147,7 +141,6 @@ namespace VoenMed.Controls
         {
             damageStackPanel.Visibility = Visibility.Visible;
             helpProvidedStackPanel.Visibility = Visibility.Collapsed;
-            fullInfoStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Collapsed;
         }
 
@@ -156,7 +149,6 @@ namespace VoenMed.Controls
 
             damageStackPanel.Visibility = Visibility.Collapsed;
             helpProvidedStackPanel.Visibility = Visibility.Collapsed;
-            fullInfoStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Visible;
         }
 
@@ -165,7 +157,6 @@ namespace VoenMed.Controls
 
             damageStackPanel.Visibility = Visibility.Collapsed;
             helpProvidedStackPanel.Visibility = Visibility.Visible;
-            fullInfoStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Collapsed;
         }
 
@@ -176,7 +167,6 @@ namespace VoenMed.Controls
             damageStackPanel.Visibility = Visibility.Collapsed;
             helpProvidedStackPanel.Visibility = Visibility.Collapsed;
             conditionStackPanel.Visibility = Visibility.Collapsed;
-            fullInfoStackPanel.Visibility = Visibility.Visible;
         }
         #endregion
 
@@ -202,7 +192,7 @@ namespace VoenMed.Controls
 
                 conditionSummaryTextBox.Text = conditionModel.Condition;
             }
-            catch(NullReferenceException nullRefException)
+            catch (NullReferenceException nullRefException)
             {
                 Console.WriteLine(nullRefException.Message);
             }
@@ -562,7 +552,7 @@ namespace VoenMed.Controls
             conditionModel.Breathing.FiO2 = fiO2;
 
             SummaryCondition();
-            
+
         }
 
         private void HeartRateTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -843,7 +833,7 @@ namespace VoenMed.Controls
             leftLowerInjuryDetailPanel.Visibility = Visibility.Collapsed;
             // FFDBF1FF Chosen
         }
-       
+
         public void showThoraxInjuryDetailPanel()
         {
             collapseAllBodyPartsInjuryCharacteristic();
@@ -960,7 +950,7 @@ namespace VoenMed.Controls
         private void provideDrugButton_Click(object sender, RoutedEventArgs e)
         {
             ProvidedDrugModel model = new ProvidedDrugModel();
-            if(drugsComboBox.SelectedValue is null)
+            if (drugsComboBox.SelectedValue is null)
             {
                 MessageBox.Show("Выберите препарат!");
                 return;
@@ -1217,13 +1207,13 @@ namespace VoenMed.Controls
         {
             injuryModel.MakeEthiologyChopped();
             CheckIfEthiologyIsChecked();
-        }        
+        }
         private void CheckIfEthiologyIsChecked()
         {
             if (injuryModel.Ethiology > 0)
             {
                 messageStackPanel.Visibility = Visibility.Collapsed;
-                damagedAreaDetailStackPanel.Visibility= Visibility.Visible;
+                damagedAreaDetailStackPanel.Visibility = Visibility.Visible;
             }
             else
             {
@@ -2146,7 +2136,7 @@ namespace VoenMed.Controls
             injuryModel.Pelvis.DeleteVesselsDamage();
             UpdatePelvisStatusLocalis();
         }
-        
+
         private void bladderCheckbox_Checked(object sender, RoutedEventArgs e)
         {
             injuryModel.Pelvis.AddBladderDamage();
@@ -3932,7 +3922,7 @@ namespace VoenMed.Controls
 
         private void drainageOfThePleuralCavityRightCheckbox_Checked(object sender, RoutedEventArgs e)
         {
-            helpProvided.DrainageOfThePleuralCavity |= DrainageOfThePleuralCavityEnum.Right; 
+            helpProvided.DrainageOfThePleuralCavity |= DrainageOfThePleuralCavityEnum.Right;
             SummaryProvidedHelp();
         }
 
@@ -3972,7 +3962,7 @@ namespace VoenMed.Controls
             {
                 MessageBox.Show("Неправильно задано время!");
             }
-            
+
         }
 
         private void HideTimeTourniquetAppliedStackPanel()
@@ -4050,7 +4040,7 @@ namespace VoenMed.Controls
             try
             {
                 helpProvided.NaCl = int.Parse(NaClTextBox.Text);
-            SummaryProvidedHelp();
+                SummaryProvidedHelp();
             }
             catch
             {
@@ -4065,7 +4055,7 @@ namespace VoenMed.Controls
             try
             {
                 helpProvided.NaHC03 = int.Parse(NaHCO3TextBox.Text);
-            SummaryProvidedHelp();
+                SummaryProvidedHelp();
             }
             catch
             {
@@ -4079,7 +4069,7 @@ namespace VoenMed.Controls
             try
             {
                 helpProvided.Glucose5 = int.Parse(GlucoseTextBox.Text);
-            SummaryProvidedHelp();
+                SummaryProvidedHelp();
             }
             catch
             {
@@ -4093,7 +4083,7 @@ namespace VoenMed.Controls
             try
             {
                 helpProvided.Er = int.Parse(ErTextBox.Text);
-            SummaryProvidedHelp();
+                SummaryProvidedHelp();
             }
             catch
             {
@@ -4531,5 +4521,29 @@ namespace VoenMed.Controls
         }
         #endregion
 
+        private void saveFromButton_Click(object sender, RoutedEventArgs e)
+        {
+            form100Model.InjuryStatusLocalis = injuryModel;
+            form100Model.Condition = conditionModel;
+            form100Model.HelpProvided = helpProvided;
+            string savePath;
+            Dictionary<string, string> keyValuePairs = new();
+
+            WordDocumentDocx doc = new();
+            if (string.IsNullOrWhiteSpace(defaultsModel.SavePath))
+            {
+                MessageBox.Show("Не указан путь сохранения форм 100! Сохраняю в папку с приложением");
+                savePath = defaultsModel.GetDefaultSavePath();
+            }
+            else
+            {
+                savePath = defaultsModel.SavePath;
+            }
+            string filePath = doc.CreateForm100(keyValuePairs, savePath);
+            // AppHelper.Print(filePath);
+            string argument = "/select," + filePath;
+
+            System.Diagnostics.Process.Start("explorer.exe", argument);
+        }
     }
 }

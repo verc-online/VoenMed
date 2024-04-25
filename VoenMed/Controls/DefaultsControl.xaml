@@ -61,6 +61,15 @@
                     <RadioButton x:Name="evacWayRadioButton_3" GroupName="EvacuationWay" Content="ЦВМО" />
                 </StackPanel>
             </StackPanel>
+            <!-- Куда сохранять файлы -->
+            <StackPanel Margin="10">
+                <TextBlock TextAlignment="Center" FontWeight="Bold">Место сохранения форм 100</TextBlock>
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBox x:Name="folderSavePathTextBox" Width="500" Margin="0 0 10 0"></TextBox>
+                <Button Padding="5" x:Name="folderSavePathButton" Click="folderSavePathButton_Click">Открыть</Button>
+                </StackPanel>
+            </StackPanel>
 
             <!-- Стандартные кнопки -->
             <StackPanel>
@@ -92,8 +101,9 @@
                         <ComboBox x:Name="favDrug4ComboBox" Width="120"></ComboBox>
                     </StackPanel>
                 </StackPanel>
-                <Button x:Name="saveDefaultsButton" Margin="10" Padding="10" Click="saveDefaultsButton_Click">Сохранить</Button>
+                <Button x:Name="saveDefaultsButton" Margin="20" Padding="10" Click="saveDefaultsButton_Click">Сохранить</Button>
             </StackPanel>
+            
         </StackPanel>
     </Grid>
 </UserControl>

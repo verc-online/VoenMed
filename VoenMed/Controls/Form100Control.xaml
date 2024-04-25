@@ -238,14 +238,11 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
 
                 </Grid.ColumnDefinitions>
                 <Button x:Name="damageStackPanelButton" Grid.Column="1" Padding="5" Click="damageStackPanelButton_Click">Повреждения</Button>
                 <Button x:Name="conditionStackPanelButton" Grid.Column="3" Padding="5" Click="conditionStackPanelButton_Click">Состояние</Button>
                 <Button x:Name="helpProvidedPanelButton" Grid.Column="5" Padding="5" Click="helpProvidedPanelButton_Click">Оказанная помощь</Button>
-                <Button x:Name="printInfoPanelButton" Grid.Column="7" Padding="5" Click="printInfoPanelButton_Click">Предварительный просмотр</Button>
             </Grid>
             <!-- Локализация, жалобы -->
             <StackPanel x:Name="damageStackPanel" Orientation="Horizontal" Visibility="Collapsed">
@@ -2387,234 +2384,7 @@
 
 
             </StackPanel>
-
-            <!-- Оказанная помощь-->
-            <StackPanel x:Name="helpProvidedStackPanel" Orientation="Vertical" Visibility="Collapsed">
-                <!-- Оказанная помощь -->
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontWeight="Bold" TextAlignment="Center">Оказанная помощь</TextBlock>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-
-                        <!-- Дренирование и Декомпрессия -->
-                        <StackPanel Orientation="Vertical" Margin="0 0 200 10">
-                            <TextBlock TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               FontWeight="Bold"
-                                               HorizontalAlignment="Center">
-                                        Декомпрессия плевральной полости
-                            </TextBlock>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <CheckBox x:Name="decompressionOfThePleuralCavityRightCheckbox" Checked="decompressionOfThePleuralCavityRightCheckbox_Checked" Unchecked="decompressionOfThePleuralCavityRightCheckbox_Unchecked"  Margin="0 0 10 0">Справа</CheckBox>
-                                <CheckBox x:Name="decompressionOfThePleuralCavityLeftCheckbox" Checked="decompressionOfThePleuralCavityLeftCheckbox_Checked" Unchecked="decompressionOfThePleuralCavityLeftCheckbox_Unchecked" Margin="0 0 10 0">Слева</CheckBox>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Дренирование плевральной полости</TextBlock>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <CheckBox x:Name="drainageOfThePleuralCavityRightCheckbox" Checked="drainageOfThePleuralCavityRightCheckbox_Checked" Unchecked="drainageOfThePleuralCavityRightCheckbox_Unchecked" Margin="0 0 10 0">Справа</CheckBox>
-                                <CheckBox x:Name="drainageOfThePleuralCavityLeftCheckbox" Checked="drainageOfThePleuralCavityLeftCheckbox_Checked" Unchecked="drainageOfThePleuralCavityLeftCheckbox_Unchecked" Margin="0 0 10 0">Слева</CheckBox>
-                            </StackPanel>
-                        </StackPanel>
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <!-- Жгут -->
-                        <StackPanel Margin="0 5 10 0" Orientation="Vertical">
-                            <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Остановка кровотечения</TextBlock>
-                            <StackPanel Orientation="Horizontal" Margin="5">
-                                <RadioButton GroupName="Tourniquet" Content="Не требуется" Margin="0 0 10 0" x:Name="NoNeedTourniquetRadioButton" IsChecked="True" Click="NoNeedTourniquetRadioButton_Click"/>
-                                <RadioButton GroupName="Tourniquet" Content="Жгут" Margin="0 0 10 0" x:Name="TourniquetRadioButton" Click="TourniquetRadioButton_Click"/>
-                                <RadioButton GroupName="Tourniquet" Content="Давящая повязка" Margin="0 0 10 0" x:Name="PressureBandageRadioButton" Click="PressureBandageRadioButton_Click"/>
-                                <RadioButton GroupName="Tourniquet" Content="Прошивание сосудов" x:Name="OtherWayStopBleedingRadioButton" Click="OtherWayStopBleedingRadioButton_Click" />
-                            </StackPanel>
-                            <!-- Время наложения жгута -->
-                            <StackPanel Orientation="Horizontal" x:Name="TimeTourniqAppliedStackPanel" Visibility="Hidden">
-                                <TextBlock FontWeight="Bold" Margin="0 0 10 0">Время наложения жгута</TextBlock>
-                                <TextBox Width="200" x:Name="TimeTourniquetAppliedTextBox" TextChanged="TimeTourniquetAppliedTextBox_TextChanged"></TextBox>
-                            </StackPanel>
-                        </StackPanel>
-
-                        <!-- Повязка и иммобилизация -->
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <!-- Иммобилизация -->
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontWeight="Bold" Margin="0 0 10 0">Иммобилизация средствами</TextBlock>
-                                <RadioButton GroupName="Immobilization" Content="Нет" Margin="0 0 10 0"  IsChecked="True" x:Name="NoImmobilizationRadioButton" Click="NoImmobilizationRadioButton_Click"/>
-                                <RadioButton GroupName="Immobilization" Content="Штатными" Margin="0 0 10 0" x:Name="StandartImmobilizationRadioButton" Click="StandartImmobilizationRadioButton_Click"/>
-                                <RadioButton GroupName="Immobilization" Content="Подручными" x:Name="OtherImmobilizationRadioButton" Click="OtherImmobilizationRadioButton_Click"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </StackPanel>
-
-                    <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="10">
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical">
-                                    <!-- Препараты -->
-                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Препараты</TextBlock>
-                                    <StackPanel Orientation="Horizontal">
-                                        <StackPanel Orientation="Vertical" Margin="10 0 10 0">
-                                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Препарат</TextBlock>
-                                            <ComboBox Width="250" x:Name="drugsComboBox"
-                                                              SelectionChanged="drugsComboBox_SelectionChanged">
-                                            </ComboBox>
-
-                                        </StackPanel>
-                                        <StackPanel Orientation="Vertical">
-                                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Введено</TextBlock>
-                                            <TextBox x:Name="drugDose" Width="100"></TextBox>
-                                        </StackPanel>
-                                        <StackPanel>
-                                            <TextBlock x:Name="drugMeasurement"
-                                                               Margin="10 0 0 0"
-                                                               TextWrapping="Wrap"
-                                                               Width="70">
-                                                        ед. изм.
-                                            </TextBlock>
-                                        </StackPanel>
-                                        <Button Margin="10" Padding="10 5" x:Name="provideDrugButton"
-                                                        Click="provideDrugButton_Click">
-                                            Добавить
-                                        </Button>
-                                    </StackPanel>
-                                    <ListBox x:Name="drugsProvidedList" Height="145" ItemsSource="{Binding}"
-                                                     Margin="10 10 10 0" Padding="10">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Margin="5" Orientation="Horizontal">
-                                                    <!-- TODO: Препарат, объем, удалить-->
-                                                    <TextBlock x:Name="drugProvidedTitle"
-                                                                       Text="{Binding Title}"
-                                                                       HorizontalAlignment="Left" Margin="0 0 10 0" />
-                                                    <TextBlock x:Name="drugProvidedDose" Text="{Binding Dose}"
-                                                                       HorizontalAlignment="Center" Margin="0 0 10 0" />
-                                                    <TextBlock x:Name="drugProvidedMeasurement"
-                                                                       Text="{Binding Measurement}"
-                                                                       HorizontalAlignment="Right" Margin="0 0 10 0" />
-                                                    <Button x:Name="deleteDrugProvidedButton"
-                                                                    Click="deleteDrugProvidedButton_Click"
-                                                                    DataContext="{Binding}">
-                                                        Удалить
-                                                    </Button>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug1Button"
-                                                    Click="favDrug1Button_Click">
-                                            Промедол
-                                        </Button>
-                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug2Button"
-                                                    Click="favDrug2Button_Click">
-                                            Фентанил
-                                        </Button>
-                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug3Button"
-                                                    Click="favDrug3Button_Click">
-                                            Рокуроний
-                                        </Button>
-                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug4Button"
-                                                    Click="favDrug4Button_Click">
-                                            Транексам
-                                        </Button>
-                                        <Button Margin="0 0 10 10" Padding="5" x:Name="resetDrugsProvidedButton"
-                                                    Click="resetDrugsProvidedButton_Click">
-                                            Сброс
-                                        </Button>
-                                    </StackPanel>
-
-                                </StackPanel>
-                            </StackPanel>
-                            <Border BorderBrush="Gainsboro" BorderThickness="1" Padding="10" Margin="10">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Инуфзии / Трансфузии</TextBlock>
-                                    <!-- Трансфузии -->
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <StackPanel>
-                                            <!-- NaCl 0.9% -->
-                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">NaCl 0.9% (мл.)</TextBlock>
-                                                <TextBox x:Name="NaClTextBox" TextChanged="NaClTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
-                                            </StackPanel>
-                                            <!-- NaHCO3 9% -->
-                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">NaHCO3 9% (мл.)</TextBlock>
-                                                <TextBox x:Name="NaHCO3TextBox" TextChanged="NaHCO3TextBox_TextChanged" Margin="0 0 10 0"></TextBox>
-                                            </StackPanel>
-                                            <!-- Глюкоза 5% -->
-                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">Глюкоза 5% (мл.)</TextBlock>
-                                                <TextBox  x:Name="GlucoseTextBox" TextChanged="GlucoseTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
-                                            </StackPanel>
-                                        </StackPanel>
-                                        <StackPanel>
-                                            <!-- Эр взвесь -->
-                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 10 0">Эр. взвесь (мл.)</TextBlock>
-                                                <TextBox x:Name="ErTextBox" TextChanged="ErTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
-                                            </StackPanel>
-                                            <!-- СЗП -->
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Margin="0 0 10 0">СЗП (мл.)</TextBlock>
-                                                <TextBox x:Name="SzpTextBox" TextChanged="SzpTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
-
-                        </StackPanel>
-                    </Border>
-
-                </StackPanel>
-                <!-- Реанимация -->
-                <Border BorderBrush="PaleVioletRed" BorderThickness="1" Margin="10">
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
-                                <TextBlock Margin="0 0 5 0" FontWeight="Bold">Реанимационные мероприятия</TextBlock>
-                                <RadioButton GroupName="IntensiveCareMeasuresGroup" x:Name="IntensiveCareWereRadioButton" Click="IntensiveCareWereRadioButton_Click" Margin="0 0 5 0">Да</RadioButton>
-                                <RadioButton GroupName="IntensiveCareMeasuresGroup" x:Name="IntensiveCareWerentRadioButton" Click="IntensiveCareWerentRadioButton_Click" IsChecked="True">Нет</RadioButton>
-                            </StackPanel>
-
-                            <StackPanel x:Name="IntensiveCareStackPanel" Visibility="Hidden" Orientation="Horizontal">
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                        <TextBlock Margin="0 0 5 0" FontWeight="Bold">Продолжительность</TextBlock>
-                                        <TextBox Width="100" Margin="0 0 5 0" x:Name="IntensiveCareTimeTextBox" TextChanged="IntensiveCareTimeTextBox_TextChanged"></TextBox>
-                                        <TextBlock>мин.</TextBlock>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" x:Name="LethalTimeStackPanel" Visibility="Visible">
-                                        <TextBlock Margin="0 0 5 0" FontWeight="Bold">Летальный исход</TextBlock>
-                                        <TextBox x:Name="LethalTimeTextBox" Width="200" Margin="0 0 5 0"></TextBox>
-                                    </StackPanel>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="0 0 5 0" FontWeight="Bold">Успешно?</TextBlock>
-                                    <RadioButton GroupName="IntensiveCareSuccessMeasuresGroup" Margin="0 0 5 0" x:Name="IntensiveCareMeasuressSuccess" Checked="IntensiveCareMeasuressSuccess_Checked">Да</RadioButton>
-                                    <RadioButton GroupName="IntensiveCareSuccessMeasuresGroup" x:Name="IntensiveCareMeasuressLethal" Checked="IntensiveCareMeasuressLethal_Checked">Нет</RadioButton>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                <!-- Выполнено-->
-                <StackPanel Width="1000">
-                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Выполнено</TextBlock>
-                    <TextBox Margin="5 0" TextWrapping="Wrap" 
-                             AcceptsReturn="True" Height="100" 
-                             x:Name="helpProvidedSummaryTextBox" 
-                             TextChanged="helpProvidedSummaryTextBox_TextChanged"></TextBox>
-                </StackPanel>
-                <!-- Диагноз-->
-                <StackPanel Width="1000">
-                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Диагноз</TextBlock>
-                    <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="140" x:Name="DiagnosisTextBox"></TextBox>
-                </StackPanel>
-                <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton">Сохранить</Button>
-            </StackPanel>
-
+            
             <!-- Состояние -->
             <StackPanel Margin="5 5 0 0" Grid.Row="7" Grid.ColumnSpan="2" x:Name="conditionStackPanel"
                         Visibility="Collapsed">
@@ -2949,14 +2719,234 @@
                 </StackPanel>
             </StackPanel>
 
-            <!-- Вся информация -->
-            <StackPanel x:Name="fullInfoStackPanel" Visibility="Collapsed">
-                <TextBlock>Личные данные</TextBlock>
-                <TextBlock x:Name="fullPersonalInfoTextBox" Height="100" TextWrapping="Wrap" Margin="10"></TextBlock>
+            <!-- Оказанная помощь-->
+            <StackPanel x:Name="helpProvidedStackPanel" Orientation="Vertical" Visibility="Collapsed">
+                <!-- Оказанная помощь -->
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center">Оказанная помощь</TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
-                <Button x:Name="refreshFullInfoButton" Click="refreshFullInfoButton_Click" Margin="10" Padding="5">Обновить</Button>
-                <Button x:Name="printButton" Click="refreshFullInfoButton_Click" Margin="10" Padding="5">Печать</Button>
+                        <!-- Дренирование и Декомпрессия -->
+                        <StackPanel Orientation="Vertical" Margin="0 0 200 10">
+                            <TextBlock TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center">
+                                        Декомпрессия плевральной полости
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <CheckBox x:Name="decompressionOfThePleuralCavityRightCheckbox" Checked="decompressionOfThePleuralCavityRightCheckbox_Checked" Unchecked="decompressionOfThePleuralCavityRightCheckbox_Unchecked"  Margin="0 0 10 0">Справа</CheckBox>
+                                <CheckBox x:Name="decompressionOfThePleuralCavityLeftCheckbox" Checked="decompressionOfThePleuralCavityLeftCheckbox_Checked" Unchecked="decompressionOfThePleuralCavityLeftCheckbox_Unchecked" Margin="0 0 10 0">Слева</CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Дренирование плевральной полости</TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <CheckBox x:Name="drainageOfThePleuralCavityRightCheckbox" Checked="drainageOfThePleuralCavityRightCheckbox_Checked" Unchecked="drainageOfThePleuralCavityRightCheckbox_Unchecked" Margin="0 0 10 0">Справа</CheckBox>
+                                <CheckBox x:Name="drainageOfThePleuralCavityLeftCheckbox" Checked="drainageOfThePleuralCavityLeftCheckbox_Checked" Unchecked="drainageOfThePleuralCavityLeftCheckbox_Unchecked" Margin="0 0 10 0">Слева</CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!-- Жгут -->
+                        <StackPanel Margin="0 5 10 0" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 10 0">Остановка кровотечения</TextBlock>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <RadioButton GroupName="Tourniquet" Content="Не требуется" Margin="0 0 10 0" x:Name="NoNeedTourniquetRadioButton" IsChecked="True" Click="NoNeedTourniquetRadioButton_Click"/>
+                                <RadioButton GroupName="Tourniquet" Content="Жгут" Margin="0 0 10 0" x:Name="TourniquetRadioButton" Click="TourniquetRadioButton_Click"/>
+                                <RadioButton GroupName="Tourniquet" Content="Давящая повязка" Margin="0 0 10 0" x:Name="PressureBandageRadioButton" Click="PressureBandageRadioButton_Click"/>
+                                <RadioButton GroupName="Tourniquet" Content="Прошивание сосудов" x:Name="OtherWayStopBleedingRadioButton" Click="OtherWayStopBleedingRadioButton_Click" />
+                            </StackPanel>
+                            <!-- Время наложения жгута -->
+                            <StackPanel Orientation="Horizontal" x:Name="TimeTourniqAppliedStackPanel" Visibility="Hidden">
+                                <TextBlock FontWeight="Bold" Margin="0 0 10 0">Время наложения жгута</TextBlock>
+                                <TextBox Width="200" x:Name="TimeTourniquetAppliedTextBox" TextChanged="TimeTourniquetAppliedTextBox_TextChanged"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Повязка и иммобилизация -->
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <!-- Иммобилизация -->
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold" Margin="0 0 10 0">Иммобилизация средствами</TextBlock>
+                                <RadioButton GroupName="Immobilization" Content="Нет" Margin="0 0 10 0"  IsChecked="True" x:Name="NoImmobilizationRadioButton" Click="NoImmobilizationRadioButton_Click"/>
+                                <RadioButton GroupName="Immobilization" Content="Штатными" Margin="0 0 10 0" x:Name="StandartImmobilizationRadioButton" Click="StandartImmobilizationRadioButton_Click"/>
+                                <RadioButton GroupName="Immobilization" Content="Подручными" x:Name="OtherImmobilizationRadioButton" Click="OtherImmobilizationRadioButton_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <!-- Препараты -->
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Препараты</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+                                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Препарат</TextBlock>
+                                            <ComboBox Width="250" x:Name="drugsComboBox"
+                                                              SelectionChanged="drugsComboBox_SelectionChanged">
+                                            </ComboBox>
+
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Введено</TextBlock>
+                                            <TextBox x:Name="drugDose" Width="100"></TextBox>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock x:Name="drugMeasurement"
+                                                               Margin="10 0 0 0"
+                                                               TextWrapping="Wrap"
+                                                               Width="70">
+                                                        ед. изм.
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <Button Margin="10" Padding="10 5" x:Name="provideDrugButton"
+                                                        Click="provideDrugButton_Click">
+                                            Добавить
+                                        </Button>
+                                    </StackPanel>
+                                    <ListBox x:Name="drugsProvidedList" Height="145" ItemsSource="{Binding}"
+                                                     Margin="10 10 10 0" Padding="10">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Margin="5" Orientation="Horizontal">
+                                                    <!-- TODO: Препарат, объем, удалить-->
+                                                    <TextBlock x:Name="drugProvidedTitle"
+                                                                       Text="{Binding Title}"
+                                                                       HorizontalAlignment="Left" Margin="0 0 10 0" />
+                                                    <TextBlock x:Name="drugProvidedDose" Text="{Binding Dose}"
+                                                                       HorizontalAlignment="Center" Margin="0 0 10 0" />
+                                                    <TextBlock x:Name="drugProvidedMeasurement"
+                                                                       Text="{Binding Measurement}"
+                                                                       HorizontalAlignment="Right" Margin="0 0 10 0" />
+                                                    <Button x:Name="deleteDrugProvidedButton"
+                                                                    Click="deleteDrugProvidedButton_Click"
+                                                                    DataContext="{Binding}">
+                                                        Удалить
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug1Button"
+                                                    Click="favDrug1Button_Click">
+                                            Промедол
+                                        </Button>
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug2Button"
+                                                    Click="favDrug2Button_Click">
+                                            Фентанил
+                                        </Button>
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug3Button"
+                                                    Click="favDrug3Button_Click">
+                                            Рокуроний
+                                        </Button>
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="favDrug4Button"
+                                                    Click="favDrug4Button_Click">
+                                            Транексам
+                                        </Button>
+                                        <Button Margin="0 0 10 10" Padding="5" x:Name="resetDrugsProvidedButton"
+                                                    Click="resetDrugsProvidedButton_Click">
+                                            Сброс
+                                        </Button>
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </StackPanel>
+                            <Border BorderBrush="Gainsboro" BorderThickness="1" Padding="10" Margin="10">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold">Инуфзии / Трансфузии</TextBlock>
+                                    <!-- Трансфузии -->
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel>
+                                            <!-- NaCl 0.9% -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">NaCl 0.9% (мл.)</TextBlock>
+                                                <TextBox x:Name="NaClTextBox" TextChanged="NaClTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                            <!-- NaHCO3 9% -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">NaHCO3 9% (мл.)</TextBlock>
+                                                <TextBox x:Name="NaHCO3TextBox" TextChanged="NaHCO3TextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                            <!-- Глюкоза 5% -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">Глюкоза 5% (мл.)</TextBlock>
+                                                <TextBox  x:Name="GlucoseTextBox" TextChanged="GlucoseTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <!-- Эр взвесь -->
+                                            <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                                                <TextBlock Margin="0 0 10 0">Эр. взвесь (мл.)</TextBlock>
+                                                <TextBox x:Name="ErTextBox" TextChanged="ErTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                            <!-- СЗП -->
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Margin="0 0 10 0">СЗП (мл.)</TextBlock>
+                                                <TextBox x:Name="SzpTextBox" TextChanged="SzpTextBox_TextChanged" Margin="0 0 10 0"></TextBox>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+                <!-- Реанимация -->
+                <Border BorderBrush="PaleVioletRed" BorderThickness="1" Margin="10">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <StackPanel Orientation="Horizontal" Margin="0 0 10 0">
+                                <TextBlock Margin="0 0 5 0" FontWeight="Bold">Реанимационные мероприятия</TextBlock>
+                                <RadioButton GroupName="IntensiveCareMeasuresGroup" x:Name="IntensiveCareWereRadioButton" Click="IntensiveCareWereRadioButton_Click" Margin="0 0 5 0">Да</RadioButton>
+                                <RadioButton GroupName="IntensiveCareMeasuresGroup" x:Name="IntensiveCareWerentRadioButton" Click="IntensiveCareWerentRadioButton_Click" IsChecked="True">Нет</RadioButton>
+                            </StackPanel>
+
+                            <StackPanel x:Name="IntensiveCareStackPanel" Visibility="Hidden" Orientation="Horizontal">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                                        <TextBlock Margin="0 0 5 0" FontWeight="Bold">Продолжительность</TextBlock>
+                                        <TextBox Width="100" Margin="0 0 5 0" x:Name="IntensiveCareTimeTextBox" TextChanged="IntensiveCareTimeTextBox_TextChanged"></TextBox>
+                                        <TextBlock>мин.</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" x:Name="LethalTimeStackPanel" Visibility="Visible">
+                                        <TextBlock Margin="0 0 5 0" FontWeight="Bold">Летальный исход</TextBlock>
+                                        <TextBox x:Name="LethalTimeTextBox" Width="200" Margin="0 0 5 0"></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="0 0 5 0" FontWeight="Bold">Успешно?</TextBlock>
+                                    <RadioButton GroupName="IntensiveCareSuccessMeasuresGroup" Margin="0 0 5 0" x:Name="IntensiveCareMeasuressSuccess" Checked="IntensiveCareMeasuressSuccess_Checked">Да</RadioButton>
+                                    <RadioButton GroupName="IntensiveCareSuccessMeasuresGroup" x:Name="IntensiveCareMeasuressLethal" Checked="IntensiveCareMeasuressLethal_Checked">Нет</RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                <!-- Выполнено-->
+                <StackPanel Width="1000">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Выполнено</TextBlock>
+                    <TextBox Margin="5 0" TextWrapping="Wrap" 
+                             AcceptsReturn="True" Height="100" 
+                             x:Name="helpProvidedSummaryTextBox" 
+                             TextChanged="helpProvidedSummaryTextBox_TextChanged"></TextBox>
+                </StackPanel>
+                <!-- Диагноз-->
+                <StackPanel Width="1000">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Диагноз</TextBlock>
+                    <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="140" x:Name="DiagnosisTextBox"></TextBox>
+                </StackPanel>
+                <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton" Click="saveFromButton_Click">Сохранить</Button>
             </StackPanel>
+
+
         </StackPanel>
 
 

@@ -14,16 +14,13 @@
         <Menu IsMainMenu="True" Grid.Row="0" FontSize="18">
             <MenuItem Header="_Основное (О)">
                 <MenuItem Header="_Контакты для связи (К)" x:Name="aboutMenuItem"></MenuItem>
-                <MenuItem Header="_Выход (В)" x:Name="exitMenuItem"></MenuItem>
+                <MenuItem Header="_Выход (В)" x:Name="exitMenuItem" Click="exitMenuItem_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Форма 100(Ф)">
                 <MenuItem Header="_Новая форма(Н)" x:Name="formMenuItem" Click="formMenuItem_Click"></MenuItem>
                 <MenuItem Header="_Журнал (Ж)" x:Name="formListMenuItem"></MenuItem>
             </MenuItem>
-            <MenuItem  Header="_Настройки (Н)">
-                <MenuItem Header="_Данные по умолчанию (Д)" x:Name="defaultsMenuItem" Click="defaultsMenuItem_Click"></MenuItem>
-                <MenuItem Header="_Лекарства (Л)" x:Name="drugsMenuItem"></MenuItem>
-            </MenuItem>
+            <MenuItem  Header="_Настройки (Н)"  x:Name="defaultsMenuItem" Click="defaultsMenuItem_Click"></MenuItem>
         </Menu>
         <ContentControl x:Name="content" Grid.Row="1"></ContentControl>
     </Grid>

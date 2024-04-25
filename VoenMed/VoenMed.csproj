@@ -49,6 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TextFormattingHelper\TextFormattingHelper.csproj" />
     <ProjectReference Include="..\VoenMedLibrary\VoenMedLibrary.csproj" />
   </ItemGroup>
 
@@ -164,6 +165,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Forms100\_Образец.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="VoenMedDb.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -171,6 +175,11 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspose.Words" Version="24.4.0" />
+    <PackageReference Include="DocX" Version="3.0.0" />
   </ItemGroup>
 
 </Project>

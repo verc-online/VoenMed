@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using VoenMedLibrary.DataAccess;
 using VoenMedLibrary.Models;
 
@@ -107,6 +95,8 @@ namespace VoenMed.Controls
                 favDrug3ComboBox.SelectedValue = model.FavDrug3Id;
                 favDrug4ComboBox.SelectedValue = model.FavDrug4Id;
 
+                folderSavePathTextBox.Text = model.SavePath;
+
             }
             else
             {
@@ -115,6 +105,8 @@ namespace VoenMed.Controls
                 evacAddressTextBox.Text = "";
                 evacTransportRadioButton_1.IsChecked = true;
                 evacWayRadioButton_3.IsChecked = true;
+                folderSavePathTextBox.Text = "";
+
             }
         }
         private (bool isValid, DefaultsModel model) ValidateForm()
@@ -141,6 +133,7 @@ namespace VoenMed.Controls
                 model.FavDrug2Id = (int)favDrug2ComboBox.SelectedValue;
                 model.FavDrug3Id = (int)favDrug3ComboBox.SelectedValue;
                 model.FavDrug4Id = (int)favDrug4ComboBox.SelectedValue;
+                model.SavePath = folderSavePathTextBox.Text;
             }
             catch
             {
@@ -153,8 +146,8 @@ namespace VoenMed.Controls
             string sql = "delete from Defaults";
             SqliteDataAccess.SaveData(sql, new Dictionary<string, object>());
 
-            sql = "insert into Defaults (IssuedBy,Doc,EvacAddress,EvacTransport,EvacWay, FavDrug1Id,FavDrug2Id,FavDrug3Id,FavDrug4Id) " +
-                                "values (@IssuedBy,@Doc,@EvacAddress,@EvacTransport,@EvacWay, @FavDrug1Id,@FavDrug2Id,@FavDrug3Id,@FavDrug4Id);";
+            sql = "insert into Defaults (IssuedBy,Doc,EvacAddress,EvacTransport,EvacWay, FavDrug1Id,FavDrug2Id,FavDrug3Id,FavDrug4Id, SavePath) " +
+                                "values (@IssuedBy,@Doc,@EvacAddress,@EvacTransport,@EvacWay, @FavDrug1Id,@FavDrug2Id,@FavDrug3Id,@FavDrug4Id, @SavePath);";
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
                 {"@IssuedBy", model.IssuedBy },
@@ -166,6 +159,7 @@ namespace VoenMed.Controls
                 {"@FavDrug2Id", model.FavDrug2Id },
                 {"@FavDrug3Id", model.FavDrug3Id },
                 {"@FavDrug4Id", model.FavDrug4Id },
+                {"@SavePath", model.SavePath },
             };
             SqliteDataAccess.SaveData(sql, parameters);
         }
@@ -184,6 +178,22 @@ namespace VoenMed.Controls
                 return;
             }
             
+        }
+
+        private void folderSavePathButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            var folderDialog = new OpenFolderDialog
+            {
+                Title = "Выберите папку",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
+            };
+
+            if (folderDialog.ShowDialog() == true)
+            {
+                var folderName = folderDialog.FolderName;
+                folderSavePathTextBox.Text = folderName;
+            }
         }
     }
 }

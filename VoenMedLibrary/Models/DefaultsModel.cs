@@ -17,5 +17,12 @@ namespace VoenMedLibrary.Models
         public int FavDrug2Id { get; set; }
         public int FavDrug3Id { get; set; }
         public int FavDrug4Id { get; set; }
+
+        public string SavePath { get; set; }
+
+        public string GetDefaultSavePath()
+        {
+            return Path.Combine(Environment.CurrentDirectory, "Forms100");
+        }
     }
 }

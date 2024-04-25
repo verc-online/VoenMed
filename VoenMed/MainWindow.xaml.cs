@@ -32,5 +32,10 @@ namespace VoenMed
         {
             content.Content = new Form100Control();
         }
+
+        private void exitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

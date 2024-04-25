@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TextFormattingHelper\TextFormattingHelper.csproj" />
     <ProjectReference Include="..\VoenMedLibrary\VoenMedLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Forms100\" />
   </ItemGroup>
 
 </Project>

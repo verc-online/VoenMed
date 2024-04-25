@@ -1,4 +1,5 @@
-﻿using VoenMedLibrary.Models;
+﻿using TextFormattingHelper;
+using VoenMedLibrary.Models;
 
 namespace TestArea
 {
@@ -8,8 +9,17 @@ namespace TestArea
         {
             Console.WriteLine("Hello, World!");
 
-            InjuryStatusLocalisModel model = new InjuryStatusLocalisModel();
+            string savePath = "C:\\Users\\LisiPisi\\Documents\\Foms100";
+
+            WordDocumentDocx helper = new();
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>
+            {
+                {"%IssuedBy%", "А-хssз-когда"}
+            };
+
+            helper.CreateForm100(keyValuePairs, savePath);
 
         }
+
     }
 }
