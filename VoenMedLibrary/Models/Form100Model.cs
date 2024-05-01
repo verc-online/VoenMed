@@ -9,21 +9,21 @@ namespace VoenMedLibrary.Models
 {
     public class Form100Model
     {
+        public int Id { get; set; }
         public string IssuedBy { get; set; } // Кем выдана
         public DateTime IssuedWhen { get; set; } // Когда выдана
 
-        //
         public string LastName { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string SecondName { get; set; } = string.Empty;
 
         public DateOnly? BirthDate { get; set; } = null;
-        public string MilitaryId { get; set; } = "Личный номер неизвестен";
-        public string MilitaryUnit { get; set; } = "Войсковая часть неизвестна";
-        public string Duty { get; set; } = "Должность неизвестна";
+        public string MilitaryId { get; set; } = "Неизвестен";
+        public string MilitaryUnit { get; set; } = "Неизвестна";
+        public string Duty { get; set; } = "Неизвестна";
 
         public int Rank { get; set; }
-        public string RankTitle { get; set; } = "Звание неизвестно";
+        public string RankTitle { get; set; } = "Неизвестно";
 
         public ReasonEnum Reason { get; set; } = ReasonEnum.Gunshot;
         public int WithoutFirstAid { get; set; } = 0;
@@ -33,9 +33,11 @@ namespace VoenMedLibrary.Models
         public EvacuationOrderEnum EvacuationOrder { get; set; } = EvacuationOrderEnum.First;
         public EvacuationTransportEnum EvacuationTransport { get; set; } = EvacuationTransportEnum.MedAm;
         public EvacuationPositionEnum EvacuationPosition { get; set; } = EvacuationPositionEnum.LyingDown;
-        public SpecialEnum Special { get; set; } = SpecialEnum.LifeThreateningCondition;
         public string EvacAddress { get; set; }
         public DateTime EvacTime { get; set; }
+        public SpecialEnum Special { get; set; } = SpecialEnum.LifeThreateningCondition;
+
+        public string Diagnosis { get; set; }
         public string Doc { get; set; }
 
         public InjuryStatusLocalisModel InjuryStatusLocalis { get; set; } = new();
@@ -67,5 +69,6 @@ namespace VoenMedLibrary.Models
 
             return output;
         }
+
     }
 }

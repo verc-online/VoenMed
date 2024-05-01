@@ -17,7 +17,6 @@ namespace TestArea
                 {"%IssuedBy%", "А-хssз-когда"}
             };
 
-            helper.CreateForm100(keyValuePairs, savePath);
 
         }
 

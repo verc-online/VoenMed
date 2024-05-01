@@ -11,6 +11,8 @@ using System.Windows;
 using System.Diagnostics;
 using Xceed.Words.NET;
 using Microsoft.Office.Interop.Word;
+using TextFormattingHelper;
+using VoenMedLibrary.Models;
 
 namespace VoenMed.Utility
 {
@@ -81,5 +83,84 @@ namespace VoenMed.Utility
         }
 
 
+        public static void GenerateAndOpenForm100(string savePath, Form100Model form100Model)
+        {
+            WordDocumentDocx doc = new();
+            Dictionary<string, string> keyValuePairs = new()
+            { 
+                {"@LastName", form100Model.LastName },
+                {"@FirstName", form100Model.FirstName },
+                {"@SecondName", form100Model.SecondName },
+                {"@BirthDate", form100Model.BirthDate.ToString() },
+                {"@MilitaryUnit", form100Model.MilitaryUnit },
+                {"@MilitaryId", form100Model.MilitaryId },
+                {"@Duty", form100Model.Duty },
+                {"@RankTitle", form100Model.RankTitle },
+                {"@IssuedBy", form100Model.IssuedBy },
+                {"@Ethiology", form100Model.InjuryStatusLocalis.Ethiology.GetDescription() },
+                {"@IssuedWhen", form100Model.IssuedWhen.ToString() },
+                //{"@WithOutFirstAid", form100Model.WithoutFirstAid }, REMAKE
+                {"@Reason", form100Model.Reason.GetDescription() },
+                {"@DiseaseTime", form100Model.DiseaseTime.ToString() },
+                {"@EvacOrder", form100Model.EvacuationOrder.GetDescription() },
+                {"@EvacTransport", form100Model.EvacuationTransport.GetDescription() },
+                {"@EvacPosition", form100Model.EvacuationPosition.GetDescription() },
+                {"@EvacWay", form100Model.EvacuationWay.GetDescription() },
+                {"@EvacAddress", form100Model.EvacAddress },
+                {"@EvacTime", form100Model.EvacTime.ToString() },
+                {"@SpecialMarks", form100Model.Special.GetDescriptionsAsText() },
+                {"@LethalTime", form100Model.HelpProvided.LethalDateTime.ToString() ?? "" },
+                {"@Diagnosis", form100Model.InjuryStatusLocalis.Diagnosis },
+                {"@Doc", form100Model.Doc },
+                {"@WayStopBleeding", form100Model.HelpProvided.WayStopBleeding.GetDescription() },
+                {"@TimeTourniquetApplied", form100Model.HelpProvided.TimeTourniquetApplied.ToString() ?? "" },
+                {"@DecompressionOfThePleuralCavity", form100Model.HelpProvided.DecompressionOfThePleuralCavity.GetDescriptionsAsText() },
+                {"@DrainageOfThePleuralCavity", form100Model.HelpProvided.DrainageOfThePleuralCavity.GetDescriptionsAsText() },
+                {"@Immobilization", form100Model.HelpProvided.Immobilization.GetDescription() },
+                {"@NaCl", form100Model.HelpProvided.NaCl.ToString() ?? "" },
+                {"@NaHC03", form100Model.HelpProvided.NaHC03.ToString() ?? "" },
+                {"@Glucose5", form100Model.HelpProvided.Glucose5.ToString() ?? "" },
+                {"@Er", form100Model.HelpProvided.Er.ToString() ?? "" },
+                {"@Szp", form100Model.HelpProvided.Szp.ToString() ?? "" },
+                {"@IntensiveCareMeasures", form100Model.HelpProvided.IntensiveCareMeasures.GetDescription() },
+                {"@IntensiveCareMeasuresTimeSpent", form100Model.HelpProvided.IntensiveCareMeasuresTimeSpent.ToString() ?? "" },
+                {"@LethalDateTime", form100Model.HelpProvided.LethalDateTime.ToString() ?? "" },
+                {"@HelpProvidedSummary", form100Model.HelpProvided.HelpProvidedSummary },
+                // DRUG PROVIDED,
+                {"@Temperature", form100Model.Condition.Temperature.ToString() },
+                {"@DiuresPerFirstHour", form100Model.Condition.DiuresPerFirstHour.ToString() },
+                {"@AdditionalInfo", form100Model.Condition.AdditionalInfo.GetDescriptionsAsText() },
+                {"@Complaints", form100Model.Condition.Complaints },
+                {"@Condition", form100Model.Condition.Condition },
+                {"@Consience", form100Model.Condition.GlasgowComaScale.Consience.GetDescription() },
+                {"@EyeResponse", form100Model.Condition.GlasgowComaScale.EyeResponse.GetDescription() },
+                {"@VerbalResponse", form100Model.Condition.GlasgowComaScale.VerbalResponse.GetDescription() },
+                {"@MotorResponse", form100Model.Condition.GlasgowComaScale.MotorResponse.GetDescription() },
+                {"@BreathingSupport", form100Model.Condition.Breathing.BreathingSupport.GetDescription() },
+                {"@BreathingRate", form100Model.Condition.Breathing.BreathingRate.ToString() },
+                {"@Saturation", form100Model.Condition.Breathing.Saturation.ToString() },
+                {"@FiO2", form100Model.Condition.Breathing.FiO2.ToString() },
+                {"@Summary", form100Model.Condition.Breathing.Summary },
+                {"@Rate", form100Model.Condition.Heart.Rate.ToString() },
+                {"@SystolicArterialPressure", form100Model.Condition.Heart.SystolicArterialPressure.ToString() },
+                {"@CapillaryTime", form100Model.Condition.Heart.CapillaryTime.ToString() },
+                {"@NoradrenalineDose", form100Model.Condition.Heart.NoradrenalineDose.ToString() },
+                {"@DopamineDose", form100Model.Condition.Heart.DopamineDose.ToString() },
+                {"@DobutamineDose", form100Model.Condition.Heart.DobutamineDose.ToString() },
+                {"@AdrenalineDose", form100Model.Condition.Heart.AdrenalineDose.ToString() },
+                // Injuries
+
+            };
+
+            string filePath = doc.CreateForm100(keyValuePairs, savePath);
+
+            // AppHelper.Print(filePath);
+
+            string argument = "/select," + filePath;
+
+            MessageBox.Show("Успешно!");
+
+            System.Diagnostics.Process.Start("explorer.exe", argument);
+        }
     }
 }

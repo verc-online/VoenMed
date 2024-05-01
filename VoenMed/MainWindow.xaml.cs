@@ -20,7 +20,7 @@ namespace VoenMed
         public MainWindow()
         {
             InitializeComponent();
-            content.Content = new Form100Control();
+            content.Content = new From100ListControl();
         }
 
         private void defaultsMenuItem_Click(object sender, RoutedEventArgs e)
@@ -36,6 +36,11 @@ namespace VoenMed
         private void exitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void formListMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            content.Content = new From100ListControl();
         }
     }
 }

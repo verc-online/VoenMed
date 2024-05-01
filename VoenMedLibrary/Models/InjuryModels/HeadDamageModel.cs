@@ -10,9 +10,9 @@ namespace VoenMedLibrary.Models.InjuryModels
 {
     public class HeadDamageModel : DamageBaseModel
     {
-        public HeadLocalisationEnum Localisation { get; private set; }
-        public HeadDamageEnum Damage { get; private set; }
-        public HeadFractureEnum Fracture { get; private set; }
+        public HeadLocalisationEnum Localisation { get; private set; } = 0;
+        public HeadDamageEnum Damage { get; private set; } = 0;
+        public HeadFractureEnum Fracture { get; private set; } = 0;
 
         public string StatusLocalis { get; set; } = "";
         

@@ -21,13 +21,9 @@ namespace TextFormattingHelper
 
             // Let's save the file with a meaningful name, including the 
             // applicant name and the letter date:
-            string outputFileName = Path.Combine(
-                savePath, string.Format(fileNameTemplate, keyValuePairs.FirstOrDefault().Value, DateTime.Now.ToString("dd-MM-yy")));
+            string outputFileName = Path.Combine(savePath, string.Format(fileNameTemplate, keyValuePairs.FirstOrDefault().Value, DateTime.Now.ToString("dd-MM-yy")));
 
 
-            //снимем защиту с файла для редактирования защищённых областей
-            //letter.RemoveProtection();
-            //letter.AddPasswordProtection(EditRestrictions.readOnly, password);
             using (DocX letter = DocX.Load("V:\\Git\\VoenMed\\VoenMed\\bin\\Debug\\net8.0-windows\\Forms100\\_Образец.docx"))
             {
                 // Perform the replace:

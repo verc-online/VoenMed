@@ -18,16 +18,16 @@ namespace VoenMedLibrary.Models
 
         #region Локализация повреждения
         public HeadDamageModel Head { get; set; } = new();
-        public NeckDamageModel Neck { get; private set; } = new();
-        public ThoraxDamageModel Thorax { get; private set; } = new();
-        public AbdomenDamageModel Abdomen { get; private set; } = new();
-        public PelvisDamageModel Pelvis { get; private set; } = new();
-        public SpineDamageModel Spine { get; private set; } = new();
+        public NeckDamageModel Neck { get;  set; } = new();
+        public ThoraxDamageModel Thorax { get;  set; } = new();
+        public AbdomenDamageModel Abdomen { get;  set; } = new();
+        public PelvisDamageModel Pelvis { get;  set; } = new();
+        public SpineDamageModel Spine { get;  set; } = new();
 
-        public UpperDamageModel RightUpper { get; private set; } = new();
-        public UpperDamageModel LeftUpper { get; private set; } = new();
-        public LowerDamageModel RightLower { get; private set; } = new();
-        public LowerDamageModel LeftLower { get; private set; } = new();
+        public UpperDamageModel RightUpper { get;  set; } = new();
+        public UpperDamageModel LeftUpper { get;  set; } = new();
+        public LowerDamageModel RightLower { get;  set; } = new();
+        public LowerDamageModel LeftLower { get;  set; } = new();
 
         public string Diagnosis { get; set; }
         #endregion

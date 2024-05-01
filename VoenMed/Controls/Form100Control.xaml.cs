@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TextFormattingHelper;
 using VoenMed.Utility;
+using VoenMedLibrary.Data;
 using VoenMedLibrary.DataAccess;
 using VoenMedLibrary.Models;
 using static VoenMedLibrary.Models.EnumModel;
@@ -53,11 +54,6 @@ namespace VoenMed.Controls
             InitializeDrugList();
             WireUpDrugsDropdown();
             InitializeFavDrugs();
-
-            // Локализация
-            // Состояние
-            // Характер повреждений
-            // Диагноз
         }
 
         #region NewForm
@@ -4263,12 +4259,12 @@ namespace VoenMed.Controls
 
         private void personLastNameTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            form100Model.LastName = personFirstNameTextbox.Text;
+            form100Model.LastName = personLastNameTextbox.Text;
         }
 
         private void personFirstNameTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            form100Model.FirstName = personLastNameTextbox.Text;
+            form100Model.FirstName = personFirstNameTextbox.Text;
 
         }
 
@@ -4526,10 +4522,30 @@ namespace VoenMed.Controls
             form100Model.InjuryStatusLocalis = injuryModel;
             form100Model.Condition = conditionModel;
             form100Model.HelpProvided = helpProvided;
-            string savePath;
-            Dictionary<string, string> keyValuePairs = new();
+            form100Model.IssuedBy = defaultsModel.IssuedBy;
 
-            WordDocumentDocx doc = new();
+            string savePath;
+            Dictionary<string, string> keyValuePairs = new()
+            { };
+
+            var formValidation = ValidateForm(form100Model);
+
+            if (formValidation.isValid == true)
+            {
+                MessageBox.Show("Неправильно заполнена форма! " + formValidation.errors);
+                return;
+            }
+
+
+            // SAVE TO DATABASE
+            string errorMessage = SaveForm100ToDatabase();
+            if(errorMessage.Length > 0)
+            {
+                MessageBox.Show($"Ошибка сохранения в базу данных: {errorMessage}");
+                return;
+            }
+
+
             if (string.IsNullOrWhiteSpace(defaultsModel.SavePath))
             {
                 MessageBox.Show("Не указан путь сохранения форм 100! Сохраняю в папку с приложением");
@@ -4539,11 +4555,47 @@ namespace VoenMed.Controls
             {
                 savePath = defaultsModel.SavePath;
             }
-            string filePath = doc.CreateForm100(keyValuePairs, savePath);
-            // AppHelper.Print(filePath);
-            string argument = "/select," + filePath;
 
-            System.Diagnostics.Process.Start("explorer.exe", argument);
+            AppHelper.GenerateAndOpenForm100(savePath, form100Model);
+
+            
+        }
+
+        private (bool isValid, Form100Model model, string errors) ValidateForm(Form100Model model)
+        {
+            string errors = "";
+            bool output = true;
+            if (string.IsNullOrEmpty(model.LastName) == false)
+            {
+                output = false;
+                errors += "Поле с фамилией не должно быть пустым!";
+            }
+
+            if (string.IsNullOrEmpty(model.InjuryStatusLocalis.Diagnosis) == false)
+            {
+                output = false;
+                errors += "Поле с диагнозом не может быть пустым!";
+            }
+
+            return (output, model, errors);
+        }
+
+
+        private string SaveForm100ToDatabase()
+        {
+            string output = "";
+            Form100Data data = new(form100Model) { };
+            string errorMessage = data.SaveToDatabase();
+            if (string.IsNullOrEmpty(errorMessage) == false)
+            {
+                return errorMessage;
+            }
+            return output;
+        }
+
+        private void DiagnosisTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            form100Model.InjuryStatusLocalis.Diagnosis = DiagnosisTextBox.Text;
         }
     }
 }

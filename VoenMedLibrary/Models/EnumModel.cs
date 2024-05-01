@@ -22,11 +22,24 @@ namespace VoenMedLibrary.Models
             [Description("Небоевая патология ")] Body, // 
         }
 
+        public enum AreaEnum
+        {
+            [Description("Голова")] Head = 1, // 
+            [Description("Шея")] Neck, // 
+            [Description("Грудь")] Thorax, // 
+            [Description("Таз")] Pelvis, // 
+            [Description("Органы брюшной полости")] Abdomen, // 
+            [Description("Позвоночник")] Spine, // 
+            [Description("Правая рука")] RightUpper, // 
+            [Description("Левая рука")] LeftUpper, // 
+            [Description("Правая нога")] RightLower, // 
+            [Description("Левая нога")] LeftLower // 
+        }
         public enum EvacuationWayEnum
         {
-            [Description("Медицинская рота")] Company, // 
-            [Description("Медицинский батальон")] Battalion, // 
-            [Description("Военно-медицинский госпиталь")] Hospital, // 
+            [Description("ОмедБ")] Company, // 
+            [Description("ОмедО")] Battalion, // 
+            [Description("Госпиталь")] Hospital, // 
         }
         public enum EvacuationOrderEnum
         {

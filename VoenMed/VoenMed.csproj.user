@@ -12,9 +12,15 @@
     <Compile Update="Controls\DefaultsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\From100ListControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\DefaultsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\From100ListControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

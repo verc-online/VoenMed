@@ -132,11 +132,11 @@
                         <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                             <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Куда эвакуировать</TextBlock>
                             <StackPanel Orientation="Vertical">
-                                <RadioButton x:Name="evacWayRadioButton_1" Click="evacWayRadioButton_1_Click" GroupName="EvacuationWay" Content="Медрота"
+                                <RadioButton x:Name="evacWayRadioButton_1" Click="evacWayRadioButton_1_Click" GroupName="EvacuationWay" Content="ОмедБ"
                                              Margin="0 0 10 0" />
-                                <RadioButton x:Name="evacWayRadioButton_2" Click="evacWayRadioButton_2_Click" GroupName="EvacuationWay" Content="Медбат"
+                                <RadioButton x:Name="evacWayRadioButton_2" Click="evacWayRadioButton_2_Click" GroupName="EvacuationWay" Content="ОмедО"
                                              Margin="0 0 10 0" />
-                                <RadioButton x:Name="evacWayRadioButton_3" Click="evacWayRadioButton_3_Click" GroupName="EvacuationWay" Content="ЦВМО" IsChecked="True" />
+                                <RadioButton x:Name="evacWayRadioButton_3" Click="evacWayRadioButton_3_Click" GroupName="EvacuationWay" Content="Госпиталь" IsChecked="True" />
                             </StackPanel>
                         </StackPanel>
                         <!-- Очередность-->
@@ -2941,7 +2941,7 @@
                 <!-- Диагноз-->
                 <StackPanel Width="1000">
                     <TextBlock FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap">Диагноз</TextBlock>
-                    <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="140" x:Name="DiagnosisTextBox"></TextBox>
+                    <TextBox Margin="5 0" TextWrapping="Wrap" AcceptsReturn="True" Height="140" x:Name="DiagnosisTextBox" TextChanged="DiagnosisTextBox_TextChanged"></TextBox>
                 </StackPanel>
                 <Button Margin="0 10 0 0" Padding="10" x:Name="saveFromButton" Click="saveFromButton_Click">Сохранить</Button>
             </StackPanel>
